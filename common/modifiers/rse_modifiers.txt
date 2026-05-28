@@ -756,3 +756,33 @@ revolt_leader_modifier = {
 	dread_baseline_add = 15
 	same_faith_opinion = 15
 }
+
+# --- Orthodox-Sunni rivalry modifiers ---
+
+defender_of_orthodoxy_modifier = {
+	icon = faith_positive
+	monthly_piety = 0.75
+	same_faith_opinion = 15
+	different_faith_county_opinion = -10
+}
+
+pragmatic_neighbour_modifier = {
+	icon = prestige_positive
+	diplomacy = 2
+	different_faith_opinion = 10
+	monthly_prestige = 0.3
+}
+
+refugee_influx_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.25
+	tax_mult = 0.1
+	county_opinion_add = 15
+}
+
+refugee_camp_modifier = {
+	icon = county_modifier_economy_negative
+	tax_mult = -0.1
+	monthly_county_control_change_factor = -0.05
+	county_opinion_add = 5
+}

@@ -107,3 +107,26 @@ rse_warrior_slaves_permitted_trigger = {
 		culture = { has_cultural_tradition = tradition_seafaring }
 	}
 }
+
+# --- Orthodox / Sunni triggers ---
+
+rse_is_orthodox_trigger = {
+	faith = {
+		OR = {
+			this = faith:orthodox
+			has_doctrine = tenet_iconography
+			has_doctrine_parameter = ecumenical_patriarch_active
+		}
+	}
+}
+
+rse_is_sunni_trigger = {
+	faith = {
+		OR = {
+			this = faith:ashari
+			this = faith:maturidi
+			this = faith:athari
+			this = faith:mutazila
+		}
+	}
+}

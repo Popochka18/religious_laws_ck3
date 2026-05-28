@@ -1,4 +1,4 @@
-l_polish:
+﻿l_polish:
  rse_war.0001.t:0 "Święta gorliwość przed bitwą"
  rse_war.0001.desc:0 "W przededniu bitwy [court_priest.GetTitledFirstName] gromadzi wojsko. Wierni modlą się, sztandary zostają poświęcone, a heretycki wróg zostaje wyklęty. Nastrój gorączkowy — armia czeka na twoje słowo."
  rse_war.0001.a:0 "$HIGHLIGHT$Niech kapłan przemówi — to święta wojna!$END$"
@@ -757,3 +757,45 @@ l_polish:
  rse_owner.0015.a:0 "Stracić. Uczynić przykład publicznie."
  rse_owner.0015.b:0 "Wykastrować i złamać pracą."
  rse_owner.0015.c:0 "Przeciągnąć na swoją stronę — chętny spiskowiec jest narzędziem."
+
+ rse_orthsunni.0001.t:0 "Słowo Patriarchy"
+ rse_orthsunni.0001.desc:0 "Z wielkiego kościoła przyszedł list Patriarchy — potępienie [sunni_neighbor.GetTitledFirstName], sunnickiego emira zza cieśniny, którego ulema głosi rozbicie ikon i obalenie krzyża. Wierni patrzą na ciebie."
+ rse_orthsunni.0001.a:0 "Odpowiedzieć Patriarsze. Krzyż stoi przeciw półksiężycowi."
+ rse_orthsunni.0001.b:0 "Uszanować sąsiada. Między książętami nie jest jedna wiara."
+ rse_orthsunni.0001.c:0 "Posłać emirowi cichy dar. Pokój ma swoją cenę. (-75 złota)"
+
+ rse_orthsunni.0002.t:0 "Uchodźcy u bram"
+ rse_orthsunni.0002.desc:0 "Setki uchodźców naszej wiary płyną przez granicę do [refuge_county.GetName], uciekając przed prześladowaniami rywalizującej wiary. [refugee_leader.GetTitledFirstName] klęka przed tobą, prosząc o schronienie, chleb i ochronę."
+ rse_orthsunni.0002.a:0 "Osiedlić w hrabstwie. Ich ręce są gotowe."
+ rse_orthsunni.0002.b:0 "Zakwaterować w obozach. Zobaczymy, jak pójdzie. (-50 złota)"
+ rse_orthsunni.0002.c:0 "Odpędzić. Mamy własne troski."
+
+ rse_orthsunni.0003.t:0 "Żądanie daniny"
+ rse_orthsunni.0003.desc:0 "Wysłannik [tribute_demander.GetTitledFirstName] stoi w twym dworze, żądając daniny — rocznej, w złocie i zbożu — za pokój na granicy. Groźba jest jawna. Hańba też."
+ rse_orthsunni.0003.a:0 "Zapłacić. (-150 złota)"
+ rse_orthsunni.0003.b:0 "Odmówić — i gotować się do wojny."
+ rse_orthsunni.0003.c:0 "Zwlekać, wykręcać się, odesłać wysłannika z mglistymi odpowiedziami."
+
+ rse_orthsunni.0004.t:0 "Świątynia sprofanowana"
+ rse_orthsunni.0004.desc:0 "Wieść: wielki kościół (lub meczet) za rywalską granicą został sprofanowany — ikony rozbite, modlitwy zakazane, krew rozlana na ołtarzu. Wierni żądają odpowiedzi."
+ rse_orthsunni.0004.a:0 "Głosić świętą wojnę. Niech każdy mąż chwyci za broń."
+ rse_orthsunni.0004.b:0 "Posłać złoto, by odbudować, co zburzono. (-100 złota)"
+ rse_orthsunni.0004.c:0 "Kamienie i posągi — niech sami się o nie kłócą."
+
+ rse_orthsunni.0005.t:0 "Duchowny w łańcuchach"
+ rse_orthsunni.0005.desc:0 "[captured_cleric.GetTitledFirstName], uczony duchowny rywalskiej wiary, pojmany w ostatniej kampanii. Siedzi w twym lochu, ani błagając, ani się buntując. Kapelan żąda odpowiedzi."
+ rse_orthsunni.0005.a:0 "Pień. Głosił przeciw nam — niech głosić nie będzie."
+ rse_orthsunni.0005.b:0 "Nawrócić. Uczony umysł dla naszej wiary to niemało."
+ rse_orthsunni.0005.c:0 "Zwrócić za okup. Moneta to moneta. (+100 złota)"
+
+ rse_orthsunni.0006.t:0 "Małżeństwo przez wiarę"
+ rse_orthsunni.0006.desc:0 "Przybywa propozycja małżeństwa — [cross_faith_match.GetTitledFirstName] rywalskiej wiary zaproponowany dla [own_child.GetTitledFirstName]. Sojusz byłby potężny, lecz duchowieństwo zawyje."
+ rse_orthsunni.0006.a:0 "Przyjąć. Polityka cięży nad modlitwą."
+ rse_orthsunni.0006.b:0 "Żądać nawrócenia najpierw. Potem ślub."
+ rse_orthsunni.0006.c:0 "Odmówić. Moja krew nie zmiesza się z niewierną."
+
+ rse_orthsunni.0007.t:0 "Devshirme"
+ rse_orthsunni.0007.desc:0 "Wielki wezyr proponuje pobór chłopców chrześcijańskich z ziem prawosławnych — wychowywać muzułmanami, ćwiczyć żołnierzami, całkowicie oddanymi sułtanowi. Matki zapłaczą. Wojsko będzie nie do pokonania."
+ rse_orthsunni.0007.a:0 "Rozpocząć pobór. Żelazna wierność kupiona w kołyskach."
+ rse_orthsunni.0007.b:0 "Mniejszy pobór — z ochotników. (-50 złota)"
+ rse_orthsunni.0007.c:0 "Odmówić. Niektóre ceny są zbyt wysokie."

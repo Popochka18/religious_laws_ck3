@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  rse_war.0001.t:0 "Holy Zeal Before Battle"
  rse_war.0001.desc:0 "On the eve of battle, [court_priest.GetTitledFirstName] gathers the host. The faithful pray, the banners are blessed, and the heretical foe is denounced. The mood is feverish — the army awaits your word."
  rse_war.0001.a:0 "$HIGHLIGHT$Let the priest speak — this is a holy war!$END$"
@@ -757,3 +757,45 @@ l_english:
  rse_owner.0015.a:0 "Execute. Make the example public."
  rse_owner.0015.b:0 "Geld them and break them at the labour."
  rse_owner.0015.c:0 "Turn them — a willing plotter is a useful tool."
+
+ rse_orthsunni.0001.t:0 "The Patriarch Speaks"
+ rse_orthsunni.0001.desc:0 "From the great church the Patriarch's letter has come — a denunciation of [sunni_neighbor.GetTitledFirstName], the Sunni emir across the strait, whose ulema preach the destruction of the icons and the falling of the cross. The faithful look to you."
+ rse_orthsunni.0001.a:0 "Answer the Patriarch. The cross stands against the crescent."
+ rse_orthsunni.0001.b:0 "Honour the neighbour. Faith is not the only matter between princes."
+ rse_orthsunni.0001.c:0 "Send the emir a quiet gift. Peace has its price. (-75 gold)"
+
+ rse_orthsunni.0002.t:0 "Refugees at the Gate"
+ rse_orthsunni.0002.desc:0 "Hundreds of refugees of our faith stream across the frontier into [refuge_county.GetName], fleeing persecution at the hands of the rival faith. [refugee_leader.GetTitledFirstName] kneels before you and asks for shelter, bread, and protection."
+ rse_orthsunni.0002.a:0 "Settle them in the county. Their hands are willing."
+ rse_orthsunni.0002.b:0 "House them in camps. We shall see how things go. (-50 gold)"
+ rse_orthsunni.0002.c:0 "Drive them back. We have troubles of our own."
+
+ rse_orthsunni.0003.t:0 "A Tribute Demanded"
+ rse_orthsunni.0003.desc:0 "An envoy of [tribute_demander.GetTitledFirstName] stands at your court, demanding tribute — annual, in gold and grain — for peace on the frontier. The threat is plain. The shame, also."
+ rse_orthsunni.0003.a:0 "Pay. (-150 gold)"
+ rse_orthsunni.0003.b:0 "Refuse — and prepare for war."
+ rse_orthsunni.0003.c:0 "Delay, dissemble, send the envoy back with vague answers."
+
+ rse_orthsunni.0004.t:0 "A Holy Place Defiled"
+ rse_orthsunni.0004.desc:0 "Word arrives that a great church (or mosque) across the rival frontier has been defiled — icons smashed, prayers banned, blood spilled on the altar. The faithful demand a response."
+ rse_orthsunni.0004.a:0 "Preach a holy war. Let every man arm himself."
+ rse_orthsunni.0004.b:0 "Send gold to rebuild what the rival destroyed. (-100 gold)"
+ rse_orthsunni.0004.c:0 "Stones and statues — let them quarrel over."
+
+ rse_orthsunni.0005.t:0 "A Cleric in Chains"
+ rse_orthsunni.0005.desc:0 "[captured_cleric.GetTitledFirstName], a learned cleric of the rival faith, was taken in the last campaign. He sits in your dungeon, neither pleading nor defiant. The chaplain demands an answer."
+ rse_orthsunni.0005.a:0 "The block. He preached against us; let him preach no more."
+ rse_orthsunni.0005.b:0 "Convert him. A learned mind for our faith is no small thing."
+ rse_orthsunni.0005.c:0 "Ransom him. Coin is coin. (+100 gold)"
+
+ rse_orthsunni.0006.t:0 "A Match Across the Faith"
+ rse_orthsunni.0006.desc:0 "An offer of marriage arrives — [cross_faith_match.GetTitledFirstName], of the rival faith, is proposed for [own_child.GetTitledFirstName]. The alliance would be powerful, but the priests would howl."
+ rse_orthsunni.0006.a:0 "Accept. Politics outweighs prayer."
+ rse_orthsunni.0006.b:0 "Demand conversion first. Then the wedding."
+ rse_orthsunni.0006.c:0 "Refuse. My blood shall not mix with the infidel."
+
+ rse_orthsunni.0007.t:0 "The Devshirme"
+ rse_orthsunni.0007.desc:0 "The grand vizier proposes a levy of Christian boys from the Orthodox lands — to be raised as Muslims, drilled as soldiers, devoted entirely to the Sultan. The mothers shall weep. The army shall be invincible."
+ rse_orthsunni.0007.a:0 "Begin the levy. Iron loyalty is bought in cradles."
+ rse_orthsunni.0007.b:0 "A smaller levy — drawn from volunteers. (-50 gold)"
+ rse_orthsunni.0007.c:0 "Refuse. Some prices are too high."

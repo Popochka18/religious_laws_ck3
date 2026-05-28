@@ -1,0 +1,501 @@
+namespace = rse_orthsunni
+
+# Patriarch denounces the Sultan
+rse_orthsunni.0001 = {
+	type = character_event
+	title = rse_orthsunni.0001.t
+	desc = rse_orthsunni.0001.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:sunni_neighbor
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		rse_is_orthodox_trigger = yes
+		any_neighboring_top_liege_realm_owner = {
+			rse_is_sunni_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_neighboring_top_liege_realm_owner = {
+			limit = { rse_is_sunni_trigger = yes }
+			save_scope_as = sunni_neighbor
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0001.a
+		add_piety = medium_piety_gain
+		scope:sunni_neighbor = {
+			add_opinion = {
+				modifier = denounced_opinion
+				target = root
+				years = 25
+			}
+		}
+		add_character_modifier = {
+			modifier = defender_of_orthodoxy_modifier
+			years = 10
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0001.b
+		add_character_modifier = {
+			modifier = pragmatic_neighbour_modifier
+			years = 10
+		}
+		add_piety = minor_piety_loss
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_orthsunni.0001.c
+		scope:sunni_neighbor = {
+			add_opinion = {
+				modifier = generous_donation_opinion
+				target = root
+				years = 15
+			}
+		}
+		add_gold = -75
+		add_piety = medium_piety_loss
+	}
+}
+
+# A wave of refugees crosses the border
+rse_orthsunni.0002 = {
+	type = character_event
+	title = rse_orthsunni.0002.t
+	desc = rse_orthsunni.0002.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:refugee_leader
+		animation = beg
+	}
+
+	trigger = {
+		is_landed = yes
+		OR = {
+			rse_is_orthodox_trigger = yes
+			rse_is_sunni_trigger = yes
+		}
+		any_held_county = { count >= 1 }
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = refuge_county }
+		create_character = {
+			template_character = root
+			location = scope:refuge_county.title_province
+			faith = root.faith
+			culture = root.culture
+			save_scope_as = refugee_leader
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0002.a
+		scope:refuge_county = {
+			add_county_modifier = {
+				modifier = refugee_influx_modifier
+				years = 15
+			}
+			change_development_level = 2
+		}
+		add_piety = medium_piety_gain
+		scope:refugee_leader = {
+			set_employer = root
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0002.b
+		trigger = { gold >= 50 }
+		add_gold = -50
+		scope:refuge_county = {
+			add_county_modifier = {
+				modifier = refugee_camp_modifier
+				years = 8
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_orthsunni.0002.c
+		add_piety = medium_piety_loss
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+}
+
+# Demand tribute from the rival faith
+rse_orthsunni.0003 = {
+	type = character_event
+	title = rse_orthsunni.0003.t
+	desc = rse_orthsunni.0003.desc
+	theme = faith
+
+	left_portrait = scope:tribute_demander
+	right_portrait = root
+
+	trigger = {
+		is_landed = yes
+		OR = {
+			AND = {
+				rse_is_orthodox_trigger = yes
+				any_neighboring_top_liege_realm_owner = { rse_is_sunni_trigger = yes }
+			}
+			AND = {
+				rse_is_sunni_trigger = yes
+				any_neighboring_top_liege_realm_owner = { rse_is_orthodox_trigger = yes }
+			}
+		}
+	}
+
+	immediate = {
+		random_neighboring_top_liege_realm_owner = {
+			limit = {
+				OR = {
+					AND = {
+						rse_is_orthodox_trigger = yes
+						root = { rse_is_sunni_trigger = yes }
+					}
+					AND = {
+						rse_is_sunni_trigger = yes
+						root = { rse_is_orthodox_trigger = yes }
+					}
+				}
+			}
+			save_scope_as = tribute_demander
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0003.a
+		trigger = { gold >= 150 }
+		add_gold = -150
+		scope:tribute_demander = {
+			add_gold = 150
+			add_opinion = {
+				modifier = generous_donation_opinion
+				target = root
+				years = 15
+			}
+		}
+		add_prestige = medium_prestige_loss
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_orthsunni.0003.b
+		scope:tribute_demander = {
+			add_opinion = {
+				modifier = denounced_opinion
+				target = root
+				years = 25
+			}
+		}
+		add_piety = medium_piety_gain
+		add_prestige = medium_prestige_gain
+		add_character_modifier = {
+			modifier = defiant_in_chains_modifier
+			years = 5
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0003.c
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 5
+		}
+	}
+}
+
+# A holy site desecrated across the border
+rse_orthsunni.0004 = {
+	type = character_event
+	title = rse_orthsunni.0004.t
+	desc = rse_orthsunni.0004.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		OR = {
+			rse_is_orthodox_trigger = yes
+			rse_is_sunni_trigger = yes
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0004.a
+		add_piety = major_piety_gain
+		add_character_modifier = {
+			modifier = blessed_by_clergy_modifier
+			years = 5
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0004.b
+		trigger = { gold >= 100 }
+		add_gold = -100
+		add_piety = medium_piety_gain
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_orthsunni.0004.c
+		add_piety = minor_piety_loss
+		stress_impact = { zealous = major_stress_impact_gain }
+	}
+}
+
+# A captured cleric of the other faith
+rse_orthsunni.0005 = {
+	type = character_event
+	title = rse_orthsunni.0005.t
+	desc = rse_orthsunni.0005.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:captured_cleric
+		animation = beg
+	}
+
+	trigger = {
+		is_landed = yes
+		OR = {
+			AND = {
+				rse_is_orthodox_trigger = yes
+				any_prisoner = { rse_is_sunni_trigger = yes }
+			}
+			AND = {
+				rse_is_sunni_trigger = yes
+				any_prisoner = { rse_is_orthodox_trigger = yes }
+			}
+		}
+	}
+
+	immediate = {
+		random_prisoner = {
+			limit = {
+				OR = {
+					AND = {
+						rse_is_sunni_trigger = yes
+						root = { rse_is_orthodox_trigger = yes }
+					}
+					AND = {
+						rse_is_orthodox_trigger = yes
+						root = { rse_is_sunni_trigger = yes }
+					}
+				}
+			}
+			save_scope_as = captured_cleric
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0005.a
+		scope:captured_cleric = {
+			death = { death_reason = death_execution killer = root }
+		}
+		add_piety = medium_piety_gain
+		add_dread = medium_dread_gain
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_orthsunni.0005.b
+		scope:captured_cleric = {
+			set_faith = root.faith
+			release_from_prison = yes
+			add_trait = devoted
+		}
+		add_piety = major_piety_gain
+	}
+
+	option = {
+		name = rse_orthsunni.0005.c
+		scope:captured_cleric = { release_from_prison = yes }
+		add_gold = 100
+		scope:captured_cleric = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = minor_piety_loss
+	}
+}
+
+# An offer of cross-faith marriage
+rse_orthsunni.0006 = {
+	type = character_event
+	title = rse_orthsunni.0006.t
+	desc = rse_orthsunni.0006.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:cross_faith_match
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		is_adult = yes
+		OR = {
+			rse_is_orthodox_trigger = yes
+			rse_is_sunni_trigger = yes
+		}
+		any_child = {
+			is_alive = yes
+			is_adult = yes
+			is_unmarried_and_can_marry = yes
+		}
+	}
+
+	immediate = {
+		random_child = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				is_unmarried_and_can_marry = yes
+			}
+			save_scope_as = own_child
+		}
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			gender_female_chance = scope:own_child.gender_female_inverse_chance
+			save_scope_as = cross_faith_match
+		}
+		if = {
+			limit = { rse_is_orthodox_trigger = yes }
+			scope:cross_faith_match = { set_faith = faith:ashari }
+		}
+		else = {
+			scope:cross_faith_match = { set_faith = faith:orthodox }
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0006.a
+		scope:own_child = {
+			marry = scope:cross_faith_match
+		}
+		add_character_modifier = {
+			modifier = legitimized_through_marriage_modifier
+			years = 15
+		}
+		add_piety = medium_piety_loss
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_orthsunni.0006.b
+		trigger = { exists = cp:councillor_court_chaplain }
+		scope:cross_faith_match = {
+			set_faith = root.faith
+		}
+		scope:own_child = {
+			marry = scope:cross_faith_match
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_orthsunni.0006.c
+		scope:cross_faith_match = { banish = yes }
+		add_piety = medium_piety_gain
+	}
+}
+
+# A Janissary-style abduction from Orthodox lands
+rse_orthsunni.0007 = {
+	type = character_event
+	title = rse_orthsunni.0007.t
+	desc = rse_orthsunni.0007.desc
+	theme = faith
+
+	left_portrait = root
+
+	trigger = {
+		is_landed = yes
+		rse_is_sunni_trigger = yes
+		OR = {
+			any_held_county = { rse_is_orthodox_trigger = yes }
+			any_neighboring_top_liege_realm_owner = { rse_is_orthodox_trigger = yes }
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { rse_is_orthodox_trigger = yes }
+			save_scope_as = devshirme_target
+		}
+		if = {
+			limit = { NOT = { exists = scope:devshirme_target } }
+			random_neighboring_top_liege_realm_owner = {
+				limit = { rse_is_orthodox_trigger = yes }
+				random_held_county = {
+					save_scope_as = devshirme_target
+				}
+			}
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0007.a
+		add_character_modifier = {
+			modifier = mamluk_corps_modifier
+			years = 20
+		}
+		add_prestige = medium_prestige_gain
+		if = {
+			limit = { exists = scope:devshirme_target }
+			scope:devshirme_target = {
+				change_county_opinion = {
+					value = -25
+					years = 10
+				}
+			}
+		}
+	}
+
+	option = {
+		name = rse_orthsunni.0007.b
+		add_gold = -50
+		add_piety = minor_piety_gain
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_orthsunni.0007.c
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+}
