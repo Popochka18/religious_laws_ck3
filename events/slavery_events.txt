@@ -603,9 +603,7 @@ rse_slave.0010 = {
 		scope:lowborn_beauty = {
 			add_trait = rse_concubine_slave
 		}
-		take_concubine = {
-			concubine = scope:lowborn_beauty
-		}
+		add_concubine = scope:lowborn_beauty
 		add_piety = minor_piety_loss
 	}
 

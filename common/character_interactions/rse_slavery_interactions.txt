@@ -298,9 +298,7 @@ rse_designate_concubine_interaction = {
 			add_trait = rse_concubine_slave
 		}
 		scope:actor = {
-			take_concubine = {
-				concubine = scope:recipient
-			}
+			add_concubine = scope:recipient
 		}
 	}
 
