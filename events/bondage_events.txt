@@ -3626,3 +3626,558 @@ rse_bondage.0043 = {
 		}
 	}
 }
+
+# Witnessing brutality
+rse_bondage.0044 = {
+	type = character_event
+	title = rse_bondage.0044.t
+	desc = rse_bondage.0044.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	right_portrait = {
+		character = scope:victim_slave
+		animation = fear
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		scope:master = {
+			random_courtier = {
+				limit = {
+					has_trait = rse_enslaved
+					is_adult = yes
+					NOT = { this = root }
+				}
+				save_scope_as = victim_slave
+			}
+		}
+		if = {
+			limit = { NOT = { exists = scope:victim_slave } }
+			create_character = {
+				template_character = root
+				location = scope:master.capital_province
+				faith = root.faith
+				culture = root.culture
+				save_scope_as = victim_slave
+				employer = scope:master
+			}
+			scope:victim_slave = { add_trait = rse_enslaved }
+		}
+	}
+
+	option = {
+		name = rse_bondage.0044.a
+		scope:victim_slave = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = troublesome_prisoner_opinion
+				target = root
+				years = 10
+			}
+		}
+		stress_impact = { brave = miniscule_stress_impact_loss }
+	}
+
+	option = {
+		name = rse_bondage.0044.b
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 5
+		}
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = rse_bondage.0044.c
+		add_dread = minor_dread_gain
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 15
+			}
+		}
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+	}
+}
+
+# A blind master needs reading aloud
+rse_bondage.0045 = {
+	type = character_event
+	title = rse_bondage.0045.t
+	desc = rse_bondage.0045.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:master
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+		learning >= 5
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0045.a
+		add_trait = rse_house_slave
+		add_learning = 1
+		scope:master = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0045.b
+		trigger = { intrigue >= 8 }
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 15
+		}
+		add_intrigue = 1
+	}
+
+	option = {
+		name = rse_bondage.0045.c
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = wary_prisoner_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+}
+
+# A vision in the night
+rse_bondage.0046 = {
+	type = character_event
+	title = rse_bondage.0046.t
+	desc = rse_bondage.0046.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0046.a
+		add_piety = major_piety_gain
+		add_character_modifier = {
+			modifier = martyred_in_spirit_modifier
+			years = 10
+		}
+	}
+
+	option = {
+		name = rse_bondage.0046.b
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0046.c
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 5
+		}
+		add_piety = minor_piety_loss
+	}
+}
+
+# A long-lost relative recognizes you
+rse_bondage.0047 = {
+	type = character_event
+	title = rse_bondage.0047.t
+	desc = rse_bondage.0047.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:lost_kin
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = root.faith
+			culture = root.culture
+			save_scope_as = lost_kin
+		}
+	}
+
+	option = {
+		name = rse_bondage.0047.a
+		random = {
+			chance = 35
+			modifier = {
+				add = 30
+				scope:master = { has_trait = greedy }
+			}
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			move_to_pool = yes
+			scope:lost_kin = {
+				add_opinion = {
+					modifier = grateful_opinion
+					target = root
+					years = 100
+				}
+			}
+		}
+		random = {
+			chance = 65
+			scope:lost_kin = {
+				add_opinion = {
+					modifier = secret_friend_opinion
+					target = root
+					years = 50
+				}
+			}
+			add_character_modifier = {
+				modifier = stoic_in_chains_modifier
+				years = 5
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0047.b
+		scope:lost_kin = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_character_modifier = {
+			modifier = bribed_jailers_modifier
+			years = 5
+		}
+	}
+
+	option = {
+		name = rse_bondage.0047.c
+		scope:lost_kin = { banish = yes }
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 5
+		}
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+}
+
+# Travel to a foreign court
+rse_bondage.0048 = {
+	type = character_event
+	title = rse_bondage.0048.t
+	desc = rse_bondage.0048.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:foreign_lord
+		animation = personality_bold
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			gender_female_chance = 0
+			save_scope_as = foreign_lord
+		}
+	}
+
+	option = {
+		name = rse_bondage.0048.a
+		random = {
+			chance = 30
+			modifier = {
+				add = 20
+				intrigue >= 10
+			}
+			set_employer = scope:foreign_lord
+			scope:foreign_lord = {
+				add_opinion = {
+					modifier = secret_friend_opinion
+					target = root
+					years = 30
+				}
+			}
+		}
+		random = {
+			chance = 70
+			add_character_modifier = {
+				modifier = failed_escape_modifier
+				years = 5
+			}
+			scope:master = {
+				add_opinion = {
+					modifier = troublesome_prisoner_opinion
+					target = root
+					years = 15
+				}
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0048.b
+		add_diplomacy = 1
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 5
+		}
+	}
+
+	option = {
+		name = rse_bondage.0048.c
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 15
+			}
+		}
+	}
+}
+
+# Caught praying to old gods
+rse_bondage.0049 = {
+	type = character_event
+	title = rse_bondage.0049.t
+	desc = rse_bondage.0049.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+	right_portrait = {
+		character = scope:master
+		animation = anger
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+		NOT = { faith = employer.faith }
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0049.a
+		set_faith = scope:master.faith
+		add_trait = devoted
+		add_piety = -50
+		scope:master = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_character_modifier = {
+			modifier = false_convert_modifier
+			years = 10
+		}
+	}
+
+	option = {
+		name = rse_bondage.0049.b
+		add_piety = major_piety_gain
+		add_character_modifier = {
+			modifier = martyred_in_spirit_modifier
+			years = 8
+		}
+		add_character_modifier = {
+			modifier = broken_back_modifier
+			years = 3
+		}
+	}
+
+	option = {
+		name = rse_bondage.0049.c
+		trigger = { intrigue >= 6 }
+		add_character_modifier = {
+			modifier = bribed_jailers_modifier
+			years = 3
+		}
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 5
+		}
+	}
+}
+
+# A child you raised returns, now free
+rse_bondage.0050 = {
+	type = character_event
+	title = rse_bondage.0050.t
+	desc = rse_bondage.0050.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:grateful_ward
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = scope:master.faith
+			culture = scope:master.culture
+			save_scope_as = grateful_ward
+		}
+	}
+
+	option = {
+		name = rse_bondage.0050.a
+		random = {
+			chance = 60
+			modifier = {
+				add = 20
+				has_trait = rse_house_slave
+			}
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			move_to_pool = yes
+			scope:grateful_ward = {
+				add_opinion = {
+					modifier = grateful_opinion
+					target = root
+					years = 100
+				}
+			}
+			add_piety = medium_piety_gain
+		}
+		random = {
+			chance = 40
+			add_character_modifier = {
+				modifier = stoic_in_chains_modifier
+				years = 5
+			}
+			scope:grateful_ward = {
+				add_opinion = {
+					modifier = secret_friend_opinion
+					target = root
+					years = 100
+				}
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0050.b
+		add_character_modifier = {
+			modifier = bribed_jailers_modifier
+			years = 5
+		}
+		scope:grateful_ward = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 50
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0050.c
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 3
+		}
+		add_piety = minor_piety_gain
+	}
+}
