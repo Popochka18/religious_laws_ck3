@@ -1,0 +1,233 @@
+namespace = rse_realm
+
+# A vassal of a different faith protests your rule
+rse_realm.0001 = {
+	type = character_event
+	title = rse_realm.0001.t
+	desc = rse_realm.0001.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:dissident_vassal
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		is_independent_ruler = yes
+		any_vassal = {
+			NOT = { faith = root.faith }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_vassal = {
+			limit = { NOT = { faith = root.faith } }
+			save_scope_as = dissident_vassal
+		}
+	}
+
+	option = {
+		name = rse_realm.0001.a
+		scope:dissident_vassal = {
+			add_opinion = {
+				modifier = religious_tolerance_opinion
+				target = root
+				years = 10
+			}
+		}
+		add_piety = minor_piety_loss
+		stress_impact = { zealous = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_realm.0001.b
+		scope:dissident_vassal = {
+			add_opinion = {
+				modifier = religious_oppression_opinion
+				target = root
+				years = 15
+			}
+			add_character_modifier = {
+				modifier = oppressed_vassal_modifier
+				years = 5
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_realm.0001.c
+		trigger = { gold >= 50 }
+		add_gold = -50
+		scope:dissident_vassal = {
+			add_opinion = {
+				modifier = bribed_opinion
+				target = root
+				years = 5
+			}
+		}
+	}
+}
+
+# Religious faction forming among vassals
+rse_realm.0002 = {
+	type = character_event
+	title = rse_realm.0002.t
+	desc = rse_realm.0002.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = scope:faction_leader
+
+	trigger = {
+		is_landed = yes
+		is_independent_ruler = yes
+		any_vassal = {
+			NOT = { faith = root.faith }
+			count >= 2
+		}
+	}
+
+	immediate = {
+		random_vassal = {
+			limit = {
+				NOT = { faith = root.faith }
+				highest_held_title_tier >= tier_county
+			}
+			save_scope_as = faction_leader
+			save_scope_as = ringleader
+		}
+	}
+
+	option = {
+		name = rse_realm.0002.a
+		every_vassal = {
+			limit = { faith = scope:faction_leader.faith }
+			add_opinion = {
+				modifier = appeased_opinion
+				target = root
+				years = 8
+			}
+		}
+		add_prestige = minor_prestige_loss
+	}
+
+	option = {
+		name = rse_realm.0002.b
+		scope:ringleader = {
+			imprison = { target = root }
+		}
+		every_vassal = {
+			limit = { faith = scope:faction_leader.faith }
+			add_opinion = {
+				modifier = wary_of_liege_opinion
+				target = root
+				years = 10
+			}
+		}
+		add_dread = medium_dread_gain
+	}
+
+	option = {
+		name = rse_realm.0002.c
+		add_character_modifier = {
+			modifier = watchful_ruler_modifier
+			years = 3
+		}
+	}
+}
+
+# Mass conversion offered by court chaplain
+rse_realm.0003 = {
+	type = character_event
+	title = rse_realm.0003.t
+	desc = rse_realm.0003.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:court_chaplain
+		animation = preach
+	}
+
+	trigger = {
+		is_landed = yes
+		exists = cp:councillor_court_chaplain
+		any_sub_realm_county = {
+			NOT = { faith = root.faith }
+			count >= 3
+		}
+	}
+
+	immediate = {
+		cp:councillor_court_chaplain = { save_scope_as = court_chaplain }
+	}
+
+	option = {
+		name = rse_realm.0003.a
+		trigger = { gold >= 100 }
+		add_gold = -100
+		every_sub_realm_county = {
+			limit = { NOT = { faith = root.faith } }
+			random = {
+				chance = 25
+				set_county_faith = root.faith
+			}
+		}
+		add_piety = major_piety_gain
+	}
+
+	option = {
+		name = rse_realm.0003.b
+		add_piety = minor_piety_loss
+	}
+}
+
+# Heresy denounced before the realm
+rse_realm.0004 = {
+	type = character_event
+	title = rse_realm.0004.t
+	desc = rse_realm.0004.desc
+	theme = faith
+
+	left_portrait = root
+
+	trigger = {
+		is_landed = yes
+		faith = { has_doctrine_parameter = unrestricted_holy_wars_active }
+		any_sub_realm_county = {
+			faith = { has_allowed_great_holy_war_against_faith = root.faith }
+			count >= 1
+		}
+	}
+
+	option = {
+		name = rse_realm.0004.a
+		random_sub_realm_county = {
+			limit = {
+				faith = { has_allowed_great_holy_war_against_faith = root.faith }
+			}
+			save_scope_as = target_county
+			holder = {
+				add_opinion = {
+					modifier = denounced_opinion
+					target = root
+					years = 20
+				}
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_realm.0004.b
+		add_piety = minor_piety_loss
+		stress_impact = { zealous = major_stress_impact_gain }
+	}
+}

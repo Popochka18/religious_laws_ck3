@@ -1,0 +1,83 @@
+zealous_warrior_modifier = {
+	icon = faith_positive
+	prowess = 2
+	monthly_piety = 0.5
+}
+
+pragmatic_warlord_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+	advantage = 5
+}
+
+blessed_by_clergy_modifier = {
+	icon = faith_positive
+	monthly_piety = 1
+	levy_size = 0.05
+}
+
+oppressed_vassal_modifier = {
+	icon = stress_negative
+	monthly_income_mult = -0.1
+	monthly_county_control_change_factor = -0.1
+}
+
+watchful_ruler_modifier = {
+	icon = intrigue_positive
+	intrigue = 2
+	hostile_scheme_resistance_add = 10
+}
+
+inquisition_active_modifier = {
+	icon = faith_negative
+	monthly_county_control_change_factor = -0.1
+	county_opinion_add = -10
+	tax_mult = 0.1
+}
+
+religious_tolerance_county_modifier = {
+	icon = faith_positive
+	county_opinion_add = 15
+	development_growth_factor = 0.1
+}
+
+neglected_heresy_modifier = {
+	icon = faith_negative
+	monthly_county_control_change_factor = -0.15
+}
+
+brutal_collection_modifier = {
+	icon = stress_negative
+	tax_mult = 0.25
+	county_opinion_add = -20
+}
+
+lowered_taxes_modifier = {
+	icon = gold_negative
+	tax_mult = -0.25
+	county_opinion_add = 10
+}
+
+forced_conversion_modifier = {
+	icon = faith_positive
+	county_opinion_add = -25
+	monthly_county_control_change_factor = -0.2
+}
+
+new_temple_modifier = {
+	icon = faith_positive
+	development_growth_factor = 0.15
+	county_opinion_add = 10
+	tax_mult = 0.1
+}
+
+appeased_subjects_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 15
+}
+
+tolerant_court_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+	diplomacy = 1
+}

@@ -1,0 +1,27 @@
+religious_tolerance_opinion = {
+	opinion = 25
+}
+
+religious_oppression_opinion = {
+	opinion = -40
+}
+
+bribed_opinion = {
+	opinion = 15
+}
+
+appeased_opinion = {
+	opinion = 20
+}
+
+wary_of_liege_opinion = {
+	opinion = -20
+}
+
+denounced_opinion = {
+	opinion = -30
+}
+
+grateful_opinion = {
+	opinion = 30
+}

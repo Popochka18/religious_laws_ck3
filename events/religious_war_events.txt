@@ -1,0 +1,166 @@
+namespace = rse_war
+
+# Holy zeal before a religious war
+rse_war.0001 = {
+	type = character_event
+	title = rse_war.0001.t
+	desc = rse_war.0001.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+	right_portrait = {
+		character = scope:court_priest
+		animation = preach
+	}
+
+	trigger = {
+		is_landed = yes
+		is_at_war = yes
+		any_character_war = {
+			any_war_attacker = {
+				faith = { has_allowed_great_holy_war_against_faith = root.faith }
+			}
+			OR = {
+				any_war_attacker = { faith = root.faith }
+				any_war_defender = { faith = root.faith }
+			}
+		}
+		exists = cp:councillor_court_chaplain
+	}
+
+	immediate = {
+		cp:councillor_court_chaplain = { save_scope_as = court_priest }
+	}
+
+	option = {
+		name = rse_war.0001.a
+		add_piety = major_piety_gain
+		add_character_modifier = {
+			modifier = zealous_warrior_modifier
+			years = 3
+		}
+		stress_impact = { zealous = miniscule_stress_impact_loss }
+	}
+
+	option = {
+		name = rse_war.0001.b
+		add_prestige = medium_prestige_gain
+		add_character_modifier = {
+			modifier = pragmatic_warlord_modifier
+			years = 3
+		}
+		stress_impact = { zealous = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_war.0001.c
+		trigger = { has_trait = cynical }
+		add_prestige = minor_prestige_loss
+		add_character_flag = doubted_the_war
+	}
+}
+
+# Captured enemy of another faith
+rse_war.0002 = {
+	type = character_event
+	title = rse_war.0002.t
+	desc = rse_war.0002.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:captured_enemy
+		animation = shame
+	}
+
+	trigger = {
+		is_landed = yes
+		is_at_war = yes
+		any_prisoner = {
+			NOT = { faith = root.faith }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_prisoner = {
+			limit = { NOT = { faith = root.faith } }
+			save_scope_as = captured_enemy
+		}
+	}
+
+	option = {
+		name = rse_war.0002.a
+		scope:captured_enemy = {
+			set_faith = root.faith
+			add_trait = devoted
+		}
+		add_piety = medium_piety_gain
+		stress_impact = { compassionate = minor_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_war.0002.b
+		scope:captured_enemy = { death = { death_reason = death_execution } }
+		add_dread = medium_dread_gain
+		add_piety = major_piety_gain
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = rse_war.0002.c
+		scope:captured_enemy = { release_from_prison = yes }
+		add_piety = minor_piety_loss
+		stress_impact = { zealous = medium_stress_impact_gain }
+	}
+}
+
+# Faithful flock to your banner
+rse_war.0003 = {
+	type = character_event
+	title = rse_war.0003.t
+	desc = rse_war.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_landed = yes
+		is_at_war = yes
+		piety_level >= 2
+		any_character_war = {
+			any_war_attacker = {
+				faith = { has_allowed_great_holy_war_against_faith = root.faith }
+			}
+		}
+	}
+
+	option = {
+		name = rse_war.0003.a
+		spawn_army = {
+			levies = 500
+			men_at_arms = { type = light_footmen stacks = 2 }
+			location = capital_province
+			name = rse_war_faithful_host
+		}
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_war.0003.b
+		add_piety = medium_piety_gain
+		add_character_modifier = {
+			modifier = blessed_by_clergy_modifier
+			years = 2
+		}
+	}
+}

@@ -1,0 +1,294 @@
+namespace = rse_domain
+
+# Heresy spreading in domain
+rse_domain.0001 = {
+	type = character_event
+	title = rse_domain.0001.t
+	desc = rse_domain.0001.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_landed = yes
+		any_held_county = { count >= 1 }
+	}
+
+	immediate = {
+		random_held_county = {
+			save_scope_as = troubled_county
+		}
+	}
+
+	option = {
+		name = rse_domain.0001.a
+		trigger = { gold >= 75 }
+		add_gold = -75
+		scope:troubled_county = {
+			add_county_modifier = {
+				modifier = inquisition_active_modifier
+				years = 5
+			}
+			change_county_opinion = {
+				value = -10
+				years = 5
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_domain.0001.b
+		scope:troubled_county = {
+			add_county_modifier = {
+				modifier = religious_tolerance_county_modifier
+				years = 10
+			}
+		}
+		add_piety = minor_piety_loss
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_domain.0001.c
+		scope:troubled_county = {
+			add_county_modifier = {
+				modifier = neglected_heresy_modifier
+				years = 3
+			}
+		}
+	}
+}
+
+# Peasants of a different faith refuse to pay tax
+rse_domain.0002 = {
+	type = character_event
+	title = rse_domain.0002.t
+	desc = rse_domain.0002.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		any_held_county = {
+			NOT = { faith = root.faith }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { NOT = { faith = root.faith } }
+			save_scope_as = rebellious_county
+		}
+	}
+
+	option = {
+		name = rse_domain.0002.a
+		scope:rebellious_county = {
+			add_county_modifier = {
+				modifier = brutal_collection_modifier
+				years = 5
+			}
+			change_development_level = -1
+		}
+		add_dread = medium_dread_gain
+		stress_impact = { compassionate = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_domain.0002.b
+		scope:rebellious_county = {
+			add_county_modifier = {
+				modifier = lowered_taxes_modifier
+				years = 5
+			}
+		}
+		add_gold = -25
+	}
+
+	option = {
+		name = rse_domain.0002.c
+		scope:rebellious_county = {
+			set_county_faith = root.faith
+			add_county_modifier = {
+				modifier = forced_conversion_modifier
+				years = 10
+			}
+		}
+		add_piety = major_piety_gain
+		add_prestige = minor_prestige_loss
+	}
+}
+
+# A holy site or temple in your domain
+rse_domain.0003 = {
+	type = character_event
+	title = rse_domain.0003.t
+	desc = rse_domain.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+		any_held_county = { count >= 1 }
+		piety >= 100
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = blessed_county }
+	}
+
+	option = {
+		name = rse_domain.0003.a
+		trigger = { gold >= 150 }
+		add_gold = -150
+		add_piety = -100
+		scope:blessed_county = {
+			add_county_modifier = {
+				modifier = new_temple_modifier
+				years = 20
+			}
+		}
+	}
+
+	option = {
+		name = rse_domain.0003.b
+		add_piety = minor_piety_loss
+	}
+}
+
+# Religious revolt brewing in domain county
+rse_domain.0004 = {
+	type = character_event
+	title = rse_domain.0004.t
+	desc = rse_domain.0004.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_landed = yes
+		any_held_county = {
+			NOT = { faith = root.faith }
+			county_opinion <= 0
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = {
+				NOT = { faith = root.faith }
+				county_opinion <= 0
+			}
+			save_scope_as = revolt_county
+		}
+	}
+
+	option = {
+		name = rse_domain.0004.a
+		spawn_army = {
+			levies = 1000
+			men_at_arms = { type = light_footmen stacks = 3 }
+			location = scope:revolt_county.title_province
+			name = rse_realm_garrison_army
+		}
+		add_gold = -50
+		add_dread = minor_dread_gain
+	}
+
+	option = {
+		name = rse_domain.0004.b
+		scope:revolt_county = {
+			add_county_modifier = {
+				modifier = appeased_subjects_modifier
+				years = 5
+			}
+			change_county_opinion = {
+				value = 20
+				years = 5
+			}
+		}
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_domain.0004.c
+		scope:revolt_county = { set_county_faith = root.faith }
+		add_piety = major_piety_gain
+		add_prestige = minor_prestige_loss
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+}
+
+# Court conversion attempt
+rse_domain.0005 = {
+	type = character_event
+	title = rse_domain.0005.t
+	desc = rse_domain.0005.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = scope:foreign_courtier
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			NOT = { faith = root.faith }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = { NOT = { faith = root.faith } }
+			save_scope_as = foreign_courtier
+		}
+	}
+
+	option = {
+		name = rse_domain.0005.a
+		scope:foreign_courtier = { set_faith = root.faith }
+		add_piety = minor_piety_gain
+		scope:foreign_courtier = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = rse_domain.0005.b
+		scope:foreign_courtier = {
+			banish = yes
+		}
+		add_piety = minor_piety_gain
+		add_dread = minor_dread_gain
+	}
+
+	option = {
+		name = rse_domain.0005.c
+		add_character_modifier = {
+			modifier = tolerant_court_modifier
+			years = 5
+		}
+		add_piety = minor_piety_loss
+	}
+}

@@ -1,0 +1,62 @@
+namespace = rse_sched
+
+# Scheduler event - fires periodically to trigger religious situations
+rse_sched.0001 = {
+	hidden = yes
+
+	trigger = {
+		is_landed = yes
+		is_ai = no
+	}
+
+	immediate = {
+		random_list = {
+			20 = {
+				trigger_event = { id = rse_realm.0001 days = { 5 30 } }
+			}
+			15 = {
+				trigger = {
+					any_vassal = {
+						NOT = { faith = root.faith }
+						count >= 2
+					}
+				}
+				trigger_event = { id = rse_realm.0002 days = { 5 30 } }
+			}
+			15 = {
+				trigger_event = { id = rse_domain.0001 days = { 5 30 } }
+			}
+			15 = {
+				trigger = {
+					any_held_county = {
+						NOT = { faith = root.faith }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_domain.0002 days = { 5 30 } }
+			}
+			15 = {
+				trigger = {
+					any_courtier = {
+						NOT = { faith = root.faith }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_domain.0005 days = { 5 30 } }
+			}
+			10 = {
+				trigger = { is_at_war = yes }
+				trigger_event = { id = rse_war.0001 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					any_prisoner = {
+						NOT = { faith = root.faith }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_war.0002 days = { 5 30 } }
+			}
+		}
+	}
+}

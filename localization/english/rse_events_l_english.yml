@@ -1,0 +1,68 @@
+l_english:
+ rse_war.0001.t:0 "Holy Zeal Before Battle"
+ rse_war.0001.desc:0 "On the eve of battle, [court_priest.GetTitledFirstName] gathers the host. The faithful pray, the banners are blessed, and the heretical foe is denounced. The mood is feverish — the army awaits your word."
+ rse_war.0001.a:0 "$HIGHLIGHT$Let the priest speak — this is a holy war!$END$"
+ rse_war.0001.b:0 "Remind them: we fight for our land, not for the heavens."
+ rse_war.0001.c:0 "I have my doubts about this 'holy' cause..."
+
+ rse_war.0002.t:0 "An Infidel in Chains"
+ rse_war.0002.desc:0 "[captured_enemy.GetTitledFirstName], a captive of an alien faith, is dragged before you. The court chaplain demands their conversion. Your captains demand their head. Mercy or zeal?"
+ rse_war.0002.a:0 "Convert them — let them see the true faith."
+ rse_war.0002.b:0 "Make an example. The block awaits."
+ rse_war.0002.c:0 "Release them. We are no monsters."
+
+ rse_war.0003.t:0 "The Faithful Rally"
+ rse_war.0003.desc:0 "Word of your holy struggle has spread. Peasants, monks, and lay brothers from across the land arrive at your capital, willing to take up arms for the faith."
+ rse_war.0003.a:0 "Arm them and march."
+ rse_war.0003.b:0 "Bless them and send them home — let the clergy remember our piety."
+
+ rse_realm.0001.t:0 "A Dissenting Vassal"
+ rse_realm.0001.desc:0 "[dissident_vassal.GetTitledFirstName], of a faith not your own, has come to court with a list of grievances. Their tone is restrained but their eyes burn with resentment. The realm watches how you respond."
+ rse_realm.0001.a:0 "Hear them out. Tolerance is wisdom."
+ rse_realm.0001.b:0 "Remind them whose realm this is."
+ rse_realm.0001.c:0 "A purse of gold soothes most grievances. (-50 gold)"
+
+ rse_realm.0002.t:0 "A Faction of Faith"
+ rse_realm.0002.desc:0 "Whispers from your spymaster: vassals of an alien faith, led by [faction_leader.GetTitledFirstName], are meeting in secret. They speak of grievances, of rights, of perhaps... more."
+ rse_realm.0002.a:0 "Appease them with concessions."
+ rse_realm.0002.b:0 "Strike first — imprison the ringleader!"
+ rse_realm.0002.c:0 "Watch and wait. Knowledge is power."
+
+ rse_realm.0003.t:0 "A Plan for Conversion"
+ rse_realm.0003.desc:0 "[court_chaplain.GetTitledFirstName] approaches you with a proposal: a great mission, funded from your coffers, to bring the wayward counties of your realm into the true faith."
+ rse_realm.0003.a:0 "Fund the mission. (-100 gold)"
+ rse_realm.0003.b:0 "The realm has more pressing needs."
+
+ rse_realm.0004.t:0 "Denounce the Heretics"
+ rse_realm.0004.desc:0 "Reports reach you of counties within your realm that openly profess a heretical faith. The pulpits demand a public denunciation."
+ rse_realm.0004.a:0 "Denounce them from every pulpit!"
+ rse_realm.0004.b:0 "A wise ruler chooses their battles."
+
+ rse_domain.0001.t:0 "Heresy in the Domain"
+ rse_domain.0001.desc:0 "Strange sermons are being preached in [troubled_county.GetName]. Peasants gather in barns by night, whispering of new doctrines. Heresy stirs in your own land."
+ rse_domain.0001.a:0 "Launch an inquisition. (-75 gold)"
+ rse_domain.0001.b:0 "Let them speak. Ideas cannot be chained."
+ rse_domain.0001.c:0 "Ignore it. The realm has greater concerns."
+
+ rse_domain.0002.t:0 "The Tax-Resisters"
+ rse_domain.0002.desc:0 "Peasants of [rebellious_county.GetName], who do not share your faith, have refused to pay their tithe. They call your tax-collectors infidels and your priests false."
+ rse_domain.0002.a:0 "Send soldiers. The tax will be collected — with interest."
+ rse_domain.0002.b:0 "Lower their dues to keep the peace. (-25 gold)"
+ rse_domain.0002.c:0 "Force them to the true faith!"
+
+ rse_domain.0003.t:0 "A Vision of a Holy Site"
+ rse_domain.0003.desc:0 "You wake from a vivid dream: a great temple, rising from the soil of [blessed_county.GetName]. The pious say this is a calling. The treasurer disagrees."
+ rse_domain.0003.a:0 "Build it. The gods demand no less. (-150 gold, -100 piety)"
+ rse_domain.0003.b:0 "It was only a dream."
+
+ rse_domain.0004.t:0 "Brewing Revolt"
+ rse_domain.0004.desc:0 "[revolt_county.GetName] simmers. The peasants — of a foreign faith and discontented — speak openly of casting off your rule. Action is needed before it boils over."
+ rse_domain.0004.a:0 "Garrison the county with troops. (-50 gold)"
+ rse_domain.0004.b:0 "Offer concessions to calm them."
+ rse_domain.0004.c:0 "Convert them by edict, end this once and for all!"
+
+ rse_domain.0005.t:0 "A Courtier of Another Faith"
+ rse_domain.0005.desc:0 "[foreign_courtier.GetTitledFirstName] is a long-standing member of your court — but they do not share your faith. The chaplain wishes them removed; you must decide."
+ rse_domain.0005.a:0 "Encourage their conversion."
+ rse_domain.0005.b:0 "Banish them from court."
+ rse_domain.0005.c:0 "They have served well. They stay."

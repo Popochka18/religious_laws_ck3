@@ -1,0 +1,28 @@
+yearly_global_pulse = {
+	on_actions = {
+		rse_yearly_pulse
+	}
+}
+
+rse_yearly_pulse = {
+	events = {
+		rse_sched.0001
+	}
+}
+
+on_imprison = {
+	on_actions = {
+		rse_on_imprison_dispatch
+	}
+}
+
+rse_on_imprison_dispatch = {
+	trigger = {
+		scope:imprisoner = { is_ai = no }
+		scope:prisoner = { NOT = { faith = scope:imprisoner.faith } }
+	}
+	random_events = {
+		chance_to_happen = 25
+		100 = rse_war.0002
+	}
+}
