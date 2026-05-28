@@ -443,3 +443,600 @@ rse_reconquest.0006 = {
 		}
 	}
 }
+
+# A Christian noble family submits and begs to keep their land
+rse_reconquest.0007 = {
+	type = character_event
+	title = rse_reconquest.0007.t
+	desc = rse_reconquest.0007.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:christian_noble
+		animation = beg
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = noble_county
+		}
+		create_character = {
+			template_character = root
+			location = scope:noble_county.title_province
+			faith = scope:noble_county.faith
+			culture = scope:noble_county.culture
+			gender_female_chance = 0
+			save_scope_as = christian_noble
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0007.a
+		scope:christian_noble = {
+			set_employer = root
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		scope:noble_county = {
+			add_county_modifier = {
+				modifier = collaborator_lords_modifier
+				years = 20
+			}
+		}
+		add_piety = minor_piety_loss
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_reconquest.0007.b
+		scope:christian_noble = { set_faith = root.faith }
+		scope:noble_county = {
+			add_county_modifier = {
+				modifier = converted_nobility_modifier
+				years = 15
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_reconquest.0007.c
+		scope:christian_noble = { death = { death_reason = death_execution } }
+		scope:noble_county = {
+			add_county_modifier = {
+				modifier = decapitated_nobility_modifier
+				years = 10
+			}
+			change_county_opinion = {
+				value = -20
+				years = 8
+			}
+		}
+		add_dread = major_dread_gain
+		add_piety = minor_piety_gain
+	}
+}
+
+# The bell tower and the minaret
+rse_reconquest.0008 = {
+	type = character_event
+	title = rse_reconquest.0008.t
+	desc = rse_reconquest.0008.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = cathedral_county
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0008.a
+		scope:cathedral_county = {
+			add_county_modifier = {
+				modifier = great_mosque_modifier
+				years = 30
+			}
+			change_development_level = 1
+		}
+		add_gold = -100
+		add_piety = major_piety_gain
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_reconquest.0008.b
+		scope:cathedral_county = {
+			add_county_modifier = {
+				modifier = shared_house_of_worship_modifier
+				years = 20
+			}
+		}
+		add_piety = minor_piety_loss
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_reconquest.0008.c
+		scope:cathedral_county = {
+			add_county_modifier = {
+				modifier = cathedral_demolished_modifier
+				years = 15
+			}
+			change_development_level = -2
+			change_county_opinion = {
+				value = -30
+				years = 10
+			}
+		}
+		add_piety = medium_piety_gain
+		add_dread = medium_dread_gain
+	}
+}
+
+# A Christian saint's relics in the conquered city
+rse_reconquest.0009 = {
+	type = character_event
+	title = rse_reconquest.0009.t
+	desc = rse_reconquest.0009.desc
+	theme = faith
+
+	left_portrait = root
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = relic_county
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0009.a
+		add_gold = 200
+		scope:relic_county = {
+			change_county_opinion = {
+				value = -25
+				years = 10
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_reconquest.0009.b
+		scope:relic_county = {
+			add_county_modifier = {
+				modifier = protected_christian_shrine_modifier
+				years = 25
+			}
+		}
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_reconquest.0009.c
+		scope:relic_county = {
+			add_county_modifier = {
+				modifier = relics_destroyed_modifier
+				years = 10
+			}
+			change_county_opinion = {
+				value = -40
+				years = 12
+			}
+		}
+		add_piety = major_piety_gain
+		stress_impact = { compassionate = major_stress_impact_gain }
+	}
+}
+
+# A captured Christian noblewoman
+rse_reconquest.0010 = {
+	type = character_event
+	title = rse_reconquest.0010.t
+	desc = rse_reconquest.0010.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:noblewoman
+		animation = shame
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		is_adult = yes
+		any_prisoner = {
+			NOT = { faith = root.faith }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_prisoner = {
+			limit = { NOT = { faith = root.faith } }
+			save_scope_as = noblewoman
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0010.a
+		scope:noblewoman = {
+			release_from_prison = yes
+		}
+		add_gold = 100
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_reconquest.0010.b
+		scope:noblewoman = {
+			release_from_prison = yes
+			set_faith = root.faith
+		}
+		add_piety = medium_piety_gain
+		add_character_modifier = {
+			modifier = converted_captive_modifier
+			years = 8
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0010.c
+		scope:noblewoman = {
+			add_opinion = {
+				modifier = enslaved_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_gold = 50
+		add_piety = medium_piety_loss
+	}
+}
+
+# Petition for millet — Christian self-rule under Muslim sovereignty
+rse_reconquest.0011 = {
+	type = character_event
+	title = rse_reconquest.0011.t
+	desc = rse_reconquest.0011.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:millet_leader
+		animation = beg
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = millet_county
+		}
+		create_character = {
+			template_character = root
+			location = scope:millet_county.title_province
+			faith = scope:millet_county.faith
+			culture = scope:millet_county.culture
+			save_scope_as = millet_leader
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0011.a
+		scope:millet_county = {
+			add_county_modifier = {
+				modifier = millet_system_modifier
+				years = 30
+			}
+		}
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_reconquest.0011.b
+		scope:millet_county = {
+			add_county_modifier = {
+				modifier = direct_rule_modifier
+				years = 15
+			}
+		}
+		add_piety = minor_piety_gain
+		add_dread = minor_dread_gain
+	}
+
+	option = {
+		name = rse_reconquest.0011.c
+		add_gold = 75
+		scope:millet_leader = {
+			add_opinion = {
+				modifier = bribed_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+}
+
+# Devshirme — a Christian boy raised at the Muslim court
+rse_reconquest.0012 = {
+	type = character_event
+	title = rse_reconquest.0012.t
+	desc = rse_reconquest.0012.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:christian_boy
+		animation = fear
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = devshirme_county
+		}
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = scope:devshirme_county.faith
+			culture = scope:devshirme_county.culture
+			gender_female_chance = 0
+			age = 8
+			save_scope_as = christian_boy
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0012.a
+		scope:christian_boy = {
+			set_employer = root
+			set_faith = root.faith
+			set_culture = root.culture
+			add_trait = devoted
+			add_opinion = {
+				modifier = devshirme_loyalty_opinion
+				target = root
+				years = 80
+			}
+		}
+		scope:devshirme_county = {
+			change_county_opinion = {
+				value = -15
+				years = 10
+			}
+		}
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_reconquest.0012.b
+		scope:christian_boy = {
+			set_employer = root
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = minor_piety_loss
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_reconquest.0012.c
+		scope:christian_boy = { banish = yes }
+		add_piety = minor_piety_gain
+	}
+}
+
+# A Sufi missionary proposes peaceful conversion
+rse_reconquest.0013 = {
+	type = character_event
+	title = rse_reconquest.0013.t
+	desc = rse_reconquest.0013.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:sufi
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = sufi_county
+		}
+		create_character = {
+			template_character = root
+			location = scope:sufi_county.title_province
+			faith = root.faith
+			culture = root.culture
+			gender_female_chance = 0
+			save_scope_as = sufi
+			random_traits_list = {
+				count = 1
+				50 = { add_trait = humble }
+				50 = { add_trait = patient }
+				50 = { add_trait = compassionate }
+			}
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0013.a
+		add_gold = -50
+		scope:sufi_county = {
+			add_county_modifier = {
+				modifier = sufi_lodge_modifier
+				years = 25
+			}
+			random = {
+				chance = 40
+				set_county_faith = root.faith
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_reconquest.0013.b
+		scope:sufi = { banish = yes }
+		scope:sufi_county = {
+			add_county_modifier = {
+				modifier = forced_conversion_modifier
+				years = 10
+			}
+		}
+		add_piety = minor_piety_gain
+		add_dread = medium_dread_gain
+	}
+
+	option = {
+		name = rse_reconquest.0013.c
+		add_character_modifier = {
+			modifier = patient_ruler_modifier
+			years = 3
+		}
+	}
+}
+
+# A Christian fleet raids the coast — former lords retaliate
+rse_reconquest.0014 = {
+	type = character_event
+	title = rse_reconquest.0014.t
+	desc = rse_reconquest.0014.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = coastal_county
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0014.a
+		spawn_army = {
+			levies = 1000
+			men_at_arms = { type = light_footmen stacks = 2 }
+			location = scope:coastal_county.title_province
+			name = rse_coastal_garrison
+		}
+		add_gold = -75
+		scope:coastal_county = {
+			add_county_modifier = {
+				modifier = coastal_guard_modifier
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0014.b
+		scope:coastal_county = {
+			add_county_modifier = {
+				modifier = hostages_taken_modifier
+				years = 8
+			}
+			change_county_opinion = {
+				value = -25
+				years = 8
+			}
+		}
+		add_dread = major_dread_gain
+	}
+
+	option = {
+		name = rse_reconquest.0014.c
+		scope:coastal_county = {
+			change_development_level = -1
+		}
+		add_piety = minor_piety_loss
+		stress_impact = { just = medium_stress_impact_gain }
+	}
+}

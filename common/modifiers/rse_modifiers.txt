@@ -495,3 +495,97 @@ thralls_at_work_modifier = {
 	tax_mult = 0.25
 	development_growth_factor = 0.1
 }
+
+# --- Reconquest extended modifiers ---
+
+collaborator_lords_modifier = {
+	icon = county_modifier_economy_positive
+	monthly_county_control_change_factor = 0.15
+	tax_mult = 0.1
+	county_opinion_add = 10
+}
+
+converted_nobility_modifier = {
+	icon = faith_positive
+	monthly_county_control_change_factor = 0.1
+	county_opinion_add = -10
+}
+
+decapitated_nobility_modifier = {
+	icon = county_modifier_economy_negative
+	monthly_county_control_change_factor = -0.2
+	tax_mult = -0.15
+}
+
+great_mosque_modifier = {
+	icon = faith_positive
+	development_growth_factor = 0.2
+	tax_mult = 0.15
+	monthly_county_control_change_factor = 0.1
+}
+
+shared_house_of_worship_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 25
+	development_growth_factor = 0.15
+}
+
+cathedral_demolished_modifier = {
+	icon = faith_negative
+	county_opinion_add = -30
+	development_growth_factor = -0.2
+	monthly_county_control_change_factor = -0.15
+}
+
+protected_christian_shrine_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 20
+	development_growth_factor = 0.1
+	tax_mult = 0.05
+}
+
+relics_destroyed_modifier = {
+	icon = faith_negative
+	county_opinion_add = -35
+	monthly_county_control_change_factor = -0.2
+}
+
+converted_captive_modifier = {
+	icon = faith_positive
+	monthly_piety = 0.5
+	attraction_opinion = 5
+}
+
+millet_system_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 30
+	development_growth_factor = 0.2
+	tax_mult = 0.05
+	monthly_county_control_change_factor = -0.05
+}
+
+direct_rule_modifier = {
+	icon = county_modifier_economy_positive
+	monthly_county_control_change_factor = 0.15
+	county_opinion_add = -15
+	tax_mult = 0.1
+}
+
+sufi_lodge_modifier = {
+	icon = faith_positive
+	monthly_county_control_change_factor = 0.1
+	development_growth_factor = 0.1
+	county_opinion_add = 10
+}
+
+coastal_guard_modifier = {
+	icon = county_modifier_economy_positive
+	garrison_size = 0.25
+	hostile_county_attrition = 0.2
+}
+
+hostages_taken_modifier = {
+	icon = stress_negative
+	county_opinion_add = -20
+	tax_mult = 0.1
+}

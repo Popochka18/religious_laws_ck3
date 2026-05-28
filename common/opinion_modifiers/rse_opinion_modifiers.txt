@@ -53,3 +53,7 @@ enslaved_opinion = {
 mamluk_loyalty_opinion = {
 	opinion = 60
 }
+
+devshirme_loyalty_opinion = {
+	opinion = 75
+}

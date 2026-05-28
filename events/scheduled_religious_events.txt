@@ -344,6 +344,89 @@ rse_sched.0001 = {
 				}
 				trigger_event = { id = rse_slave.0008 days = { 5 30 } }
 			}
+
+			# Reconquest extended chain (Muslim over Christian)
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0007 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0008 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0009 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					is_adult = yes
+					any_prisoner = {
+						NOT = { faith = root.faith }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0010 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0011 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0012 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0013 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0014 days = { 5 30 } }
+			}
 		}
 	}
 }
