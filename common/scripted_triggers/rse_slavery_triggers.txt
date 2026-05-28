@@ -1,0 +1,65 @@
+# Broad permission for concubinage — not just Islamic
+rse_concubines_permitted_trigger = {
+	OR = {
+		faith = { religion_tag = islam_religion }
+		faith = { has_doctrine_parameter = unrestricted_concubines }
+		faith = { has_doctrine = doctrine_concubines_allowed }
+		culture = { has_cultural_tradition = tradition_concubines }
+		# pagan and nomadic faiths commonly accepted concubinage
+		faith = { religion_tag = germanic_religion }
+		faith = { religion_tag = tengri_religion }
+		faith = { religion_tag = west_african_religion }
+		faith = { religion_tag = african_religion }
+		faith = { religion_tag = magyar_religion }
+		# pre-Christianization era window
+		AND = {
+			has_global_variable = rse_early_era
+			NOT = { faith = { religion_tag = christianity_religion } }
+		}
+	}
+}
+
+# Broad permission for slavery — any of: Islamic, pagan, nomadic, raider-culture
+rse_thralldom_permitted_trigger = {
+	OR = {
+		faith = { religion_tag = islam_religion }
+		faith = { religion_tag = germanic_religion }
+		faith = { religion_tag = tengri_religion }
+		faith = { religion_tag = west_african_religion }
+		faith = { religion_tag = african_religion }
+		faith = { religion_tag = magyar_religion }
+		faith = { religion_tag = baltic_religion }
+		faith = { religion_tag = finno_ugric_religion }
+		faith = { religion_tag = slavic_religion }
+		faith = { religion_tag = sami_religion }
+		faith = { religion_tag = north_eurasian_religion }
+		faith = { religion_tag = zun_religion }
+		# Cultural pillars/traditions that fit slavery
+		culture = { has_cultural_tradition = tradition_chosen_warriors }
+		culture = { has_cultural_tradition = tradition_warrior_culture }
+		culture = { has_cultural_tradition = tradition_horse_lords }
+		culture = { has_cultural_tradition = tradition_seafaring }
+		culture = { has_cultural_tradition = tradition_steppe_tolerance }
+		# Existing slavers
+		has_trait = rse_slaver_apprentice
+		has_trait = rse_slave_broker
+		has_trait = rse_taskmaster
+		has_trait = rse_grand_slaver
+		has_trait = rse_mamluk_lord
+		has_trait = rse_harem_keeper
+	}
+}
+
+# Permission for a Mamluk-like military-slave institution
+rse_warrior_slaves_permitted_trigger = {
+	OR = {
+		faith = { religion_tag = islam_religion }
+		# Varangian / druzhina equivalents
+		faith = { religion_tag = germanic_religion }
+		faith = { religion_tag = tengri_religion }
+		culture = { has_cultural_tradition = tradition_chosen_warriors }
+		culture = { has_cultural_tradition = tradition_horse_lords }
+		culture = { has_cultural_tradition = tradition_warrior_culture }
+		culture = { has_cultural_tradition = tradition_seafaring }
+	}
+}

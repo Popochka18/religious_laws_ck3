@@ -168,7 +168,7 @@ rse_slave.0003 = {
 
 	trigger = {
 		is_landed = yes
-		faith = { religion_tag = islam_religion }
+		rse_warrior_slaves_permitted_trigger = yes
 		highest_held_title_tier >= tier_duchy
 		gold >= 200
 	}
@@ -484,12 +484,7 @@ rse_slave.0008 = {
 	trigger = {
 		is_landed = yes
 		is_adult = yes
-		faith = {
-			OR = {
-				religion_tag = islam_religion
-				has_doctrine_parameter = unrestricted_concubines
-			}
-		}
+		rse_concubines_permitted_trigger = yes
 	}
 
 	immediate = {
@@ -603,12 +598,7 @@ rse_slave.0010 = {
 	option = {
 		name = rse_slave.0010.a
 		trigger = {
-			faith = {
-				OR = {
-					religion_tag = islam_religion
-					has_doctrine_parameter = unrestricted_concubines
-				}
-			}
+			rse_concubines_permitted_trigger = yes
 		}
 		scope:lowborn_beauty = {
 			add_trait = rse_concubine_slave

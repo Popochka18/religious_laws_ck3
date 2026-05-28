@@ -118,7 +118,7 @@ rse_slavery_path_mamluk_decision = {
 		is_landed = yes
 		has_trait = rse_slave_broker
 		NOT = { has_trait = rse_mamluk_lord }
-		faith = { religion_tag = islam_religion }
+		rse_warrior_slaves_permitted_trigger = yes
 	}
 
 	is_valid = {
@@ -150,12 +150,7 @@ rse_slavery_path_harem_decision = {
 		is_adult = yes
 		has_trait = rse_slave_broker
 		NOT = { has_trait = rse_harem_keeper }
-		faith = {
-			OR = {
-				religion_tag = islam_religion
-				has_doctrine_parameter = unrestricted_concubines
-			}
-		}
+		rse_concubines_permitted_trigger = yes
 	}
 
 	is_valid = {

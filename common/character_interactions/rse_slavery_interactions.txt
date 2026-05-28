@@ -289,12 +289,7 @@ rse_designate_concubine_interaction = {
 		scope:actor = {
 			is_landed = yes
 			is_adult = yes
-			faith = {
-				OR = {
-					religion_tag = islam_religion
-					has_doctrine_parameter = unrestricted_concubines
-				}
-			}
+			rse_concubines_permitted_trigger = yes
 		}
 		scope:recipient = {
 			has_trait = rse_enslaved

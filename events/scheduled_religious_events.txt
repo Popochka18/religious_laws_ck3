@@ -297,7 +297,7 @@ rse_sched.0001 = {
 			}
 			8 = {
 				trigger = {
-					faith = { religion_tag = islam_religion }
+					rse_warrior_slaves_permitted_trigger = yes
 					highest_held_title_tier >= tier_duchy
 					gold >= 200
 				}
@@ -340,7 +340,7 @@ rse_sched.0001 = {
 			8 = {
 				trigger = {
 					is_adult = yes
-					faith = { religion_tag = islam_religion }
+					rse_concubines_permitted_trigger = yes
 				}
 				trigger_event = { id = rse_slave.0008 days = { 5 30 } }
 			}

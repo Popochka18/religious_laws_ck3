@@ -1423,7 +1423,7 @@ rse_bondage.0018 = {
 		is_male = yes
 		is_adult = yes
 		exists = employer
-		employer = { faith = { religion_tag = islam_religion } }
+		employer = { rse_warrior_slaves_permitted_trigger = yes }
 	}
 
 	immediate = {
