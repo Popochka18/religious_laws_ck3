@@ -1,0 +1,43 @@
+l_russian:
+ trait_rse_slaver_apprentice:0 "Ученик работорговца"
+ trait_rse_slaver_apprentice_desc:0 "Усвоил основы работорговли — рынки, посредников, маршруты."
+ trait_rse_slave_broker:0 "Работорговец"
+ trait_rse_slave_broker_desc:0 "Умело перевозит живой товар по державе. Где звенят цепи — там течёт монета."
+ trait_rse_taskmaster:0 "Надсмотрщик"
+ trait_rse_taskmaster_desc:0 "Закалён годами слома воли. Рабы повинуются, иные боятся."
+ trait_rse_manumitter:0 "Освободитель"
+ trait_rse_manumitter_desc:0 "Освободил многих из неволи. Верующие восхваляют сию милость."
+ trait_rse_mamluk_lord:0 "Господин мамлюков"
+ trait_rse_mamluk_lord_desc:0 "Глава корпуса воинов-рабов — солдат железной верности."
+ trait_rse_harem_keeper:0 "Хранитель гарема"
+ trait_rse_harem_keeper_desc:0 "Содержит великий дом наложниц. Удовольствие и влияние сплелись."
+ trait_rse_chainbreaker:0 "Разбиватель цепей"
+ trait_rse_chainbreaker_desc:0 "Сокрушил цепи неволи во всей державе. Для многих — святой."
+ trait_rse_grand_slaver:0 "Великий работорговец"
+ trait_rse_grand_slaver_desc:0 "Богатство течёт рекой через ваши руки — куплено трудом бесчисленных душ."
+
+ rse_slavery_path_begin_decision:0 "Войти в работорговлю"
+ rse_slavery_path_begin_decision_desc:0 "Установить связи с работорговцами и постичь основы ремесла. Первый шаг долгого пути."
+ rse_slavery_path_begin_decision_tooltip:0 "Получить черту «Ученик работорговца»."
+
+ rse_slavery_path_broker_decision:0 "Стать работорговцем"
+ rse_slavery_path_broker_decision_desc:0 "Превзойти ученичество — учредить собственную работорговую сеть по всей державе."
+ rse_slavery_path_broker_decision_tooltip:0 "Заменить «Ученика работорговца» на «Работорговца»."
+
+ rse_slavery_path_taskmaster_decision:0 "Стать надсмотрщиком"
+ rse_slavery_path_taskmaster_decision_desc:0 "Снискать славу того, кто ломает рабов — и врагов, прослышавших о вас."
+
+ rse_slavery_path_mamluk_decision:0 "Учредить корпус мамлюков"
+ rse_slavery_path_mamluk_decision_desc:0 "Создать постоянный корпус воинов-рабов, взращённых с детства воинами веры."
+
+ rse_slavery_path_harem_decision:0 "Учредить великий гарем"
+ rse_slavery_path_harem_decision_desc:0 "Содержать великий дом наложниц на манер величайших султанов."
+
+ rse_slavery_path_grand_decision:0 "Стать великим работорговцем"
+ rse_slavery_path_grand_decision_desc:0 "Увенчать карьеру в работорговле — учредить регулируемые рынки в каждом графстве державы."
+
+ rse_slavery_path_manumitter_decision:0 "Встать на путь милосердия"
+ rse_slavery_path_manumitter_decision_desc:0 "Оставить ремесло. Освободить тех, кто у вас в неволе, и вести милостью, не цепями."
+
+ rse_slavery_path_chainbreaker_decision:0 "Стать разбивателем цепей"
+ rse_slavery_path_chainbreaker_decision_desc:0 "Покончить с рабством во всём домене. Расселить освобождённых как честных арендаторов."

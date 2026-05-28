@@ -1,0 +1,43 @@
+l_english:
+ trait_rse_slaver_apprentice:0 "Slaver's Apprentice"
+ trait_rse_slaver_apprentice_desc:0 "Has learned the basics of the slave trade — the markets, the brokers, the routes."
+ trait_rse_slave_broker:0 "Slave Broker"
+ trait_rse_slave_broker_desc:0 "Skilled in moving human cargo across the realm. Coin flows where chains clatter."
+ trait_rse_taskmaster:0 "Taskmaster"
+ trait_rse_taskmaster_desc:0 "Hardened by years of breaking will. Slaves obey, others fear."
+ trait_rse_manumitter:0 "Manumitter"
+ trait_rse_manumitter_desc:0 "Has freed many from bondage. The faithful praise this mercy."
+ trait_rse_mamluk_lord:0 "Mamluk Lord"
+ trait_rse_mamluk_lord_desc:0 "Master of a corps of military slaves — soldiers of iron loyalty."
+ trait_rse_harem_keeper:0 "Harem Keeper"
+ trait_rse_harem_keeper_desc:0 "Maintains a great household of concubines. Pleasure and influence intertwine."
+ trait_rse_chainbreaker:0 "Chainbreaker"
+ trait_rse_chainbreaker_desc:0 "Has shattered the chains of bondage across the realm. A saint to many."
+ trait_rse_grand_slaver:0 "Grand Slaver"
+ trait_rse_grand_slaver_desc:0 "Wealth flows like a river through your hands — bought with the labour of countless souls."
+
+ rse_slavery_path_begin_decision:0 "Enter the Slave Trade"
+ rse_slavery_path_begin_decision_desc:0 "Establish connections with slave brokers and learn the rudiments of the trade. This is the first step on a long road."
+ rse_slavery_path_begin_decision_tooltip:0 "Gain the Slaver's Apprentice trait."
+
+ rse_slavery_path_broker_decision:0 "Become a Slave Broker"
+ rse_slavery_path_broker_decision_desc:0 "Move beyond the apprenticeship — establish your own slave-trading network across the realm."
+ rse_slavery_path_broker_decision_tooltip:0 "Replace Slaver's Apprentice with Slave Broker."
+
+ rse_slavery_path_taskmaster_decision:0 "Become the Taskmaster"
+ rse_slavery_path_taskmaster_decision_desc:0 "Establish a reputation for breaking slaves — and breaking enemies who hear of you."
+
+ rse_slavery_path_mamluk_decision:0 "Found a Mamluk Corps"
+ rse_slavery_path_mamluk_decision_desc:0 "Establish a permanent corps of military slaves, raised from boyhood as warriors of the faith."
+
+ rse_slavery_path_harem_decision:0 "Establish a Grand Harem"
+ rse_slavery_path_harem_decision_desc:0 "Maintain a great household of concubines, in the style of the greatest sultans."
+
+ rse_slavery_path_grand_decision:0 "Become the Grand Slaver"
+ rse_slavery_path_grand_decision_desc:0 "Crown your career in the slave trade — establish regulated markets across every county of your realm."
+
+ rse_slavery_path_manumitter_decision:0 "Take the Path of Mercy"
+ rse_slavery_path_manumitter_decision_desc:0 "Abandon the trade. Free those you held, and lead by mercy instead of chains."
+
+ rse_slavery_path_chainbreaker_decision:0 "Become the Chainbreaker"
+ rse_slavery_path_chainbreaker_decision_desc:0 "End slavery throughout your domain. Settle the freed as honest tenants of the realm."

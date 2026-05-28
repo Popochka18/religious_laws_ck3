@@ -589,3 +589,51 @@ hostages_taken_modifier = {
 	county_opinion_add = -20
 	tax_mult = 0.1
 }
+
+# --- Reconquest 2 modifiers ---
+
+catacombs_sealed_modifier = {
+	icon = faith_positive
+	monthly_county_control_change_factor = 0.1
+	county_opinion_add = -15
+}
+
+quiet_understanding_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 25
+	development_growth_factor = 0.15
+}
+
+legitimized_through_marriage_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+	same_faith_opinion = 5
+	different_faith_opinion = 10
+}
+
+grand_rebuilding_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.3
+	tax_mult = 0.15
+	county_opinion_add = 20
+}
+
+basic_rebuilding_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.15
+	county_opinion_add = 10
+}
+
+neglected_ruin_modifier = {
+	icon = county_modifier_development_negative
+	development_growth_factor = -0.15
+	tax_mult = -0.1
+	county_opinion_add = -10
+}
+
+patron_of_debate_modifier = {
+	icon = prestige_positive
+	learning = 2
+	monthly_prestige = 0.3
+	different_faith_opinion = 10
+}

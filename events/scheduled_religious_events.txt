@@ -427,6 +427,69 @@ rse_sched.0001 = {
 				}
 				trigger_event = { id = rse_reconquest.0014 days = { 5 30 } }
 			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0015 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 2
+					}
+				}
+				trigger_event = { id = rse_reconquest.0016 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					is_adult = yes
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0017 days = { 5 30 } }
+			}
+			6 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_courtier = {
+						has_trait = devoted
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0018 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+					gold >= 100
+				}
+				trigger_event = { id = rse_reconquest.0019 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+					exists = cp:councillor_court_chaplain
+				}
+				trigger_event = { id = rse_reconquest.0020 days = { 5 30 } }
+			}
 		}
 	}
 }

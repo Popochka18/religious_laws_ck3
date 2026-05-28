@@ -1040,3 +1040,426 @@ rse_reconquest.0014 = {
 		stress_impact = { just = medium_stress_impact_gain }
 	}
 }
+
+# A hidden mass discovered in a vault
+rse_reconquest.0015 = {
+	type = character_event
+	title = rse_reconquest.0015.t
+	desc = rse_reconquest.0015.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = vault_county
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0015.a
+		scope:vault_county = {
+			add_county_modifier = {
+				modifier = catacombs_sealed_modifier
+				years = 15
+			}
+			change_county_opinion = {
+				value = -25
+				years = 10
+			}
+		}
+		add_piety = medium_piety_gain
+		add_dread = medium_dread_gain
+	}
+
+	option = {
+		name = rse_reconquest.0015.b
+		scope:vault_county = {
+			add_county_modifier = {
+				modifier = quiet_understanding_modifier
+				years = 15
+			}
+		}
+		add_piety = minor_piety_loss
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_reconquest.0015.c
+		scope:vault_county = {
+			add_county_modifier = {
+				modifier = jizya_imposed_modifier
+				years = 10
+			}
+		}
+		add_gold = 100
+	}
+}
+
+# An ascetic warns of growing softness
+rse_reconquest.0016 = {
+	type = character_event
+	title = rse_reconquest.0016.t
+	desc = rse_reconquest.0016.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:ascetic
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 2
+		}
+	}
+
+	immediate = {
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = root.faith
+			culture = root.culture
+			gender_female_chance = 0
+			save_scope_as = ascetic
+			random_traits_list = {
+				count = 2
+				50 = { add_trait = zealous }
+				50 = { add_trait = temperate }
+				50 = { add_trait = wrathful }
+			}
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0016.a
+		every_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			add_county_modifier = {
+				modifier = christians_suppressed_modifier
+				years = 8
+			}
+		}
+		add_piety = medium_piety_gain
+		scope:ascetic = { set_employer = root }
+	}
+
+	option = {
+		name = rse_reconquest.0016.b
+		scope:ascetic = { banish = yes }
+		add_piety = medium_piety_loss
+		add_character_modifier = {
+			modifier = tolerant_court_modifier
+			years = 8
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0016.c
+		scope:ascetic = { death = { death_reason = death_execution } }
+		add_dread = major_dread_gain
+		add_piety = -150
+		stress_impact = { zealous = major_stress_impact_gain }
+	}
+}
+
+# A marriage offer to legitimize rule
+rse_reconquest.0017 = {
+	type = character_event
+	title = rse_reconquest.0017.t
+	desc = rse_reconquest.0017.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:christian_bride
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		is_adult = yes
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = bride_county
+		}
+		create_character = {
+			template_character = root
+			location = scope:bride_county.title_province
+			faith = scope:bride_county.faith
+			culture = scope:bride_county.culture
+			gender_female_chance = root.gender_female_inverse_chance
+			save_scope_as = christian_bride
+			employer = root
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0017.a
+		scope:christian_bride = {
+			set_employer = root
+		}
+		every_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			change_county_opinion = {
+				value = 25
+				years = 15
+			}
+		}
+		add_character_modifier = {
+			modifier = legitimized_through_marriage_modifier
+			years = 20
+		}
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_reconquest.0017.b
+		scope:christian_bride = {
+			set_faith = root.faith
+			set_employer = root
+		}
+		add_piety = medium_piety_gain
+		scope:bride_county = {
+			change_county_opinion = {
+				value = -10
+				years = 5
+			}
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0017.c
+		scope:christian_bride = { banish = yes }
+		add_piety = minor_piety_gain
+		add_prestige = minor_prestige_loss
+	}
+}
+
+# A convert tries to flee back to Christendom
+rse_reconquest.0018 = {
+	type = character_event
+	title = rse_reconquest.0018.t
+	desc = rse_reconquest.0018.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	right_portrait = {
+		character = scope:apostate
+		animation = fear
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_courtier = {
+			has_trait = devoted
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = devoted
+			}
+			save_scope_as = apostate
+			set_faith = faith:catholic
+			remove_trait = devoted
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0018.a
+		scope:apostate = { death = { death_reason = death_execution } }
+		add_piety = major_piety_gain
+		add_dread = major_dread_gain
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_reconquest.0018.b
+		scope:apostate = { imprison = { target = root } }
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_reconquest.0018.c
+		scope:apostate = { banish = yes }
+		add_piety = minor_piety_loss
+		add_prestige = minor_prestige_gain
+	}
+}
+
+# Rebuilding a destroyed city
+rse_reconquest.0019 = {
+	type = character_event
+	title = rse_reconquest.0019.t
+	desc = rse_reconquest.0019.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+		gold >= 100
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			save_scope_as = ruined_county
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0019.a
+		trigger = { gold >= 200 }
+		add_gold = -200
+		scope:ruined_county = {
+			change_development_level = 3
+			add_county_modifier = {
+				modifier = grand_rebuilding_modifier
+				years = 25
+			}
+		}
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_reconquest.0019.b
+		add_gold = -100
+		scope:ruined_county = {
+			change_development_level = 1
+			add_county_modifier = {
+				modifier = basic_rebuilding_modifier
+				years = 15
+			}
+		}
+	}
+
+	option = {
+		name = rse_reconquest.0019.c
+		scope:ruined_county = {
+			add_county_modifier = {
+				modifier = neglected_ruin_modifier
+				years = 10
+			}
+		}
+		add_piety = minor_piety_loss
+	}
+}
+
+# A theological debate at court
+rse_reconquest.0020 = {
+	type = character_event
+	title = rse_reconquest.0020.t
+	desc = rse_reconquest.0020.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:debater_priest
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = islam_religion }
+		any_held_county = {
+			faith = { religion_tag = christianity_religion }
+			count >= 1
+		}
+		exists = cp:councillor_court_chaplain
+	}
+
+	immediate = {
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = faith:orthodox
+			culture = culture:greek
+			gender_female_chance = 0
+			save_scope_as = debater_priest
+		}
+		cp:councillor_court_chaplain = { save_scope_as = court_imam }
+	}
+
+	option = {
+		name = rse_reconquest.0020.a
+		scope:debater_priest = { death = { death_reason = death_execution } }
+		add_piety = medium_piety_gain
+		every_held_county = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			change_county_opinion = {
+				value = -15
+				years = 8
+			}
+		}
+		add_dread = medium_dread_gain
+	}
+
+	option = {
+		name = rse_reconquest.0020.b
+		scope:debater_priest = {
+			set_employer = root
+		}
+		add_character_modifier = {
+			modifier = patron_of_debate_modifier
+			years = 10
+		}
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_reconquest.0020.c
+		scope:debater_priest = {
+			set_faith = root.faith
+		}
+		add_piety = major_piety_gain
+		scope:court_imam = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 20
+			}
+		}
+	}
+}
