@@ -114,6 +114,80 @@ rse_sched.0001 = {
 				}
 				trigger_event = { id = rse_reconquest.0006 days = { 5 30 } }
 			}
+
+			# Crusader chain (Christian over Muslim)
+			15 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = {
+						faith = { religion_tag = islam_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_crusade.0001 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = {
+						faith = { religion_tag = islam_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_crusade.0002 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = {
+						faith = { religion_tag = islam_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_crusade.0003 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = {
+						faith = { religion_tag = islam_religion }
+						county_opinion <= 0
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_crusade.0004 days = { 5 30 } }
+			}
+
+			# Heresy chain
+			15 = { trigger_event = { id = rse_heresy.0001 days = { 5 30 } } }
+			10 = {
+				trigger = { piety_level >= 2 }
+				trigger_event = { id = rse_heresy.0002 days = { 5 30 } }
+			}
+			10 = { trigger_event = { id = rse_heresy.0003 days = { 5 30 } } }
+			10 = {
+				trigger = {
+					is_independent_ruler = yes
+					any_vassal = { count >= 1 }
+				}
+				trigger_event = { id = rse_heresy.0004 days = { 5 30 } }
+			}
+
+			# Relics / pilgrimage chain
+			10 = {
+				trigger = { gold >= 200 }
+				trigger_event = { id = rse_relic.0001 days = { 5 30 } }
+			}
+			10 = { trigger_event = { id = rse_relic.0002 days = { 5 30 } } }
+			10 = { trigger_event = { id = rse_relic.0003 days = { 5 30 } } }
+			10 = {
+				trigger = {
+					faith = { has_religious_head = yes }
+					exists = faith.religious_head
+					NOT = { faith.religious_head = root }
+				}
+				trigger_event = { id = rse_relic.0004 days = { 5 30 } }
+			}
 		}
 	}
 }

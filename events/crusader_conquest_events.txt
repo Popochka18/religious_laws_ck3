@@ -1,0 +1,303 @@
+namespace = rse_crusade
+
+# Newly conquered Muslim county under Christian rule
+rse_crusade.0001 = {
+	type = character_event
+	title = rse_crusade.0001.t
+	desc = rse_crusade.0001.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+	right_portrait = {
+		character = scope:imam
+		animation = beg
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		any_held_county = {
+			faith = { religion_tag = islam_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = islam_religion } }
+			save_scope_as = conquered_county
+		}
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = scope:conquered_county.faith
+			culture = scope:conquered_county.culture
+			save_scope_as = imam
+		}
+	}
+
+	option = {
+		name = rse_crusade.0001.a
+		scope:conquered_county = {
+			add_county_modifier = {
+				modifier = mosques_to_churches_modifier
+				years = 20
+			}
+			set_county_faith = root.faith
+		}
+		add_piety = major_piety_gain
+		add_dread = medium_dread_gain
+	}
+
+	option = {
+		name = rse_crusade.0001.b
+		scope:conquered_county = {
+			add_county_modifier = {
+				modifier = saracen_tribute_modifier
+				years = 15
+			}
+		}
+		add_gold = 100
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_crusade.0001.c
+		scope:conquered_county = {
+			add_county_modifier = {
+				modifier = convivencia_modifier
+				years = 15
+			}
+		}
+		add_prestige = medium_prestige_gain
+		add_piety = medium_piety_loss
+	}
+}
+
+# Knights of a holy order demand land grants
+rse_crusade.0002 = {
+	type = character_event
+	title = rse_crusade.0002.t
+	desc = rse_crusade.0002.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:templar
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		any_held_county = {
+			faith = { religion_tag = islam_religion }
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = islam_religion } }
+			save_scope_as = frontier_county
+		}
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = root.faith
+			culture = root.culture
+			gender_female_chance = 0
+			save_scope_as = templar
+		}
+	}
+
+	option = {
+		name = rse_crusade.0002.a
+		scope:frontier_county = {
+			add_county_modifier = {
+				modifier = order_garrison_modifier
+				years = 25
+			}
+		}
+		add_piety = medium_piety_gain
+		add_character_modifier = {
+			modifier = blessed_by_orders_modifier
+			years = 10
+		}
+	}
+
+	option = {
+		name = rse_crusade.0002.b
+		add_gold = -100
+		scope:templar = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_crusade.0002.c
+		scope:templar = {
+			add_opinion = {
+				modifier = spurned_by_liege_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_piety = medium_piety_loss
+		add_prestige = minor_prestige_gain
+	}
+}
+
+# Saracen counter-raid on the frontier
+rse_crusade.0003 = {
+	type = character_event
+	title = rse_crusade.0003.t
+	desc = rse_crusade.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		any_held_county = {
+			faith = { religion_tag = islam_religion }
+			count >= 1
+		}
+		any_neighboring_top_liege_realm_owner = {
+			faith = { religion_tag = islam_religion }
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = { faith = { religion_tag = islam_religion } }
+			save_scope_as = raided_county
+		}
+	}
+
+	option = {
+		name = rse_crusade.0003.a
+		spawn_army = {
+			levies = 2000
+			men_at_arms = { type = heavy_cavalry stacks = 2 }
+			location = scope:raided_county.title_province
+			name = rse_crusader_response
+		}
+		add_gold = -100
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_crusade.0003.b
+		scope:raided_county = {
+			add_county_modifier = {
+				modifier = burned_villages_modifier
+				years = 8
+			}
+			change_development_level = -2
+		}
+		add_piety = minor_piety_loss
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_crusade.0003.c
+		scope:raided_county = {
+			add_county_modifier = {
+				modifier = fortified_frontier_modifier
+				years = 8
+			}
+		}
+		add_gold = -50
+	}
+}
+
+# Muslim subjects revolt against the cross
+rse_crusade.0004 = {
+	type = character_event
+	title = rse_crusade.0004.t
+	desc = rse_crusade.0004.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		any_held_county = {
+			faith = { religion_tag = islam_religion }
+			county_opinion <= 0
+			count >= 1
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			limit = {
+				faith = { religion_tag = islam_religion }
+				county_opinion <= 0
+			}
+			save_scope_as = muslim_rebel_county
+		}
+	}
+
+	option = {
+		name = rse_crusade.0004.a
+		scope:muslim_rebel_county = {
+			set_county_faith = root.faith
+			add_county_modifier = {
+				modifier = forced_conversion_modifier
+				years = 15
+			}
+		}
+		add_piety = major_piety_gain
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = rse_crusade.0004.b
+		scope:muslim_rebel_county = {
+			add_county_modifier = {
+				modifier = expelled_population_modifier
+				years = 20
+			}
+			change_development_level = -3
+		}
+		add_piety = medium_piety_gain
+		add_dread = major_dread_gain
+	}
+
+	option = {
+		name = rse_crusade.0004.c
+		scope:muslim_rebel_county = {
+			add_county_modifier = {
+				modifier = convivencia_modifier
+				years = 10
+			}
+			change_county_opinion = {
+				value = 20
+				years = 5
+			}
+		}
+		add_piety = medium_piety_loss
+		add_prestige = medium_prestige_gain
+	}
+}

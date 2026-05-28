@@ -29,3 +29,19 @@ grateful_opinion = {
 secret_kept_opinion = {
 	opinion = 50
 }
+
+spurned_by_liege_opinion = {
+	opinion = -35
+}
+
+bought_loyalty_opinion = {
+	opinion = 20
+}
+
+generous_donation_opinion = {
+	opinion = 40
+}
+
+refused_tithe_opinion = {
+	opinion = -40
+}
