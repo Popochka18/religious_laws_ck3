@@ -7,7 +7,7 @@
 	selection_tooltip = rse_slavery_path_begin_decision_tooltip
 	confirm_text = rse_slavery_path_begin_decision_confirm
 
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -53,7 +53,7 @@ rse_slavery_path_broker_decision = {
 
 	desc = rse_slavery_path_broker_decision_desc
 	confirm_text = rse_slavery_path_broker_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -82,7 +82,7 @@ rse_slavery_path_taskmaster_decision = {
 
 	desc = rse_slavery_path_taskmaster_decision_desc
 	confirm_text = rse_slavery_path_taskmaster_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -116,7 +116,7 @@ rse_slavery_path_mamluk_decision = {
 
 	desc = rse_slavery_path_mamluk_decision_desc
 	confirm_text = rse_slavery_path_mamluk_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -143,7 +143,7 @@ rse_slavery_path_harem_decision = {
 
 	desc = rse_slavery_path_harem_decision_desc
 	confirm_text = rse_slavery_path_harem_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -174,7 +174,7 @@ rse_slavery_path_grand_decision = {
 
 	desc = rse_slavery_path_grand_decision_desc
 	confirm_text = rse_slavery_path_grand_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -215,7 +215,7 @@ rse_slavery_path_manumitter_decision = {
 
 	desc = rse_slavery_path_manumitter_decision_desc
 	confirm_text = rse_slavery_path_manumitter_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -258,7 +258,7 @@ rse_find_lowborn_beauty_decision = {
 
 	desc = rse_find_lowborn_beauty_decision_desc
 	confirm_text = rse_find_lowborn_beauty_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -292,7 +292,7 @@ rse_organize_slave_market_decision = {
 
 	desc = rse_organize_slave_market_decision_desc
 	confirm_text = rse_organize_slave_market_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
@@ -334,7 +334,7 @@ rse_slavery_path_chainbreaker_decision = {
 
 	desc = rse_slavery_path_chainbreaker_decision_desc
 	confirm_text = rse_slavery_path_chainbreaker_decision_confirm
-	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
+	picture = "gfx/interface/illustrations/event_scopes/faith.dds"
 
 	is_shown = {
 		is_landed = yes
