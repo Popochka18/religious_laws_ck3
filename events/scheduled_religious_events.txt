@@ -404,6 +404,89 @@ rse_sched.0001 = {
 				trigger_event = { id = rse_christslav.0006 days = { 5 30 } }
 			}
 
+			# Orthodox-Sunni rivalry chain
+			10 = {
+				trigger = {
+					rse_is_orthodox_trigger = yes
+					any_neighboring_top_liege_realm_owner = {
+						rse_is_sunni_trigger = yes
+					}
+				}
+				trigger_event = { id = rse_orthsunni.0001 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					OR = {
+						rse_is_orthodox_trigger = yes
+						rse_is_sunni_trigger = yes
+					}
+				}
+				trigger_event = { id = rse_orthsunni.0002 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					OR = {
+						AND = {
+							rse_is_orthodox_trigger = yes
+							any_neighboring_top_liege_realm_owner = { rse_is_sunni_trigger = yes }
+						}
+						AND = {
+							rse_is_sunni_trigger = yes
+							any_neighboring_top_liege_realm_owner = { rse_is_orthodox_trigger = yes }
+						}
+					}
+				}
+				trigger_event = { id = rse_orthsunni.0003 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					OR = {
+						rse_is_orthodox_trigger = yes
+						rse_is_sunni_trigger = yes
+					}
+				}
+				trigger_event = { id = rse_orthsunni.0004 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					OR = {
+						AND = {
+							rse_is_orthodox_trigger = yes
+							any_prisoner = { rse_is_sunni_trigger = yes }
+						}
+						AND = {
+							rse_is_sunni_trigger = yes
+							any_prisoner = { rse_is_orthodox_trigger = yes }
+						}
+					}
+				}
+				trigger_event = { id = rse_orthsunni.0005 days = { 5 30 } }
+			}
+			6 = {
+				trigger = {
+					is_adult = yes
+					OR = {
+						rse_is_orthodox_trigger = yes
+						rse_is_sunni_trigger = yes
+					}
+					any_child = {
+						is_adult = yes
+						is_unmarried_and_can_marry = yes
+					}
+				}
+				trigger_event = { id = rse_orthsunni.0006 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					rse_is_sunni_trigger = yes
+					OR = {
+						any_held_county = { rse_is_orthodox_trigger = yes }
+						any_neighboring_top_liege_realm_owner = { rse_is_orthodox_trigger = yes }
+					}
+				}
+				trigger_event = { id = rse_orthsunni.0007 days = { 5 30 } }
+			}
+
 			# Reconquest extended chain (Muslim over Christian)
 			10 = {
 				trigger = {
