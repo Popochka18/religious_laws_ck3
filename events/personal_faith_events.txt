@@ -1,4 +1,4 @@
-namespace = rse_faith
+﻿namespace = rse_faith
 
 # A crisis of faith
 rse_faith.0001 = {

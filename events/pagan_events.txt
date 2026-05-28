@@ -1,4 +1,4 @@
-namespace = rse_pagan
+﻿namespace = rse_pagan
 
 # A sacred grove discovered in the domain
 rse_pagan.0001 = {

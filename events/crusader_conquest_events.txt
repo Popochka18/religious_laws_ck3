@@ -1,4 +1,4 @@
-namespace = rse_crusade
+﻿namespace = rse_crusade
 
 # Newly conquered Muslim county under Christian rule
 rse_crusade.0001 = {
@@ -291,10 +291,6 @@ rse_crusade.0004 = {
 			add_county_modifier = {
 				modifier = convivencia_modifier
 				years = 10
-			}
-			change_county_opinion = {
-				value = 20
-				years = 5
 			}
 		}
 		add_piety = medium_piety_loss

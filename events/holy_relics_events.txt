@@ -1,4 +1,4 @@
-namespace = rse_relic
+﻿namespace = rse_relic
 
 # A merchant offers a holy relic
 rse_relic.0001 = {

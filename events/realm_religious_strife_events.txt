@@ -1,4 +1,4 @@
-namespace = rse_realm
+﻿namespace = rse_realm
 
 # A vassal of a different faith protests your rule
 rse_realm.0001 = {
@@ -202,7 +202,7 @@ rse_realm.0004 = {
 		is_landed = yes
 		faith = { has_doctrine_parameter = unrestricted_holy_wars_active }
 		any_sub_realm_county = {
-			faith = { has_allowed_great_holy_war_against_faith = root.faith }
+			faith = { NOT = { this = root.faith } }
 			count >= 1
 		}
 	}
@@ -211,7 +211,7 @@ rse_realm.0004 = {
 		name = rse_realm.0004.a
 		random_sub_realm_county = {
 			limit = {
-				faith = { has_allowed_great_holy_war_against_faith = root.faith }
+				faith = { NOT = { this = root.faith } }
 			}
 			save_scope_as = target_county
 			holder = {

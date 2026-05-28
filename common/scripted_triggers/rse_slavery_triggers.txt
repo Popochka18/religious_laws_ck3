@@ -1,4 +1,4 @@
-# Broad permission for concubinage — not just Islamic
+﻿# Broad permission for concubinage — not just Islamic
 rse_concubines_permitted_trigger = {
 	OR = {
 		faith = { religion_tag = islam_religion }

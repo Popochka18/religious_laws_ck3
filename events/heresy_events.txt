@@ -1,4 +1,4 @@
-namespace = rse_heresy
+﻿namespace = rse_heresy
 
 # Heretical preacher gathers a crowd
 rse_heresy.0001 = {
@@ -25,7 +25,7 @@ rse_heresy.0001 = {
 		create_character = {
 			template_character = root
 			location = scope:preacher_county.title_province
-			faith = root.faith.random_previous_heresy_or_main_faith
+			faith = faith:cathar
 			culture = root.culture
 			save_scope_as = heretic_preacher
 		}
@@ -210,7 +210,7 @@ rse_heresy.0004 = {
 	immediate = {
 		random_vassal = {
 			save_scope_as = heretic_vassal
-			set_faith = root.faith.random_previous_heresy_or_main_faith
+			set_faith = faith:cathar
 		}
 	}
 

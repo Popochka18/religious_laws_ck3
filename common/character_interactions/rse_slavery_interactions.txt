@@ -1,4 +1,4 @@
-rse_enslave_prisoner_interaction = {
+﻿rse_enslave_prisoner_interaction = {
 	category = interaction_category_prison
 
 	common_interaction = yes
@@ -32,9 +32,6 @@ rse_enslave_prisoner_interaction = {
 			add_trait = rse_enslaved
 			if = {
 				limit = { is_landed = yes }
-				every_held_title = {
-					destroy_title = yes
-				}
 			}
 			add_opinion = {
 				modifier = enslaved_opinion
@@ -48,7 +45,7 @@ rse_enslave_prisoner_interaction = {
 		}
 	}
 
-	auto_accept = yes
+	auto_accept = { always = yes }
 
 	ai_potential = {
 		exists = this
@@ -115,10 +112,6 @@ rse_raid_for_slaves_interaction = {
 					years = 5
 				}
 				change_development_level = -1
-				change_county_opinion = {
-					value = -30
-					years = 10
-				}
 			}
 		}
 		scope:actor = {
@@ -198,7 +191,7 @@ rse_raid_for_slaves_interaction = {
 		}
 	}
 
-	auto_accept = yes
+	auto_accept = { always = yes }
 
 	ai_potential = {
 		exists = this
@@ -256,7 +249,7 @@ rse_free_house_slave_interaction = {
 		}
 	}
 
-	auto_accept = yes
+	auto_accept = { always = yes }
 
 	ai_potential = {
 		exists = this
@@ -311,7 +304,7 @@ rse_designate_concubine_interaction = {
 		}
 	}
 
-	auto_accept = yes
+	auto_accept = { always = yes }
 
 	ai_potential = {
 		exists = this
@@ -360,7 +353,7 @@ rse_make_eunuch_interaction = {
 		}
 	}
 
-	auto_accept = yes
+	auto_accept = { always = yes }
 
 	ai_potential = {
 		exists = this

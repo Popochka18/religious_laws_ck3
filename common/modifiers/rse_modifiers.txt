@@ -1,4 +1,4 @@
-zealous_warrior_modifier = {
+﻿zealous_warrior_modifier = {
 	icon = faith_positive
 	prowess = 2
 	monthly_piety = 0.5

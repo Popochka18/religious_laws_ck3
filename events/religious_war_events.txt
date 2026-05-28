@@ -1,4 +1,4 @@
-namespace = rse_war
+﻿namespace = rse_war
 
 # Holy zeal before a religious war
 rse_war.0001 = {
@@ -21,7 +21,7 @@ rse_war.0001 = {
 		is_at_war = yes
 		any_character_war = {
 			any_war_attacker = {
-				faith = { has_allowed_great_holy_war_against_faith = root.faith }
+				faith = { NOT = { this = root.faith } }
 			}
 			OR = {
 				any_war_attacker = { faith = root.faith }
@@ -139,7 +139,7 @@ rse_war.0003 = {
 		piety_level >= 2
 		any_character_war = {
 			any_war_attacker = {
-				faith = { has_allowed_great_holy_war_against_faith = root.faith }
+				faith = { NOT = { this = root.faith } }
 			}
 		}
 	}

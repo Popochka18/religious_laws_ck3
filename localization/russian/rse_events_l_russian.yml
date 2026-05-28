@@ -799,3 +799,10 @@
  rse_orthsunni.0007.a:0 "Начать поборы. Железная верность куплена в колыбели."
  rse_orthsunni.0007.b:0 "Меньший побор — добровольцами. (-50 золота)"
  rse_orthsunni.0007.c:0 "Отказать. Иные цены слишком высоки."
+
+ rse_war_faithful_host:0 "Верное воинство"
+ rse_realm_garrison_army:0 "Гарнизон державы"
+ rse_reconquest_garrison:0 "Пограничный гарнизон"
+ rse_coastal_garrison:0 "Береговая стража"
+ rse_crusader_response:0 "Крестоносный ответ"
+ rse_slave_revolt_response:0 "Подавление бунта рабов"

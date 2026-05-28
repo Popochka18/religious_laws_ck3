@@ -1,4 +1,4 @@
-namespace = rse_captive
+﻿namespace = rse_captive
 
 # First days in captivity — the captor's tone is set
 rse_captive.0001 = {
@@ -492,7 +492,6 @@ rse_captive.0007 = {
 		release_from_prison = yes
 		move_to_pool = yes
 		set_employer = scope:captor
-		every_held_title = { destroy_title = yes }
 		add_opinion = {
 			modifier = enslaved_opinion
 			target = scope:captor

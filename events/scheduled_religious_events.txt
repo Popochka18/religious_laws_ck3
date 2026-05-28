@@ -1,4 +1,4 @@
-namespace = rse_sched
+﻿namespace = rse_sched
 
 # Scheduler event - fires periodically to trigger religious situations
 rse_sched.0001 = {

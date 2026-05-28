@@ -1,4 +1,4 @@
-namespace = rse_domain
+﻿namespace = rse_domain
 
 # Heresy spreading in domain
 rse_domain.0001 = {
@@ -30,10 +30,6 @@ rse_domain.0001 = {
 		scope:troubled_county = {
 			add_county_modifier = {
 				modifier = inquisition_active_modifier
-				years = 5
-			}
-			change_county_opinion = {
-				value = -10
 				years = 5
 			}
 		}
@@ -217,10 +213,6 @@ rse_domain.0004 = {
 		scope:revolt_county = {
 			add_county_modifier = {
 				modifier = appeased_subjects_modifier
-				years = 5
-			}
-			change_county_opinion = {
-				value = 20
 				years = 5
 			}
 		}

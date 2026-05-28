@@ -1,4 +1,4 @@
-namespace = rse_bondage
+﻿namespace = rse_bondage
 
 # First days as a slave
 rse_bondage.0001 = {

@@ -1,4 +1,4 @@
-religious_tolerance_opinion = {
+﻿religious_tolerance_opinion = {
 	opinion = 25
 }
 
