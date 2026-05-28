@@ -81,3 +81,86 @@ tolerant_court_modifier = {
 	monthly_prestige = 0.5
 	diplomacy = 1
 }
+
+# --- Muslim conquest / reconquista modifiers ---
+
+dhimmi_protection_modifier = {
+	icon = faith_positive
+	county_opinion_add = 20
+	tax_mult = 0.1
+	development_growth_factor = 0.1
+}
+
+jizya_imposed_modifier = {
+	icon = gold_positive
+	tax_mult = 0.3
+	county_opinion_add = -15
+}
+
+lifted_jizya_modifier = {
+	icon = gold_negative
+	tax_mult = -0.2
+	county_opinion_add = 20
+}
+
+christian_quarter_purged_modifier = {
+	icon = faith_negative
+	county_opinion_add = -30
+	monthly_county_control_change_factor = -0.2
+	development_growth_factor = -0.25
+}
+
+churches_protected_modifier = {
+	icon = faith_positive
+	county_opinion_add = 25
+	development_growth_factor = 0.15
+}
+
+churches_taxed_modifier = {
+	icon = gold_positive
+	tax_mult = 0.2
+	county_opinion_add = -10
+}
+
+bishop_imprisoned_modifier = {
+	icon = faith_negative
+	county_opinion_add = -25
+	monthly_county_control_change_factor = -0.1
+}
+
+fortified_frontier_modifier = {
+	icon = county_modifier_economy_positive
+	hostile_county_attrition = 0.3
+	garrison_size = 0.25
+}
+
+goodwill_among_christians_modifier = {
+	icon = faith_positive
+	county_opinion_add = 30
+	monthly_county_control_change_factor = 0.1
+}
+
+christians_suppressed_modifier = {
+	icon = faith_negative
+	tax_mult = 0.15
+	county_opinion_add = -20
+	monthly_county_control_change_factor = -0.1
+}
+
+mozarab_flourishing_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.25
+	tax_mult = 0.15
+	county_opinion_add = 15
+}
+
+arabization_modifier = {
+	icon = prestige_positive
+	monthly_county_control_change_factor = 0.15
+	development_growth_factor = 0.1
+}
+
+uninvolved_ruler_modifier = {
+	icon = stress_negative
+	monthly_prestige = -0.2
+}

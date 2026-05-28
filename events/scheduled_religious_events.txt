@@ -57,6 +57,63 @@ rse_sched.0001 = {
 				}
 				trigger_event = { id = rse_war.0002 days = { 5 30 } }
 			}
+			20 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0001 days = { 5 30 } }
+			}
+			15 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						county_opinion <= 0
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0002 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0003 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 2
+					}
+				}
+				trigger_event = { id = rse_reconquest.0004 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+				}
+				trigger_event = { id = rse_reconquest.0005 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0006 days = { 5 30 } }
+			}
 		}
 	}
 }

@@ -25,3 +25,7 @@ denounced_opinion = {
 grateful_opinion = {
 	opinion = 30
 }
+
+secret_kept_opinion = {
+	opinion = 50
+}
