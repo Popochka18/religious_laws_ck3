@@ -119,8 +119,6 @@ rse_reconquest.0002 = {
 		}
 		add_gold = -75
 		add_dread = major_dread_gain
-		scope:rebel_county = {
-		}
 	}
 
 	option = {
@@ -214,7 +212,7 @@ rse_reconquest.0003 = {
 
 	option = {
 		name = rse_reconquest.0003.c
-		scope:bishop = { imprison = { target = root } }
+		scope:bishop = { imprison = { target = root type = dungeon } }
 		scope:christian_county = {
 			add_county_modifier = {
 				modifier = bishop_imprisoned_modifier
@@ -607,8 +605,6 @@ rse_reconquest.0009 = {
 	option = {
 		name = rse_reconquest.0009.a
 		add_gold = 200
-		scope:relic_county = {
-		}
 		add_piety = minor_piety_gain
 	}
 
@@ -826,8 +822,6 @@ rse_reconquest.0012 = {
 				target = root
 				years = 80
 			}
-		}
-		scope:devshirme_county = {
 		}
 		add_prestige = medium_prestige_gain
 		add_piety = minor_piety_gain
@@ -1197,8 +1191,6 @@ rse_reconquest.0017 = {
 			set_employer = root
 		}
 		add_piety = medium_piety_gain
-		scope:bride_county = {
-		}
 	}
 
 	option = {
@@ -1255,7 +1247,7 @@ rse_reconquest.0018 = {
 
 	option = {
 		name = rse_reconquest.0018.b
-		scope:apostate = { imprison = { target = root } }
+		scope:apostate = { imprison = { target = root type = dungeon } }
 		add_piety = medium_piety_gain
 	}
 

@@ -284,7 +284,7 @@ rse_captive.0004 = {
 		}
 		add_prestige = minor_prestige_gain
 		scope:visitor = {
-			imprison = { target = scope:captor }
+			imprison = { target = scope:captor type = dungeon }
 		}
 	}
 }
@@ -388,7 +388,7 @@ rse_captive.0006 = {
 				}
 			}
 			scope:cellmate = {
-				imprison = { target = scope:captor }
+				imprison = { target = scope:captor type = dungeon }
 			}
 		}
 	}

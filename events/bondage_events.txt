@@ -627,7 +627,7 @@ rse_bondage.0008 = {
 				add = -30
 				intrigue >= 12
 			}
-			imprison = { target = scope:master }
+			imprison = { target = scope:master type = dungeon }
 			scope:master = {
 				add_opinion = {
 					modifier = troublesome_prisoner_opinion
@@ -2029,7 +2029,7 @@ rse_bondage.0024 = {
 		name = rse_bondage.0024.b
 		trigger = { intrigue >= 8 }
 		scope:rival_concubine = {
-			imprison = { target = scope:master }
+			imprison = { target = scope:master type = dungeon }
 		}
 		add_character_modifier = {
 			modifier = patient_schemer_modifier
@@ -2786,7 +2786,7 @@ rse_bondage.0033 = {
 				add = -25
 				diplomacy >= 10
 			}
-			imprison = { target = scope:master }
+			imprison = { target = scope:master type = dungeon }
 		}
 	}
 
@@ -2800,7 +2800,7 @@ rse_bondage.0033 = {
 			save_scope_as = scapegoat
 		}
 		scope:scapegoat = {
-			imprison = { target = scope:master }
+			imprison = { target = scope:master type = dungeon }
 		}
 		scope:master = {
 			add_opinion = {

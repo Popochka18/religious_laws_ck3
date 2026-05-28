@@ -121,7 +121,7 @@ rse_realm.0002 = {
 	option = {
 		name = rse_realm.0002.b
 		scope:ringleader = {
-			imprison = { target = root }
+			imprison = { target = root type = dungeon }
 		}
 		every_vassal = {
 			limit = { faith = scope:faction_leader.faith }

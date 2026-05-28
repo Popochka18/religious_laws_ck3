@@ -30,9 +30,6 @@
 			move_to_pool = yes
 			set_employer = scope:actor
 			add_trait = rse_enslaved
-			if = {
-				limit = { is_landed = yes }
-			}
 			add_opinion = {
 				modifier = enslaved_opinion
 				target = scope:actor
@@ -46,6 +43,8 @@
 	}
 
 	auto_accept = { always = yes }
+
+	ai_frequency = 100
 
 	ai_potential = {
 		exists = this
@@ -193,6 +192,8 @@ rse_raid_for_slaves_interaction = {
 
 	auto_accept = { always = yes }
 
+	ai_frequency = 100
+
 	ai_potential = {
 		exists = this
 		is_ai = yes
@@ -251,6 +252,8 @@ rse_free_house_slave_interaction = {
 
 	auto_accept = { always = yes }
 
+	ai_frequency = 100
+
 	ai_potential = {
 		exists = this
 		is_ai = yes
@@ -297,12 +300,11 @@ rse_designate_concubine_interaction = {
 		scope:recipient = {
 			add_trait = rse_concubine_slave
 		}
-		scope:actor = {
-			add_concubine = scope:recipient
-		}
 	}
 
 	auto_accept = { always = yes }
+
+	ai_frequency = 100
 
 	ai_potential = {
 		exists = this
@@ -352,6 +354,8 @@ rse_make_eunuch_interaction = {
 	}
 
 	auto_accept = { always = yes }
+
+	ai_frequency = 100
 
 	ai_potential = {
 		exists = this

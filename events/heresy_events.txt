@@ -217,7 +217,7 @@ rse_heresy.0004 = {
 	option = {
 		name = rse_heresy.0004.a
 		scope:heretic_vassal = {
-			imprison = { target = root }
+			imprison = { target = root type = dungeon }
 		}
 		add_piety = medium_piety_gain
 		add_dread = medium_dread_gain
