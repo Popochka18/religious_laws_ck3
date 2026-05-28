@@ -188,6 +188,101 @@ rse_sched.0001 = {
 				}
 				trigger_event = { id = rse_relic.0004 days = { 5 30 } }
 			}
+
+			# Pagan / sacred grove chain
+			10 = {
+				trigger = {
+					faith = {
+						OR = {
+							religion_tag = christianity_religion
+							religion_tag = islam_religion
+						}
+					}
+				}
+				trigger_event = { id = rse_pagan.0001 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = {
+						OR = {
+							religion_tag = christianity_religion
+							religion_tag = islam_religion
+						}
+					}
+				}
+				trigger_event = { id = rse_pagan.0002 days = { 5 30 } }
+			}
+			8 = {
+				trigger = { highest_held_title_tier >= tier_duchy }
+				trigger_event = { id = rse_pagan.0003 days = { 5 30 } }
+			}
+
+			# Jewish community chain
+			10 = {
+				trigger = {
+					faith = {
+						OR = {
+							religion_tag = christianity_religion
+							religion_tag = islam_religion
+						}
+					}
+				}
+				trigger_event = { id = rse_jewish.0001 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					gold < 100
+				}
+				trigger_event = { id = rse_jewish.0002 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+				}
+				trigger_event = { id = rse_jewish.0003 days = { 5 30 } }
+			}
+
+			# Personal faith chain
+			10 = {
+				trigger = {
+					is_adult = yes
+					NOT = { has_trait = zealous }
+				}
+				trigger_event = { id = rse_faith.0001 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					is_adult = yes
+					piety_level >= 1
+				}
+				trigger_event = { id = rse_faith.0002 days = { 5 30 } }
+			}
+			6 = {
+				trigger = { is_adult = yes }
+				trigger_event = { id = rse_faith.0003 days = { 5 30 } }
+			}
+
+			# Excommunication / anathema chain
+			8 = {
+				trigger = {
+					faith = { has_religious_head = yes }
+					exists = faith.religious_head
+					NOT = { faith.religious_head = root }
+					piety < 100
+				}
+				trigger_event = { id = rse_anathema.0001 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					any_neighboring_top_liege_realm_owner = {
+						NOT = { this = root }
+						faith = root.faith
+					}
+				}
+				trigger_event = { id = rse_anathema.0002 days = { 5 30 } }
+			}
+			8 = { trigger_event = { id = rse_anathema.0003 days = { 5 30 } } }
 		}
 	}
 }

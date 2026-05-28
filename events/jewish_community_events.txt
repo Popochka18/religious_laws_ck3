@@ -1,0 +1,186 @@
+namespace = rse_jewish
+
+# Jewish community petitions for protection
+rse_jewish.0001 = {
+	type = character_event
+	title = rse_jewish.0001.t
+	desc = rse_jewish.0001.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:jewish_elder
+		animation = beg
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = {
+			OR = {
+				religion_tag = christianity_religion
+				religion_tag = islam_religion
+			}
+		}
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = jewish_quarter }
+		create_character = {
+			template_character = root
+			location = scope:jewish_quarter.title_province
+			faith = faith:rabbinism
+			culture = culture:ashkenazi
+			save_scope_as = jewish_elder
+		}
+	}
+
+	option = {
+		name = rse_jewish.0001.a
+		scope:jewish_quarter = {
+			add_county_modifier = {
+				modifier = jewish_quarter_thriving_modifier
+				years = 20
+			}
+			change_development_level = 1
+		}
+		add_gold = 50
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_jewish.0001.b
+		scope:jewish_quarter = {
+			add_county_modifier = {
+				modifier = special_jewish_tax_modifier
+				years = 15
+			}
+		}
+		add_gold = 150
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_jewish.0001.c
+		scope:jewish_quarter = {
+			add_county_modifier = {
+				modifier = jewish_quarter_expelled_modifier
+				years = 25
+			}
+			change_development_level = -2
+		}
+		add_piety = medium_piety_gain
+		add_dread = medium_dread_gain
+		stress_impact = { compassionate = major_stress_impact_gain }
+	}
+}
+
+# A Jewish moneylender offers loans to the crown
+rse_jewish.0002 = {
+	type = character_event
+	title = rse_jewish.0002.t
+	desc = rse_jewish.0002.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:moneylender
+		animation = personality_greedy
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		gold < 100
+	}
+
+	immediate = {
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = faith:rabbinism
+			culture = culture:ashkenazi
+			save_scope_as = moneylender
+		}
+	}
+
+	option = {
+		name = rse_jewish.0002.a
+		add_gold = 300
+		add_character_modifier = {
+			modifier = indebted_to_jews_modifier
+			years = 8
+		}
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_jewish.0002.b
+		add_gold = 200
+		scope:moneylender = { death = { death_reason = death_execution } }
+		add_piety = minor_piety_gain
+		add_dread = medium_dread_gain
+		stress_impact = { just = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_jewish.0002.c
+		add_prestige = minor_prestige_gain
+		add_piety = minor_piety_gain
+	}
+}
+
+# A wave of antisemitic violence sweeps the realm
+rse_jewish.0003 = {
+	type = character_event
+	title = rse_jewish.0003.t
+	desc = rse_jewish.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		any_held_county = { count >= 1 }
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = pogrom_county }
+	}
+
+	option = {
+		name = rse_jewish.0003.a
+		scope:pogrom_county = {
+			add_county_modifier = {
+				modifier = royal_protection_modifier
+				years = 10
+			}
+		}
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_jewish.0003.b
+		scope:pogrom_county = {
+			add_county_modifier = {
+				modifier = pogrom_unleashed_modifier
+				years = 10
+			}
+			change_development_level = -2
+		}
+		add_gold = 100
+		add_piety = minor_piety_gain
+		add_dread = medium_dread_gain
+		stress_impact = { compassionate = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_jewish.0003.c
+		stress_impact = { compassionate = medium_stress_impact_gain }
+		add_prestige = minor_prestige_loss
+	}
+}

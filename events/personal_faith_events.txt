@@ -1,0 +1,182 @@
+namespace = rse_faith
+
+# A crisis of faith
+rse_faith.0001 = {
+	type = character_event
+	title = rse_faith.0001.t
+	desc = rse_faith.0001.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_landed = yes
+		is_adult = yes
+		NOT = { has_trait = zealous }
+	}
+
+	option = {
+		name = rse_faith.0001.a
+		add_piety = major_piety_gain
+		add_trait = devoted
+		add_character_modifier = {
+			modifier = renewed_faith_modifier
+			years = 10
+		}
+	}
+
+	option = {
+		name = rse_faith.0001.b
+		add_trait = cynical
+		add_piety = major_piety_loss
+		add_character_modifier = {
+			modifier = quiet_doubt_modifier
+			years = 10
+		}
+		stress_impact = { zealous = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_faith.0001.c
+		stress_impact = { humble = medium_stress_impact_gain }
+		add_character_modifier = {
+			modifier = restless_soul_modifier
+			years = 5
+		}
+	}
+}
+
+# A vow before God
+rse_faith.0002 = {
+	type = character_event
+	title = rse_faith.0002.t
+	desc = rse_faith.0002.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+		is_adult = yes
+		piety_level >= 1
+	}
+
+	option = {
+		name = rse_faith.0002.a
+		add_character_modifier = {
+			modifier = vow_of_chastity_modifier
+			years = 10
+		}
+		add_piety = medium_piety_gain
+		stress_impact = { lustful = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_faith.0002.b
+		trigger = { gold >= 100 }
+		add_gold = -100
+		add_character_modifier = {
+			modifier = vow_of_poverty_modifier
+			years = 10
+		}
+		add_piety = major_piety_gain
+		stress_impact = { greedy = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_faith.0002.c
+		add_character_modifier = {
+			modifier = vow_of_pilgrimage_modifier
+			years = 5
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_faith.0002.d
+		add_piety = minor_piety_loss
+	}
+}
+
+# An offer of conversion from a foreign holy man
+rse_faith.0003 = {
+	type = character_event
+	title = rse_faith.0003.t
+	desc = rse_faith.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:foreign_holy_man
+		animation = preach
+	}
+
+	trigger = {
+		is_landed = yes
+		is_adult = yes
+	}
+
+	immediate = {
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = faith:catholic
+			culture = root.culture
+			save_scope_as = foreign_holy_man
+			employer = root
+		}
+		# Pick a random faith different from root's
+		if = {
+			limit = { faith = { religion_tag = christianity_religion } }
+			scope:foreign_holy_man = { set_faith = faith:ashari }
+		}
+		else_if = {
+			limit = { faith = { religion_tag = islam_religion } }
+			scope:foreign_holy_man = { set_faith = faith:orthodox }
+		}
+		else = {
+			scope:foreign_holy_man = { set_faith = faith:catholic }
+		}
+	}
+
+	option = {
+		name = rse_faith.0003.a
+		scope:foreign_holy_man = { banish = yes }
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_faith.0003.b
+		set_character_faith = scope:foreign_holy_man.faith
+		add_piety = -100
+		add_character_modifier = {
+			modifier = new_convert_modifier
+			years = 10
+		}
+		stress_impact = { zealous = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_faith.0003.c
+		scope:foreign_holy_man = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 10
+			}
+		}
+		add_character_modifier = {
+			modifier = open_minded_modifier
+			years = 5
+		}
+	}
+}
