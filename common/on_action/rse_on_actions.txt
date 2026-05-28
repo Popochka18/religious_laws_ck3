@@ -77,10 +77,14 @@ rse_bondage_yearly = {
 		exists = employer
 	}
 	effect = {
-		trigger_event = { id = rse_bondage.0001 days = { 5 14 } }
+		if = {
+			limit = { NOT = { has_character_flag = rse_bondage_intro_fired } }
+			add_character_flag = rse_bondage_intro_fired
+			trigger_event = { id = rse_bondage.0001 days = { 1 5 } }
+		}
 	}
 	random_events = {
-		chance_to_happen = 50
+		chance_to_happen = 60
 		100 = rse_bondage.0002
 		100 = rse_bondage.0003
 		100 = rse_bondage.0004
@@ -88,5 +92,35 @@ rse_bondage_yearly = {
 		100 = rse_bondage.0006
 		100 = rse_bondage.0007
 		100 = rse_bondage.0008
+		100 = rse_bondage.0009
+		100 = rse_bondage.0010
+		100 = rse_bondage.0011
+		100 = rse_bondage.0012
+		100 = rse_bondage.0013
+		100 = rse_bondage.0015
+	}
+}
+
+on_death = {
+	on_actions = {
+		rse_on_master_death_dispatch
+	}
+}
+
+rse_on_master_death_dispatch = {
+	trigger = {
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_ai = no
+		}
+	}
+	effect = {
+		every_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_ai = no
+			}
+			trigger_event = { id = rse_bondage.0014 days = { 1 5 } }
+		}
 	}
 }
