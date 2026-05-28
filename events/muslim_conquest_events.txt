@@ -1,4 +1,4 @@
-namespace = rse_reconquest
+﻿namespace = rse_reconquest
 
 # Newly conquered Christian county under Muslim rule
 rse_reconquest.0001 = {
@@ -120,10 +120,6 @@ rse_reconquest.0002 = {
 		add_gold = -75
 		add_dread = major_dread_gain
 		scope:rebel_county = {
-			change_county_opinion = {
-				value = -15
-				years = 5
-			}
 		}
 	}
 
@@ -132,10 +128,6 @@ rse_reconquest.0002 = {
 		scope:rebel_county = {
 			add_county_modifier = {
 				modifier = lifted_jizya_modifier
-				years = 5
-			}
-			change_county_opinion = {
-				value = 25
 				years = 5
 			}
 		}
@@ -204,10 +196,6 @@ rse_reconquest.0003 = {
 				modifier = churches_protected_modifier
 				years = 15
 			}
-			change_county_opinion = {
-				value = 20
-				years = 10
-			}
 		}
 		add_piety = minor_piety_loss
 		add_prestige = medium_prestige_gain
@@ -231,10 +219,6 @@ rse_reconquest.0003 = {
 			add_county_modifier = {
 				modifier = bishop_imprisoned_modifier
 				years = 8
-			}
-			change_county_opinion = {
-				value = -25
-				years = 10
 			}
 		}
 		add_piety = medium_piety_gain
@@ -426,7 +410,7 @@ rse_reconquest.0006 = {
 	option = {
 		name = rse_reconquest.0006.b
 		scope:mozarab_county = {
-			set_county_culture = root.culture
+			set_culture = root.culture
 			add_county_modifier = {
 				modifier = arabization_modifier
 				years = 15
@@ -521,10 +505,6 @@ rse_reconquest.0007 = {
 				modifier = decapitated_nobility_modifier
 				years = 10
 			}
-			change_county_opinion = {
-				value = -20
-				years = 8
-			}
 		}
 		add_dread = major_dread_gain
 		add_piety = minor_piety_gain
@@ -593,10 +573,6 @@ rse_reconquest.0008 = {
 				years = 15
 			}
 			change_development_level = -2
-			change_county_opinion = {
-				value = -30
-				years = 10
-			}
 		}
 		add_piety = medium_piety_gain
 		add_dread = medium_dread_gain
@@ -632,10 +608,6 @@ rse_reconquest.0009 = {
 		name = rse_reconquest.0009.a
 		add_gold = 200
 		scope:relic_county = {
-			change_county_opinion = {
-				value = -25
-				years = 10
-			}
 		}
 		add_piety = minor_piety_gain
 	}
@@ -658,10 +630,6 @@ rse_reconquest.0009 = {
 			add_county_modifier = {
 				modifier = relics_destroyed_modifier
 				years = 10
-			}
-			change_county_opinion = {
-				value = -40
-				years = 12
 			}
 		}
 		add_piety = major_piety_gain
@@ -860,10 +828,6 @@ rse_reconquest.0012 = {
 			}
 		}
 		scope:devshirme_county = {
-			change_county_opinion = {
-				value = -15
-				years = 10
-			}
 		}
 		add_prestige = medium_prestige_gain
 		add_piety = minor_piety_gain
@@ -1023,10 +987,6 @@ rse_reconquest.0014 = {
 				modifier = hostages_taken_modifier
 				years = 8
 			}
-			change_county_opinion = {
-				value = -25
-				years = 8
-			}
 		}
 		add_dread = major_dread_gain
 	}
@@ -1075,10 +1035,6 @@ rse_reconquest.0015 = {
 			add_county_modifier = {
 				modifier = catacombs_sealed_modifier
 				years = 15
-			}
-			change_county_opinion = {
-				value = -25
-				years = 10
 			}
 		}
 		add_piety = medium_piety_gain
@@ -1213,7 +1169,7 @@ rse_reconquest.0017 = {
 			location = scope:bride_county.title_province
 			faith = scope:bride_county.faith
 			culture = scope:bride_county.culture
-			gender_female_chance = root.gender_female_inverse_chance
+			gender_female_chance = 50
 			save_scope_as = christian_bride
 			employer = root
 		}
@@ -1226,10 +1182,6 @@ rse_reconquest.0017 = {
 		}
 		every_held_county = {
 			limit = { faith = { religion_tag = christianity_religion } }
-			change_county_opinion = {
-				value = 25
-				years = 15
-			}
 		}
 		add_character_modifier = {
 			modifier = legitimized_through_marriage_modifier
@@ -1246,10 +1198,6 @@ rse_reconquest.0017 = {
 		}
 		add_piety = medium_piety_gain
 		scope:bride_county = {
-			change_county_opinion = {
-				value = -10
-				years = 5
-			}
 		}
 	}
 
@@ -1427,10 +1375,6 @@ rse_reconquest.0020 = {
 		add_piety = medium_piety_gain
 		every_held_county = {
 			limit = { faith = { religion_tag = christianity_religion } }
-			change_county_opinion = {
-				value = -15
-				years = 8
-			}
 		}
 		add_dread = medium_dread_gain
 	}

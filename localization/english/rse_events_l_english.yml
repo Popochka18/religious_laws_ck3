@@ -799,3 +799,10 @@
  rse_orthsunni.0007.a:0 "Begin the levy. Iron loyalty is bought in cradles."
  rse_orthsunni.0007.b:0 "A smaller levy — drawn from volunteers. (-50 gold)"
  rse_orthsunni.0007.c:0 "Refuse. Some prices are too high."
+
+ rse_war_faithful_host:0 "Faithful Host"
+ rse_realm_garrison_army:0 "Realm Garrison"
+ rse_reconquest_garrison:0 "Frontier Garrison"
+ rse_coastal_garrison:0 "Coastal Guard"
+ rse_crusader_response:0 "Crusader Response"
+ rse_slave_revolt_response:0 "Slave Revolt Response"

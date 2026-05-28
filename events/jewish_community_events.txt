@@ -1,4 +1,4 @@
-namespace = rse_jewish
+﻿namespace = rse_jewish
 
 # Jewish community petitions for protection
 rse_jewish.0001 = {

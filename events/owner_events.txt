@@ -1,4 +1,4 @@
-namespace = rse_owner
+﻿namespace = rse_owner
 
 # A slave bears a child — fate decided by the owner
 rse_owner.0001 = {

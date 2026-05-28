@@ -1,4 +1,4 @@
-rse_slaver_apprentice = {
+﻿rse_slaver_apprentice = {
 	index = 9501
 
 	monthly_income_mult = 0.05

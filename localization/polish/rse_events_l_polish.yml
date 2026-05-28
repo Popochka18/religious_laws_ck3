@@ -799,3 +799,10 @@
  rse_orthsunni.0007.a:0 "Rozpocząć pobór. Żelazna wierność kupiona w kołyskach."
  rse_orthsunni.0007.b:0 "Mniejszy pobór — z ochotników. (-50 złota)"
  rse_orthsunni.0007.c:0 "Odmówić. Niektóre ceny są zbyt wysokie."
+
+ rse_war_faithful_host:0 "Wierne wojsko"
+ rse_realm_garrison_army:0 "Garnizon państwa"
+ rse_reconquest_garrison:0 "Garnizon graniczny"
+ rse_coastal_garrison:0 "Straż przybrzeżna"
+ rse_crusader_response:0 "Odpowiedź krzyżowców"
+ rse_slave_revolt_response:0 "Tłumienie buntu niewolników"

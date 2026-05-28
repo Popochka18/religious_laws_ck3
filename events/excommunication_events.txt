@@ -1,4 +1,4 @@
-namespace = rse_anathema
+﻿namespace = rse_anathema
 
 # Threat of excommunication
 rse_anathema.0001 = {

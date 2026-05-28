@@ -1,4 +1,4 @@
-namespace = rse_orthsunni
+﻿namespace = rse_orthsunni
 
 # Patriarch denounces the Sultan
 rse_orthsunni.0001 = {
@@ -391,7 +391,7 @@ rse_orthsunni.0006 = {
 		create_character = {
 			template_character = root
 			location = root.capital_province
-			gender_female_chance = scope:own_child.gender_female_inverse_chance
+			gender_female_chance = 50
 			save_scope_as = cross_faith_match
 		}
 		if = {
@@ -479,10 +479,6 @@ rse_orthsunni.0007 = {
 		if = {
 			limit = { exists = scope:devshirme_target }
 			scope:devshirme_target = {
-				change_county_opinion = {
-					value = -25
-					years = 10
-				}
 			}
 		}
 	}

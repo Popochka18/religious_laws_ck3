@@ -1,4 +1,4 @@
-namespace = rse_slave
+﻿namespace = rse_slave
 
 # A slave market opens in your domain
 rse_slave.0001 = {
@@ -492,7 +492,7 @@ rse_slave.0008 = {
 			template_character = root
 			location = root.capital_province
 			faith = root.faith
-			gender_female_chance = root.gender_female_inverse_chance
+			gender_female_chance = 50
 			save_scope_as = concubine
 			employer = root
 		}
@@ -581,7 +581,7 @@ rse_slave.0010 = {
 			location = root.capital_province
 			faith = root.faith
 			culture = root.culture
-			gender_female_chance = root.gender_female_inverse_chance
+			gender_female_chance = 50
 			age = { 16 22 }
 			save_scope_as = lowborn_beauty
 			employer = root

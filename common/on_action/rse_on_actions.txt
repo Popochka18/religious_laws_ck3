@@ -1,4 +1,4 @@
-yearly_global_pulse = {
+﻿yearly_global_pulse = {
 	on_actions = {
 		rse_yearly_pulse
 	}

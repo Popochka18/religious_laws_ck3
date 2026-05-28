@@ -1,5 +1,5 @@
-rse_slavery_path_begin_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+﻿rse_slavery_path_begin_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = no
 	sort_order = 50
 
@@ -42,7 +42,7 @@ rse_slavery_path_begin_decision = {
 }
 
 rse_slavery_path_broker_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = no
 	sort_order = 49
 
@@ -73,7 +73,7 @@ rse_slavery_path_broker_decision = {
 }
 
 rse_slavery_path_taskmaster_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = no
 	sort_order = 48
 
@@ -110,7 +110,7 @@ rse_slavery_path_taskmaster_decision = {
 }
 
 rse_slavery_path_mamluk_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_war.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = no
 	sort_order = 47
 
@@ -141,7 +141,7 @@ rse_slavery_path_mamluk_decision = {
 }
 
 rse_slavery_path_harem_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = no
 	sort_order = 46
 
@@ -177,7 +177,7 @@ rse_slavery_path_harem_decision = {
 }
 
 rse_slavery_path_grand_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = yes
 	sort_order = 45
 
@@ -221,7 +221,7 @@ rse_slavery_path_grand_decision = {
 
 # Alternative: path of mercy
 rse_slavery_path_manumitter_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = no
 	sort_order = 44
 
@@ -270,7 +270,7 @@ rse_slavery_path_manumitter_decision = {
 }
 
 rse_find_lowborn_beauty_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = no
 	sort_order = 42
 
@@ -312,7 +312,7 @@ rse_find_lowborn_beauty_decision = {
 }
 
 rse_organize_slave_market_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_administer_realm.dds"
 	major = no
 	sort_order = 41
 
@@ -358,7 +358,7 @@ rse_organize_slave_market_decision = {
 }
 
 rse_slavery_path_chainbreaker_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_type_faith.dds"
+	picture = "gfx/interface/illustrations/decisions/decision_law.dds"
 	major = yes
 	sort_order = 43
 
