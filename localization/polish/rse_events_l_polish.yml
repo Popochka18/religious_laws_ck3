@@ -1,4 +1,4 @@
-l_polish:
+﻿l_polish:
  rse_war.0001.t:0 "Święta gorliwość przed bitwą"
  rse_war.0001.desc:0 "W przededniu bitwy [court_priest.GetTitledFirstName] gromadzi wojsko. Wierni modlą się, sztandary zostają poświęcone, a heretycki wróg zostaje wyklęty. Nastrój gorączkowy — armia czeka na twoje słowo."
  rse_war.0001.a:0 "$HIGHLIGHT$Niech kapłan przemówi — to święta wojna!$END$"

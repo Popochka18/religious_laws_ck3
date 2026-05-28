@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  rse_war.0001.t:0 "Holy Zeal Before Battle"
  rse_war.0001.desc:0 "On the eve of battle, [court_priest.GetTitledFirstName] gathers the host. The faithful pray, the banners are blessed, and the heretical foe is denounced. The mood is feverish — the army awaits your word."
  rse_war.0001.a:0 "$HIGHLIGHT$Let the priest speak — this is a holy war!$END$"
