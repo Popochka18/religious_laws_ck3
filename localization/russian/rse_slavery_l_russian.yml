@@ -41,3 +41,48 @@ l_russian:
 
  rse_slavery_path_chainbreaker_decision:0 "Стать разбивателем цепей"
  rse_slavery_path_chainbreaker_decision_desc:0 "Покончить с рабством во всём домене. Расселить освобождённых как честных арендаторов."
+
+ rse_find_lowborn_beauty_decision:0 "Найти худородную красавицу"
+ rse_find_lowborn_beauty_decision_desc:0 "Разослать весть, что для двора ищут пригожую простолюдинку. Красота не ведает родословной."
+ rse_organize_slave_market_decision:0 "Открыть невольничий рынок"
+ rse_organize_slave_market_decision_desc:0 "Открыть невольничий рынок в одном из ваших графств. Потечёт монета — но и цепи зазвенят."
+
+ trait_rse_enslaved:0 "Порабощён"
+ trait_rse_enslaved_desc:0 "Скован цепями. Воля не своя."
+ trait_rse_freed_slave:0 "Вольноотпущенник"
+ trait_rse_freed_slave_desc:0 "Некогда в оковах, ныне свободен. Следы неволи ещё видны."
+ trait_rse_concubine_slave:0 "Наложница"
+ trait_rse_concubine_slave_desc:0 "Связана делить ложе хозяина. Пригожа, предана и зависима."
+ trait_rse_eunuch:0 "Евнух"
+ trait_rse_eunuch_desc:0 "Окоплён ножом в юности. Доверен в гареме, остёр в совете."
+ trait_rse_low_born_beauty:0 "Худородная красавица"
+ trait_rse_low_born_beauty_desc:0 "Из простонародья — но с лицом и осанкой королевы."
+ trait_rse_house_slave:0 "Домашний раб"
+ trait_rse_house_slave_desc:0 "Верный слуга, выращенный в неволе. Предан дому превыше всего."
+
+ rse_enslave_prisoner_interaction:0 "Поработить пленника"
+ rse_enslave_prisoner_interaction_desc:0 "Заковать [recipient.GetTitledFirstName] в цепи. Лишится титулов и будет служить в вашем доме рабом."
+
+ rse_raid_for_slaves_interaction:0 "Набег за рабами"
+ rse_raid_for_slaves_interaction_desc:0 "Послать налётчиков в земли [recipient.GetTitledFirstName] за полонянами. Раз в три года, во время войны под вашим предводительством."
+
+ rse_free_house_slave_interaction:0 "Освободить раба"
+ rse_free_house_slave_interaction_desc:0 "Снять цепи с [recipient.GetTitledFirstName]. Будет вольноотпущенным слугой, не скотом."
+
+ rse_designate_concubine_interaction:0 "Взять в наложницы"
+ rse_designate_concubine_interaction_desc:0 "Прибавить [recipient.GetTitledFirstName] к вашим наложницам. Согласие не требуется."
+
+ rse_make_eunuch_interaction:0 "Сделать евнухом"
+ rse_make_eunuch_interaction_desc:0 "Оскопить [recipient.GetTitledFirstName]. Будет доверен в гареме и искусен в придворной интриге."
+
+ rse_slave.0009.t:0 "Работорговцы в наших землях"
+ rse_slave.0009.desc:0 "Весть с границы: вражеские налётчики ударили по нашим деревням, угнав в цепях крестьян и ремесленников. Графство выпотрошено, вопли разносятся на много вёрст."
+ rse_slave.0009.a:0 "Заплатят десятикратно."
+ rse_slave.0009.b:0 "Такова война. Помолимся за полонян."
+
+ rse_slave.0010.t:0 "Худородная красавица"
+ rse_slave.0010.desc:0 "[lowborn_beauty.GetTitledFirstName], простолюдинка редкой красоты, доставлена пред ваши очи. Преклоняет колени в холщовой одежде, но лицом посрамила бы королеву. Двор шепчется."
+ rse_slave.0010.a:0 "Взять в наложницы."
+ rse_slave.0010.b:0 "Принять как свободную гостью двора."
+ rse_slave.0010.c:0 "В цепи её. Красавица в неволе. (-25 золота)"
+ rse_slave.0010.d:0 "Отправить домой. Двор не место для крестьянок. (+25 золота)"

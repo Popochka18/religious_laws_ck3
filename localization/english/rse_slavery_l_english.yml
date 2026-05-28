@@ -41,3 +41,48 @@ l_english:
 
  rse_slavery_path_chainbreaker_decision:0 "Become the Chainbreaker"
  rse_slavery_path_chainbreaker_decision_desc:0 "End slavery throughout your domain. Settle the freed as honest tenants of the realm."
+
+ rse_find_lowborn_beauty_decision:0 "Find a Low-Born Beauty"
+ rse_find_lowborn_beauty_decision_desc:0 "Send out word that a comely commoner is sought for the court. Beauty knows no birthright."
+ rse_organize_slave_market_decision:0 "Open a Slave Market"
+ rse_organize_slave_market_decision_desc:0 "Open a slave market in one of your counties. The coin will flow — but so will the chains."
+
+ trait_rse_enslaved:0 "Enslaved"
+ trait_rse_enslaved_desc:0 "Bound by chains to another. Their will is not their own."
+ trait_rse_freed_slave:0 "Freed Slave"
+ trait_rse_freed_slave_desc:0 "Once chained, now free. Bears the marks of bondage still."
+ trait_rse_concubine_slave:0 "Concubine"
+ trait_rse_concubine_slave_desc:0 "Bound to share the bed of a master. Comely, devoted, and dependent."
+ trait_rse_eunuch:0 "Eunuch"
+ trait_rse_eunuch_desc:0 "Cut by the knife in youth. Trusted in the harem, sharp in the council."
+ trait_rse_low_born_beauty:0 "Low-Born Beauty"
+ trait_rse_low_born_beauty_desc:0 "Of common stock — but with the face and bearing of a queen."
+ trait_rse_house_slave:0 "House Slave"
+ trait_rse_house_slave_desc:0 "A trusted servant raised in bondage. Loyal to the household above all."
+
+ rse_enslave_prisoner_interaction:0 "Enslave Prisoner"
+ rse_enslave_prisoner_interaction_desc:0 "Place [recipient.GetTitledFirstName] in bondage. They will lose their titles and serve in your household as a slave."
+
+ rse_raid_for_slaves_interaction:0 "Raid for Slaves"
+ rse_raid_for_slaves_interaction_desc:0 "Send raiders into [recipient.GetTitledFirstName]'s lands to seize captives. Once in three years, while at war as the war leader."
+
+ rse_free_house_slave_interaction:0 "Free This Slave"
+ rse_free_house_slave_interaction_desc:0 "Strike the chains from [recipient.GetTitledFirstName]. They shall be a freed servant, not chattel."
+
+ rse_designate_concubine_interaction:0 "Take as Concubine"
+ rse_designate_concubine_interaction_desc:0 "Add [recipient.GetTitledFirstName] to your concubines. Their consent is not required."
+
+ rse_make_eunuch_interaction:0 "Make a Eunuch"
+ rse_make_eunuch_interaction_desc:0 "Have [recipient.GetTitledFirstName] gelded. They will be trusted in the harem and skilled in court intrigue."
+
+ rse_slave.0009.t:0 "Slavers in Our Lands"
+ rse_slave.0009.desc:0 "Word arrives from the frontier: enemy raiders have struck our villages, dragging away peasants and craftsmen in chains. The county is gutted; the wails carry for miles."
+ rse_slave.0009.a:0 "They shall pay tenfold."
+ rse_slave.0009.b:0 "Such is war. Pray for the captives."
+
+ rse_slave.0010.t:0 "A Low-Born Beauty"
+ rse_slave.0010.desc:0 "[lowborn_beauty.GetTitledFirstName], a commoner of remarkable beauty, has been brought before you. She kneels in homespun, but her face would shame a queen. The court murmurs."
+ rse_slave.0010.a:0 "Take her as concubine."
+ rse_slave.0010.b:0 "Welcome her as a free guest of the court."
+ rse_slave.0010.c:0 "Put her in chains. A beauty in bondage. (-25 gold)"
+ rse_slave.0010.d:0 "Send her home. The court is no place for peasants. (+25 gold)"

@@ -1,0 +1,382 @@
+rse_enslave_prisoner_interaction = {
+	category = interaction_category_prison
+
+	common_interaction = yes
+	interface_priority = 100
+
+	desc = rse_enslave_prisoner_interaction_desc
+
+	is_shown = {
+		scope:actor = {
+			is_landed = yes
+			is_adult = yes
+		}
+		scope:recipient = {
+			is_imprisoned_by = scope:actor
+			NOT = { has_trait = rse_enslaved }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			NOT = { has_trait = rse_chainbreaker }
+			NOT = { has_trait = rse_manumitter }
+		}
+	}
+
+	on_accept = {
+		scope:recipient = {
+			release_from_prison = yes
+			move_to_pool = yes
+			set_employer = scope:actor
+			add_trait = rse_enslaved
+			if = {
+				limit = { is_landed = yes }
+				every_held_title = {
+					destroy_title = yes
+				}
+			}
+			add_opinion = {
+				modifier = enslaved_opinion
+				target = scope:actor
+				years = 100
+			}
+		}
+		scope:actor = {
+			add_gold = 25
+			add_piety = minor_piety_loss
+		}
+	}
+
+	auto_accept = yes
+
+	ai_potential = {
+		exists = this
+		is_ai = yes
+		OR = {
+			has_trait = rse_slaver_apprentice
+			has_trait = rse_slave_broker
+			has_trait = rse_taskmaster
+			has_trait = rse_grand_slaver
+			has_trait = greedy
+		}
+	}
+
+	ai_will_do = {
+		base = 50
+		modifier = {
+			add = 30
+			scope:actor = { has_trait = rse_grand_slaver }
+		}
+		modifier = {
+			add = -50
+			scope:actor = { has_trait = compassionate }
+		}
+	}
+}
+
+rse_raid_for_slaves_interaction = {
+	category = interaction_category_hostile
+
+	common_interaction = yes
+	interface_priority = 90
+
+	desc = rse_raid_for_slaves_interaction_desc
+
+	is_shown = {
+		scope:actor = {
+			is_landed = yes
+			is_adult = yes
+			is_at_war_with = scope:recipient
+		}
+		scope:recipient = {
+			is_landed = yes
+			NOT = { this = scope:actor }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			is_at_war_with = scope:recipient
+			any_character_war = {
+				is_war_leader = scope:actor
+			}
+		}
+	}
+
+	cooldown = { years = 3 }
+
+	on_accept = {
+		scope:recipient = {
+			random_held_county = {
+				save_scope_as = raided_county
+				add_county_modifier = {
+					modifier = slaves_seized_modifier
+					years = 5
+				}
+				change_development_level = -1
+				change_county_opinion = {
+					value = -30
+					years = 10
+				}
+			}
+		}
+		scope:actor = {
+			add_gold = 150
+			add_prestige = -25
+			add_piety = minor_piety_loss
+
+			# Create slave courtiers
+			create_character = {
+				template_character = scope:actor
+				location = scope:actor.capital_province
+				faith = scope:raided_county.faith
+				culture = scope:raided_county.culture
+				gender_female_chance = 50
+				save_scope_as = slave_captive_1
+				employer = scope:actor
+			}
+			scope:slave_captive_1 = {
+				add_trait = rse_enslaved
+				add_opinion = {
+					modifier = enslaved_opinion
+					target = scope:actor
+					years = 100
+				}
+			}
+			create_character = {
+				template_character = scope:actor
+				location = scope:actor.capital_province
+				faith = scope:raided_county.faith
+				culture = scope:raided_county.culture
+				gender_female_chance = 50
+				save_scope_as = slave_captive_2
+				employer = scope:actor
+			}
+			scope:slave_captive_2 = {
+				add_trait = rse_enslaved
+				add_opinion = {
+					modifier = enslaved_opinion
+					target = scope:actor
+					years = 100
+				}
+			}
+
+			# Bigger payoff for established slavers
+			if = {
+				limit = {
+					OR = {
+						has_trait = rse_slave_broker
+						has_trait = rse_taskmaster
+						has_trait = rse_grand_slaver
+					}
+				}
+				add_gold = 100
+				create_character = {
+					template_character = scope:actor
+					location = scope:actor.capital_province
+					faith = scope:raided_county.faith
+					culture = scope:raided_county.culture
+					gender_female_chance = 50
+					save_scope_as = slave_captive_3
+					employer = scope:actor
+				}
+				scope:slave_captive_3 = {
+					add_trait = rse_enslaved
+					add_opinion = {
+						modifier = enslaved_opinion
+						target = scope:actor
+						years = 100
+					}
+				}
+			}
+		}
+
+		# Send notice to victim
+		scope:recipient = {
+			trigger_event = { id = rse_slave.0009 days = { 1 5 } }
+		}
+	}
+
+	auto_accept = yes
+
+	ai_potential = {
+		exists = this
+		is_ai = yes
+		is_at_war = yes
+		OR = {
+			has_trait = rse_slaver_apprentice
+			has_trait = rse_slave_broker
+			has_trait = rse_taskmaster
+			has_trait = rse_grand_slaver
+		}
+	}
+
+	ai_will_do = {
+		base = 40
+	}
+}
+
+rse_free_house_slave_interaction = {
+	category = interaction_category_friendly
+
+	common_interaction = yes
+	interface_priority = 80
+
+	desc = rse_free_house_slave_interaction_desc
+
+	is_shown = {
+		scope:actor = {
+			is_landed = yes
+			is_adult = yes
+		}
+		scope:recipient = {
+			has_trait = rse_enslaved
+			employer = scope:actor
+		}
+	}
+
+	on_accept = {
+		scope:recipient = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			remove_opinion = {
+				modifier = enslaved_opinion
+				target = scope:actor
+			}
+			add_opinion = {
+				modifier = grateful_opinion
+				target = scope:actor
+				years = 100
+			}
+		}
+		scope:actor = {
+			add_piety = medium_piety_gain
+			add_prestige = minor_prestige_gain
+		}
+	}
+
+	auto_accept = yes
+
+	ai_potential = {
+		exists = this
+		is_ai = yes
+		OR = {
+			has_trait = compassionate
+			has_trait = rse_manumitter
+			has_trait = rse_chainbreaker
+		}
+	}
+
+	ai_will_do = {
+		base = 30
+		modifier = {
+			add = 50
+			scope:actor = { has_trait = compassionate }
+		}
+	}
+}
+
+rse_designate_concubine_interaction = {
+	category = interaction_category_friendly
+
+	common_interaction = yes
+	interface_priority = 70
+
+	desc = rse_designate_concubine_interaction_desc
+
+	is_shown = {
+		scope:actor = {
+			is_landed = yes
+			is_adult = yes
+			faith = {
+				OR = {
+					religion_tag = islam_religion
+					has_doctrine_parameter = unrestricted_concubines
+				}
+			}
+		}
+		scope:recipient = {
+			has_trait = rse_enslaved
+			employer = scope:actor
+			is_adult = yes
+			NOT = { has_trait = rse_concubine_slave }
+			NOT = { this = scope:actor }
+		}
+	}
+
+	on_accept = {
+		scope:recipient = {
+			add_trait = rse_concubine_slave
+		}
+		scope:actor = {
+			take_concubine = {
+				concubine = scope:recipient
+			}
+		}
+	}
+
+	auto_accept = yes
+
+	ai_potential = {
+		exists = this
+		is_ai = yes
+		is_male = yes
+		OR = {
+			has_trait = lustful
+			has_trait = rse_harem_keeper
+		}
+	}
+
+	ai_will_do = {
+		base = 30
+	}
+}
+
+rse_make_eunuch_interaction = {
+	category = interaction_category_hostile
+
+	common_interaction = yes
+	interface_priority = 60
+
+	desc = rse_make_eunuch_interaction_desc
+
+	is_shown = {
+		scope:actor = {
+			is_landed = yes
+			is_adult = yes
+		}
+		scope:recipient = {
+			has_trait = rse_enslaved
+			is_male = yes
+			employer = scope:actor
+			NOT = { has_trait = rse_eunuch }
+			is_adult = yes
+		}
+	}
+
+	on_accept = {
+		scope:recipient = {
+			add_trait = rse_eunuch
+		}
+		scope:actor = {
+			add_piety = minor_piety_loss
+			stress_impact = { compassionate = medium_stress_impact_gain }
+		}
+	}
+
+	auto_accept = yes
+
+	ai_potential = {
+		exists = this
+		is_ai = yes
+		OR = {
+			has_trait = cruel
+			has_trait = rse_taskmaster
+		}
+	}
+
+	ai_will_do = {
+		base = 20
+	}
+}

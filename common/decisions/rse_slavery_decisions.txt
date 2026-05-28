@@ -274,6 +274,94 @@ rse_slavery_path_manumitter_decision = {
 	}
 }
 
+rse_find_lowborn_beauty_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 42
+
+	is_shown = {
+		is_landed = yes
+		is_adult = yes
+		NOT = { has_character_flag = rse_seeking_beauty }
+	}
+
+	is_valid = {
+		gold >= 75
+	}
+
+	cost = {
+		gold = 75
+		prestige = 25
+	}
+
+	effect = {
+		add_character_flag = {
+			flag = rse_seeking_beauty
+			years = 2
+		}
+		trigger_event = { id = rse_slave.0010 days = { 14 30 } }
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 20
+		modifier = {
+			add = 50
+			has_trait = lustful
+		}
+		modifier = {
+			add = 30
+			has_trait = rse_harem_keeper
+		}
+	}
+}
+
+rse_organize_slave_market_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 41
+
+	is_shown = {
+		is_landed = yes
+		any_held_county = { count >= 1 }
+		OR = {
+			has_trait = rse_slave_broker
+			has_trait = rse_taskmaster
+			has_trait = rse_grand_slaver
+		}
+	}
+
+	is_valid = {
+		gold >= 100
+		any_held_county = {
+			NOT = { has_county_modifier = slave_market_modifier }
+			NOT = { has_county_modifier = regulated_slave_market_modifier }
+		}
+	}
+
+	cost = {
+		gold = 100
+	}
+
+	effect = {
+		random_held_county = {
+			limit = {
+				NOT = { has_county_modifier = slave_market_modifier }
+				NOT = { has_county_modifier = regulated_slave_market_modifier }
+			}
+			add_county_modifier = {
+				modifier = slave_market_modifier
+				years = 30
+			}
+		}
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 50
+	}
+}
+
 rse_slavery_path_chainbreaker_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_type_faith.dds"
 	major = yes

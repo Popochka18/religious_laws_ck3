@@ -534,3 +534,124 @@ rse_slave.0008 = {
 		add_piety = minor_piety_gain
 	}
 }
+
+# Notice to a ruler whose county was raided for slaves
+rse_slave.0009 = {
+	type = character_event
+	title = rse_slave.0009.t
+	desc = rse_slave.0009.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+	}
+
+	option = {
+		name = rse_slave.0009.a
+		add_dread = minor_dread_gain
+	}
+
+	option = {
+		name = rse_slave.0009.b
+		stress_impact = { just = medium_stress_impact_gain compassionate = medium_stress_impact_gain }
+		add_prestige = minor_prestige_loss
+	}
+}
+
+# A low-born beauty is brought to court
+rse_slave.0010 = {
+	type = character_event
+	title = rse_slave.0010.t
+	desc = rse_slave.0010.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:lowborn_beauty
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+	}
+
+	immediate = {
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = root.faith
+			culture = root.culture
+			gender_female_chance = root.gender_female_inverse_chance
+			age = { 16 22 }
+			save_scope_as = lowborn_beauty
+			employer = root
+			random_traits_list = {
+				count = 2
+				50 = { add_trait = beauty_good_3 }
+				50 = { add_trait = gregarious }
+				50 = { add_trait = compassionate }
+				50 = { add_trait = patient }
+			}
+			add_trait = rse_low_born_beauty
+		}
+	}
+
+	option = {
+		name = rse_slave.0010.a
+		trigger = {
+			faith = {
+				OR = {
+					religion_tag = islam_religion
+					has_doctrine_parameter = unrestricted_concubines
+				}
+			}
+		}
+		scope:lowborn_beauty = {
+			add_trait = rse_concubine_slave
+		}
+		take_concubine = {
+			concubine = scope:lowborn_beauty
+		}
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_slave.0010.b
+		scope:lowborn_beauty = {
+			set_employer = root
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_slave.0010.c
+		scope:lowborn_beauty = {
+			add_trait = rse_enslaved
+		}
+		scope:lowborn_beauty = {
+			add_opinion = {
+				modifier = enslaved_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_gold = -25
+	}
+
+	option = {
+		name = rse_slave.0010.d
+		scope:lowborn_beauty = { banish = yes }
+		add_piety = minor_piety_gain
+		add_gold = 25
+	}
+}
