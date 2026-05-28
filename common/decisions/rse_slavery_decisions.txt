@@ -1,0 +1,410 @@
+rse_slavery_path_begin_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 50
+
+	is_shown = {
+		is_landed = yes
+		is_adult = yes
+		NOT = { has_trait = rse_slaver_apprentice }
+		NOT = { has_trait = rse_manumitter }
+	}
+
+	is_valid = {
+		gold >= 50
+	}
+
+	cost = {
+		gold = 50
+		prestige = 25
+	}
+
+	effect = {
+		add_trait = rse_slaver_apprentice
+	}
+
+	ai_check_interval = 36
+	ai_potential = {
+		exists = this
+		is_ai = yes
+	}
+	ai_will_do = {
+		base = 30
+		modifier = {
+			add = 50
+			has_trait = greedy
+		}
+		modifier = {
+			add = -100
+			has_trait = compassionate
+		}
+	}
+}
+
+rse_slavery_path_broker_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 49
+
+	is_shown = {
+		is_landed = yes
+		has_trait = rse_slaver_apprentice
+		NOT = { has_trait = rse_slave_broker }
+	}
+
+	is_valid = {
+		gold >= 150
+	}
+
+	cost = {
+		gold = 150
+		prestige = 50
+	}
+
+	effect = {
+		remove_trait = rse_slaver_apprentice
+		add_trait = rse_slave_broker
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 50
+	}
+}
+
+rse_slavery_path_taskmaster_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 48
+
+	is_shown = {
+		is_landed = yes
+		has_trait = rse_slave_broker
+		NOT = { has_trait = rse_taskmaster }
+		NOT = { has_trait = rse_manumitter }
+		NOT = { has_trait = rse_chainbreaker }
+	}
+
+	is_valid = {
+		gold >= 100
+		prestige >= 100
+	}
+
+	cost = {
+		gold = 100
+		prestige = 100
+	}
+
+	effect = {
+		add_trait = rse_taskmaster
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 30
+		modifier = {
+			add = 70
+			has_trait = cruel
+		}
+	}
+}
+
+rse_slavery_path_mamluk_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_war.dds"
+	major = no
+	sort_order = 47
+
+	is_shown = {
+		is_landed = yes
+		has_trait = rse_slave_broker
+		NOT = { has_trait = rse_mamluk_lord }
+		rse_warrior_slaves_permitted_trigger = yes
+	}
+
+	is_valid = {
+		gold >= 250
+		highest_held_title_tier >= tier_duchy
+	}
+
+	cost = {
+		gold = 250
+	}
+
+	effect = {
+		add_trait = rse_mamluk_lord
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 50
+	}
+}
+
+rse_slavery_path_harem_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 46
+
+	is_shown = {
+		is_landed = yes
+		is_adult = yes
+		has_trait = rse_slave_broker
+		NOT = { has_trait = rse_harem_keeper }
+		rse_concubines_permitted_trigger = yes
+	}
+
+	is_valid = {
+		gold >= 150
+	}
+
+	cost = {
+		gold = 150
+		prestige = 50
+	}
+
+	effect = {
+		add_trait = rse_harem_keeper
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 40
+		modifier = {
+			add = 50
+			has_trait = lustful
+		}
+	}
+}
+
+rse_slavery_path_grand_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = yes
+	sort_order = 45
+
+	is_shown = {
+		is_landed = yes
+		has_trait = rse_taskmaster
+		NOT = { has_trait = rse_grand_slaver }
+	}
+
+	is_valid = {
+		gold >= 500
+		prestige >= 300
+		highest_held_title_tier >= tier_kingdom
+	}
+
+	cost = {
+		gold = 500
+		prestige = 300
+	}
+
+	effect = {
+		remove_trait = rse_taskmaster
+		add_trait = rse_grand_slaver
+		every_held_county = {
+			limit = {
+				NOT = { has_county_modifier = slave_market_modifier }
+				NOT = { has_county_modifier = regulated_slave_market_modifier }
+			}
+			add_county_modifier = {
+				modifier = regulated_slave_market_modifier
+				years = 30
+			}
+		}
+	}
+
+	ai_check_interval = 60
+	ai_will_do = {
+		base = 25
+	}
+}
+
+# Alternative: path of mercy
+rse_slavery_path_manumitter_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 44
+
+	is_shown = {
+		is_landed = yes
+		NOT = { has_trait = rse_manumitter }
+		NOT = { has_trait = rse_taskmaster }
+		NOT = { has_trait = rse_grand_slaver }
+		piety_level >= 2
+	}
+
+	is_valid = {
+		gold >= 100
+		piety >= 100
+	}
+
+	cost = {
+		gold = 100
+		piety = 100
+	}
+
+	effect = {
+		add_trait = rse_manumitter
+		if = {
+			limit = { has_trait = rse_slaver_apprentice }
+			remove_trait = rse_slaver_apprentice
+		}
+		if = {
+			limit = { has_trait = rse_slave_broker }
+			remove_trait = rse_slave_broker
+		}
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 30
+		modifier = {
+			add = 70
+			has_trait = compassionate
+		}
+		modifier = {
+			add = 50
+			has_trait = zealous
+		}
+	}
+}
+
+rse_find_lowborn_beauty_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 42
+
+	is_shown = {
+		is_landed = yes
+		is_adult = yes
+		NOT = { has_character_flag = rse_seeking_beauty }
+	}
+
+	is_valid = {
+		gold >= 75
+	}
+
+	cost = {
+		gold = 75
+		prestige = 25
+	}
+
+	effect = {
+		add_character_flag = {
+			flag = rse_seeking_beauty
+			years = 2
+		}
+		trigger_event = { id = rse_slave.0010 days = { 14 30 } }
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 20
+		modifier = {
+			add = 50
+			has_trait = lustful
+		}
+		modifier = {
+			add = 30
+			has_trait = rse_harem_keeper
+		}
+	}
+}
+
+rse_organize_slave_market_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_diplomacy.dds"
+	major = no
+	sort_order = 41
+
+	is_shown = {
+		is_landed = yes
+		any_held_county = { count >= 1 }
+		OR = {
+			has_trait = rse_slave_broker
+			has_trait = rse_taskmaster
+			has_trait = rse_grand_slaver
+		}
+	}
+
+	is_valid = {
+		gold >= 100
+		any_held_county = {
+			NOT = { has_county_modifier = slave_market_modifier }
+			NOT = { has_county_modifier = regulated_slave_market_modifier }
+		}
+	}
+
+	cost = {
+		gold = 100
+	}
+
+	effect = {
+		random_held_county = {
+			limit = {
+				NOT = { has_county_modifier = slave_market_modifier }
+				NOT = { has_county_modifier = regulated_slave_market_modifier }
+			}
+			add_county_modifier = {
+				modifier = slave_market_modifier
+				years = 30
+			}
+		}
+	}
+
+	ai_check_interval = 36
+	ai_will_do = {
+		base = 50
+	}
+}
+
+rse_slavery_path_chainbreaker_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_type_faith.dds"
+	major = yes
+	sort_order = 43
+
+	is_shown = {
+		is_landed = yes
+		has_trait = rse_manumitter
+		NOT = { has_trait = rse_chainbreaker }
+	}
+
+	is_valid = {
+		piety >= 500
+		highest_held_title_tier >= tier_kingdom
+	}
+
+	cost = {
+		piety = 500
+		gold = 200
+	}
+
+	effect = {
+		remove_trait = rse_manumitter
+		add_trait = rse_chainbreaker
+		every_held_county = {
+			limit = {
+				OR = {
+					has_county_modifier = slave_market_modifier
+					has_county_modifier = regulated_slave_market_modifier
+					has_county_modifier = zanj_plantation_modifier
+				}
+			}
+			remove_county_modifier = slave_market_modifier
+			remove_county_modifier = regulated_slave_market_modifier
+			remove_county_modifier = zanj_plantation_modifier
+			add_county_modifier = {
+				modifier = freedmen_settled_modifier
+				years = 30
+			}
+		}
+	}
+
+	ai_check_interval = 60
+	ai_will_do = {
+		base = 30
+		modifier = {
+			add = 70
+			has_trait = compassionate
+		}
+	}
+}

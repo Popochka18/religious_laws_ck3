@@ -57,6 +57,498 @@ rse_sched.0001 = {
 				}
 				trigger_event = { id = rse_war.0002 days = { 5 30 } }
 			}
+			20 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0001 days = { 5 30 } }
+			}
+			15 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						county_opinion <= 0
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0002 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0003 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 2
+					}
+				}
+				trigger_event = { id = rse_reconquest.0004 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+				}
+				trigger_event = { id = rse_reconquest.0005 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0006 days = { 5 30 } }
+			}
+
+			# Crusader chain (Christian over Muslim)
+			15 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = {
+						faith = { religion_tag = islam_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_crusade.0001 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = {
+						faith = { religion_tag = islam_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_crusade.0002 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = {
+						faith = { religion_tag = islam_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_crusade.0003 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = {
+						faith = { religion_tag = islam_religion }
+						county_opinion <= 0
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_crusade.0004 days = { 5 30 } }
+			}
+
+			# Heresy chain
+			15 = { trigger_event = { id = rse_heresy.0001 days = { 5 30 } } }
+			10 = {
+				trigger = { piety_level >= 2 }
+				trigger_event = { id = rse_heresy.0002 days = { 5 30 } }
+			}
+			10 = { trigger_event = { id = rse_heresy.0003 days = { 5 30 } } }
+			10 = {
+				trigger = {
+					is_independent_ruler = yes
+					any_vassal = { count >= 1 }
+				}
+				trigger_event = { id = rse_heresy.0004 days = { 5 30 } }
+			}
+
+			# Relics / pilgrimage chain
+			10 = {
+				trigger = { gold >= 200 }
+				trigger_event = { id = rse_relic.0001 days = { 5 30 } }
+			}
+			10 = { trigger_event = { id = rse_relic.0002 days = { 5 30 } } }
+			10 = { trigger_event = { id = rse_relic.0003 days = { 5 30 } } }
+			10 = {
+				trigger = {
+					faith = { has_religious_head = yes }
+					exists = faith.religious_head
+					NOT = { faith.religious_head = root }
+				}
+				trigger_event = { id = rse_relic.0004 days = { 5 30 } }
+			}
+
+			# Pagan / sacred grove chain
+			10 = {
+				trigger = {
+					faith = {
+						OR = {
+							religion_tag = christianity_religion
+							religion_tag = islam_religion
+						}
+					}
+				}
+				trigger_event = { id = rse_pagan.0001 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = {
+						OR = {
+							religion_tag = christianity_religion
+							religion_tag = islam_religion
+						}
+					}
+				}
+				trigger_event = { id = rse_pagan.0002 days = { 5 30 } }
+			}
+			8 = {
+				trigger = { highest_held_title_tier >= tier_duchy }
+				trigger_event = { id = rse_pagan.0003 days = { 5 30 } }
+			}
+
+			# Jewish community chain
+			10 = {
+				trigger = {
+					faith = {
+						OR = {
+							religion_tag = christianity_religion
+							religion_tag = islam_religion
+						}
+					}
+				}
+				trigger_event = { id = rse_jewish.0001 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					gold < 100
+				}
+				trigger_event = { id = rse_jewish.0002 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+				}
+				trigger_event = { id = rse_jewish.0003 days = { 5 30 } }
+			}
+
+			# Personal faith chain
+			10 = {
+				trigger = {
+					is_adult = yes
+					NOT = { has_trait = zealous }
+				}
+				trigger_event = { id = rse_faith.0001 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					is_adult = yes
+					piety_level >= 1
+				}
+				trigger_event = { id = rse_faith.0002 days = { 5 30 } }
+			}
+			6 = {
+				trigger = { is_adult = yes }
+				trigger_event = { id = rse_faith.0003 days = { 5 30 } }
+			}
+
+			# Excommunication / anathema chain
+			8 = {
+				trigger = {
+					faith = { has_religious_head = yes }
+					exists = faith.religious_head
+					NOT = { faith.religious_head = root }
+					piety < 100
+				}
+				trigger_event = { id = rse_anathema.0001 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					any_neighboring_top_liege_realm_owner = {
+						NOT = { this = root }
+						faith = root.faith
+					}
+				}
+				trigger_event = { id = rse_anathema.0002 days = { 5 30 } }
+			}
+			8 = { trigger_event = { id = rse_anathema.0003 days = { 5 30 } } }
+
+			# Slavery chain
+			10 = {
+				trigger = {
+					NOT = { has_character_flag = rse_slave_market_decided }
+				}
+				trigger_event = { id = rse_slave.0001 days = { 5 30 } }
+			}
+			10 = {
+				trigger = { gold >= 75 }
+				trigger_event = { id = rse_slave.0002 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					rse_warrior_slaves_permitted_trigger = yes
+					highest_held_title_tier >= tier_duchy
+					gold >= 200
+				}
+				trigger_event = { id = rse_slave.0003 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					any_held_county = {
+						OR = {
+							has_county_modifier = slave_market_modifier
+							has_county_modifier = regulated_slave_market_modifier
+							has_county_modifier = zanj_plantation_modifier
+						}
+					}
+				}
+				trigger_event = { id = rse_slave.0004 days = { 5 30 } }
+			}
+			8 = {
+				trigger = { piety_level >= 2 }
+				trigger_event = { id = rse_slave.0005 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					gold >= 50
+				}
+				trigger_event = { id = rse_slave.0006 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = {
+						NOR = {
+							religion_tag = christianity_religion
+							religion_tag = islam_religion
+						}
+					}
+				}
+				trigger_event = { id = rse_slave.0007 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					is_adult = yes
+					rse_concubines_permitted_trigger = yes
+				}
+				trigger_event = { id = rse_slave.0008 days = { 5 30 } }
+			}
+
+			# Christian slavery / Slavic captives chain
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					rse_slavic_slaver_culture_trigger = yes
+					gold >= 50
+				}
+				trigger_event = { id = rse_christslav.0001 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = { count >= 1 }
+					NOT = { has_character_flag = rse_christslav_port_decided }
+				}
+				trigger_event = { id = rse_christslav.0002 days = { 5 30 } }
+			}
+			6 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					exists = faith.religious_head
+					NOT = { faith.religious_head = root }
+					any_held_county = {
+						OR = {
+							has_county_modifier = slave_market_modifier
+							has_county_modifier = regulated_slave_market_modifier
+						}
+					}
+				}
+				trigger_event = { id = rse_christslav.0003 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					exists = cp:councillor_court_chaplain
+					any_courtier = {
+						has_trait = rse_enslaved
+						NOT = { faith = root.faith }
+					}
+				}
+				trigger_event = { id = rse_christslav.0004 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					rse_slavic_slaver_culture_trigger = yes
+				}
+				trigger_event = { id = rse_christslav.0005 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_prisoner = {
+						NOT = { faith = root.faith }
+					}
+				}
+				trigger_event = { id = rse_christslav.0006 days = { 5 30 } }
+			}
+
+			# Reconquest extended chain (Muslim over Christian)
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0007 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0008 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0009 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					is_adult = yes
+					any_prisoner = {
+						NOT = { faith = root.faith }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0010 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0011 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0012 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0013 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0014 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0015 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 2
+					}
+				}
+				trigger_event = { id = rse_reconquest.0016 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					is_adult = yes
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0017 days = { 5 30 } }
+			}
+			6 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_courtier = {
+						has_trait = devoted
+						count >= 1
+					}
+				}
+				trigger_event = { id = rse_reconquest.0018 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+					gold >= 100
+				}
+				trigger_event = { id = rse_reconquest.0019 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					any_held_county = {
+						faith = { religion_tag = christianity_religion }
+						count >= 1
+					}
+					exists = cp:councillor_court_chaplain
+				}
+				trigger_event = { id = rse_reconquest.0020 days = { 5 30 } }
+			}
 		}
 	}
 }

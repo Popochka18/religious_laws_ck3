@@ -81,3 +81,678 @@ tolerant_court_modifier = {
 	monthly_prestige = 0.5
 	diplomacy = 1
 }
+
+# --- Muslim conquest / reconquista modifiers ---
+
+dhimmi_protection_modifier = {
+	icon = faith_positive
+	county_opinion_add = 20
+	tax_mult = 0.1
+	development_growth_factor = 0.1
+}
+
+jizya_imposed_modifier = {
+	icon = gold_positive
+	tax_mult = 0.3
+	county_opinion_add = -15
+}
+
+lifted_jizya_modifier = {
+	icon = gold_negative
+	tax_mult = -0.2
+	county_opinion_add = 20
+}
+
+christian_quarter_purged_modifier = {
+	icon = faith_negative
+	county_opinion_add = -30
+	monthly_county_control_change_factor = -0.2
+	development_growth_factor = -0.25
+}
+
+churches_protected_modifier = {
+	icon = faith_positive
+	county_opinion_add = 25
+	development_growth_factor = 0.15
+}
+
+churches_taxed_modifier = {
+	icon = gold_positive
+	tax_mult = 0.2
+	county_opinion_add = -10
+}
+
+bishop_imprisoned_modifier = {
+	icon = faith_negative
+	county_opinion_add = -25
+	monthly_county_control_change_factor = -0.1
+}
+
+fortified_frontier_modifier = {
+	icon = county_modifier_economy_positive
+	hostile_county_attrition = 0.3
+	garrison_size = 0.25
+}
+
+goodwill_among_christians_modifier = {
+	icon = faith_positive
+	county_opinion_add = 30
+	monthly_county_control_change_factor = 0.1
+}
+
+christians_suppressed_modifier = {
+	icon = faith_negative
+	tax_mult = 0.15
+	county_opinion_add = -20
+	monthly_county_control_change_factor = -0.1
+}
+
+mozarab_flourishing_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.25
+	tax_mult = 0.15
+	county_opinion_add = 15
+}
+
+arabization_modifier = {
+	icon = prestige_positive
+	monthly_county_control_change_factor = 0.15
+	development_growth_factor = 0.1
+}
+
+uninvolved_ruler_modifier = {
+	icon = stress_negative
+	monthly_prestige = -0.2
+}
+
+# --- Crusader / Christian conquest modifiers ---
+
+mosques_to_churches_modifier = {
+	icon = faith_positive
+	monthly_county_control_change_factor = 0.1
+	county_opinion_add = -15
+	development_growth_factor = -0.1
+}
+
+saracen_tribute_modifier = {
+	icon = gold_positive
+	tax_mult = 0.35
+	county_opinion_add = -15
+}
+
+convivencia_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 20
+	development_growth_factor = 0.2
+	tax_mult = 0.1
+}
+
+order_garrison_modifier = {
+	icon = county_modifier_economy_positive
+	garrison_size = 0.3
+	hostile_county_attrition = 0.25
+	county_opinion_add = 5
+}
+
+blessed_by_orders_modifier = {
+	icon = faith_positive
+	monthly_piety = 0.75
+	knight_effectiveness_mult = 0.1
+}
+
+burned_villages_modifier = {
+	icon = county_modifier_development_negative
+	development_growth_factor = -0.3
+	tax_mult = -0.25
+	county_opinion_add = -25
+}
+
+expelled_population_modifier = {
+	icon = county_modifier_development_negative
+	development_growth_factor = -0.5
+	tax_mult = -0.5
+	monthly_county_control_change_factor = 0.2
+}
+
+# --- Heresy modifiers ---
+
+preacher_martyred_modifier = {
+	icon = faith_negative
+	county_opinion_add = -20
+	monthly_county_control_change_factor = -0.1
+}
+
+quieted_unrest_modifier = {
+	icon = faith_positive
+	county_opinion_add = 10
+	monthly_county_control_change_factor = 0.1
+}
+
+curious_of_heresy_modifier = {
+	icon = stress_negative
+	learning = 1
+	monthly_piety = -0.25
+}
+
+doctrinal_authority_modifier = {
+	icon = faith_positive
+	monthly_piety = 1
+	learning = 2
+}
+
+neutral_in_doctrine_modifier = {
+	icon = stress_negative
+	monthly_piety = -0.1
+}
+
+patient_ruler_modifier = {
+	icon = stress_negative
+	diplomacy = 1
+	stress_loss_mult = 0.1
+}
+
+# --- Relics / pilgrimage / holy site modifiers ---
+
+bearer_of_holy_relic_modifier = {
+	icon = faith_positive
+	monthly_piety = 1.5
+	piety_level_impact_mult = 0.1
+	knight_effectiveness_mult = 0.05
+}
+
+site_of_miracle_modifier = {
+	icon = faith_positive
+	development_growth_factor = 0.25
+	tax_mult = 0.2
+	county_opinion_add = 15
+	monthly_piety = 0.5
+}
+
+miracle_dismissed_modifier = {
+	icon = stress_negative
+	county_opinion_add = -10
+}
+
+clever_diplomat_modifier = {
+	icon = prestige_positive
+	diplomacy = 2
+	monthly_prestige = 0.3
+}
+
+# --- Pagan / sacred grove modifiers ---
+
+grove_burned_modifier = {
+	icon = faith_positive
+	county_opinion_add = -15
+	monthly_county_control_change_factor = 0.1
+}
+
+ancient_grove_protected_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 20
+	development_growth_factor = 0.15
+}
+
+new_chapel_modifier = {
+	icon = faith_positive
+	county_opinion_add = 10
+	development_growth_factor = 0.1
+	tax_mult = 0.05
+}
+
+missionary_active_modifier = {
+	icon = faith_positive
+	monthly_county_control_change_factor = 0.1
+	county_opinion_add = -5
+}
+
+brutal_christianization_modifier = {
+	icon = faith_negative
+	county_opinion_add = -30
+	tax_mult = -0.2
+	monthly_county_control_change_factor = -0.15
+}
+
+double_faith_modifier = {
+	icon = stress_negative
+	county_opinion_add = 10
+	monthly_county_control_change_factor = -0.05
+}
+
+# --- Jewish community modifiers ---
+
+jewish_quarter_thriving_modifier = {
+	icon = county_modifier_economy_positive
+	development_growth_factor = 0.2
+	tax_mult = 0.2
+	monthly_county_control_change_factor = 0.05
+}
+
+special_jewish_tax_modifier = {
+	icon = gold_positive
+	tax_mult = 0.3
+	development_growth_factor = -0.05
+}
+
+jewish_quarter_expelled_modifier = {
+	icon = county_modifier_economy_negative
+	development_growth_factor = -0.3
+	tax_mult = -0.25
+}
+
+indebted_to_jews_modifier = {
+	icon = gold_negative
+	monthly_income_mult = -0.1
+}
+
+royal_protection_modifier = {
+	icon = county_modifier_economy_positive
+	county_opinion_add = 15
+	development_growth_factor = 0.1
+}
+
+pogrom_unleashed_modifier = {
+	icon = county_modifier_economy_negative
+	development_growth_factor = -0.4
+	tax_mult = -0.3
+	county_opinion_add = -20
+}
+
+# --- Personal faith modifiers ---
+
+renewed_faith_modifier = {
+	icon = faith_positive
+	monthly_piety = 1.5
+	stress_loss_mult = 0.1
+}
+
+quiet_doubt_modifier = {
+	icon = stress_negative
+	monthly_piety = -0.5
+	learning = 1
+}
+
+restless_soul_modifier = {
+	icon = stress_negative
+	monthly_prestige = -0.1
+}
+
+vow_of_chastity_modifier = {
+	icon = faith_positive
+	monthly_piety = 1
+	fertility = -0.5
+}
+
+vow_of_poverty_modifier = {
+	icon = faith_positive
+	monthly_piety = 1.5
+	monthly_income_mult = -0.15
+	vassal_opinion = 10
+}
+
+vow_of_pilgrimage_modifier = {
+	icon = faith_positive
+	monthly_piety = 0.75
+	stress_loss_mult = 0.05
+}
+
+new_convert_modifier = {
+	icon = faith_negative
+	vassal_opinion = -15
+	monthly_piety = 0.5
+}
+
+open_minded_modifier = {
+	icon = prestige_positive
+	learning = 2
+	diplomacy = 1
+}
+
+# --- Excommunication modifiers ---
+
+penitent_ruler_modifier = {
+	icon = faith_positive
+	monthly_piety = 1
+	vassal_opinion = 5
+}
+
+excommunicated_modifier = {
+	icon = faith_negative
+	monthly_piety = -1
+	vassal_opinion = -25
+	same_faith_opinion = -20
+}
+
+# --- Slavery modifiers ---
+
+slave_market_modifier = {
+	icon = gold_positive
+	tax_mult = 0.35
+	development_growth_factor = 0.1
+	county_opinion_add = -5
+}
+
+no_slave_trade_modifier = {
+	icon = faith_positive
+	county_opinion_add = 15
+	development_growth_factor = 0.05
+}
+
+regulated_slave_market_modifier = {
+	icon = gold_positive
+	tax_mult = 0.2
+	development_growth_factor = 0.05
+}
+
+zanj_plantation_modifier = {
+	icon = gold_positive
+	tax_mult = 0.5
+	development_growth_factor = -0.05
+	county_opinion_add = -10
+}
+
+mamluk_corps_modifier = {
+	icon = county_modifier_economy_positive
+	men_at_arms_maintenance = -0.1
+	knight_effectiveness_mult = 0.15
+	prowess = 1
+}
+
+crushed_slave_revolt_modifier = {
+	icon = county_modifier_development_negative
+	county_opinion_add = -20
+	monthly_county_control_change_factor = 0.1
+}
+
+freedmen_settled_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 20
+	development_growth_factor = 0.15
+	monthly_county_control_change_factor = 0.05
+}
+
+slaves_pacified_modifier = {
+	icon = stress_negative
+	tax_mult = -0.1
+	county_opinion_add = 5
+}
+
+friend_of_the_freed_modifier = {
+	icon = faith_positive
+	monthly_piety = 0.75
+	courtier_opinion = 10
+}
+
+ransomer_of_souls_modifier = {
+	icon = faith_positive
+	monthly_piety = 1
+	monthly_prestige = 0.5
+	same_faith_opinion = 10
+}
+
+thralls_at_work_modifier = {
+	icon = gold_positive
+	tax_mult = 0.25
+	development_growth_factor = 0.1
+}
+
+# --- Reconquest extended modifiers ---
+
+collaborator_lords_modifier = {
+	icon = county_modifier_economy_positive
+	monthly_county_control_change_factor = 0.15
+	tax_mult = 0.1
+	county_opinion_add = 10
+}
+
+converted_nobility_modifier = {
+	icon = faith_positive
+	monthly_county_control_change_factor = 0.1
+	county_opinion_add = -10
+}
+
+decapitated_nobility_modifier = {
+	icon = county_modifier_economy_negative
+	monthly_county_control_change_factor = -0.2
+	tax_mult = -0.15
+}
+
+great_mosque_modifier = {
+	icon = faith_positive
+	development_growth_factor = 0.2
+	tax_mult = 0.15
+	monthly_county_control_change_factor = 0.1
+}
+
+shared_house_of_worship_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 25
+	development_growth_factor = 0.15
+}
+
+cathedral_demolished_modifier = {
+	icon = faith_negative
+	county_opinion_add = -30
+	development_growth_factor = -0.2
+	monthly_county_control_change_factor = -0.15
+}
+
+protected_christian_shrine_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 20
+	development_growth_factor = 0.1
+	tax_mult = 0.05
+}
+
+relics_destroyed_modifier = {
+	icon = faith_negative
+	county_opinion_add = -35
+	monthly_county_control_change_factor = -0.2
+}
+
+converted_captive_modifier = {
+	icon = faith_positive
+	monthly_piety = 0.5
+	attraction_opinion = 5
+}
+
+millet_system_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 30
+	development_growth_factor = 0.2
+	tax_mult = 0.05
+	monthly_county_control_change_factor = -0.05
+}
+
+direct_rule_modifier = {
+	icon = county_modifier_economy_positive
+	monthly_county_control_change_factor = 0.15
+	county_opinion_add = -15
+	tax_mult = 0.1
+}
+
+sufi_lodge_modifier = {
+	icon = faith_positive
+	monthly_county_control_change_factor = 0.1
+	development_growth_factor = 0.1
+	county_opinion_add = 10
+}
+
+coastal_guard_modifier = {
+	icon = county_modifier_economy_positive
+	garrison_size = 0.25
+	hostile_county_attrition = 0.2
+}
+
+hostages_taken_modifier = {
+	icon = stress_negative
+	county_opinion_add = -20
+	tax_mult = 0.1
+}
+
+# --- Reconquest 2 modifiers ---
+
+catacombs_sealed_modifier = {
+	icon = faith_positive
+	monthly_county_control_change_factor = 0.1
+	county_opinion_add = -15
+}
+
+quiet_understanding_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 25
+	development_growth_factor = 0.15
+}
+
+legitimized_through_marriage_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+	same_faith_opinion = 5
+	different_faith_opinion = 10
+}
+
+grand_rebuilding_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.3
+	tax_mult = 0.15
+	county_opinion_add = 20
+}
+
+basic_rebuilding_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.15
+	county_opinion_add = 10
+}
+
+neglected_ruin_modifier = {
+	icon = county_modifier_development_negative
+	development_growth_factor = -0.15
+	tax_mult = -0.1
+	county_opinion_add = -10
+}
+
+patron_of_debate_modifier = {
+	icon = prestige_positive
+	learning = 2
+	monthly_prestige = 0.3
+	different_faith_opinion = 10
+}
+
+slaves_seized_modifier = {
+	icon = county_modifier_development_negative
+	development_growth_factor = -0.25
+	tax_mult = -0.2
+	county_opinion_add = -25
+	monthly_county_control_change_factor = -0.1
+}
+
+# --- Captive modifiers ---
+
+bribed_jailers_modifier = {
+	icon = gold_negative
+	intrigue = 1
+	hostile_scheme_resistance_add = 5
+}
+
+stoic_in_chains_modifier = {
+	icon = faith_positive
+	monthly_piety = 0.5
+	stress_loss_mult = 0.1
+}
+
+martyred_in_spirit_modifier = {
+	icon = faith_positive
+	monthly_piety = 1
+	same_faith_opinion = 20
+}
+
+false_convert_modifier = {
+	icon = stress_negative
+	monthly_piety = -0.3
+	intrigue = 2
+}
+
+daring_escape_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+	prowess = 2
+}
+
+failed_escape_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.1
+	prowess = -1
+}
+
+defiant_in_chains_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+	dread_baseline_add = 5
+}
+
+# --- Slave-player modifiers ---
+
+silent_defiance_modifier = {
+	icon = stress_negative
+	intrigue = 1
+	monthly_piety = 0.2
+}
+
+favoured_concubine_modifier = {
+	icon = prestige_positive
+	attraction_opinion = 15
+	diplomacy = 1
+	monthly_prestige = 0.2
+}
+
+patient_schemer_modifier = {
+	icon = intrigue_positive
+	intrigue = 3
+	hostile_scheme_power_add = 10
+	hostile_scheme_resistance_add = 10
+}
+
+# --- Male slave-player modifiers ---
+
+arena_victor_modifier = {
+	icon = prestige_positive
+	prowess = 3
+	monthly_prestige = 0.3
+	dread_baseline_add = 5
+}
+
+broken_in_the_arena_modifier = {
+	icon = stress_negative
+	prowess = -2
+	health = -0.5
+	stress_gain_mult = 0.1
+}
+
+broken_back_modifier = {
+	icon = stress_negative
+	health = -1
+	prowess = -1
+	stress_gain_mult = 0.1
+}
+
+mamluk_recruit_modifier = {
+	icon = prestige_positive
+	martial = 1
+	prowess = 2
+	knight_effectiveness_mult = 0.1
+}
+
+overseer_modifier = {
+	icon = intrigue_positive
+	intrigue = 1
+	dread_baseline_add = 10
+	intimidated_opinion = 5
+}
+
+revolt_leader_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 1
+	prowess = 3
+	dread_baseline_add = 15
+	same_faith_opinion = 15
+}

@@ -1,0 +1,249 @@
+namespace = rse_heresy
+
+# Heretical preacher gathers a crowd
+rse_heresy.0001 = {
+	type = character_event
+	title = rse_heresy.0001.t
+	desc = rse_heresy.0001.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:heretic_preacher
+		animation = preach
+	}
+
+	trigger = {
+		is_landed = yes
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = preacher_county }
+		create_character = {
+			template_character = root
+			location = scope:preacher_county.title_province
+			faith = root.faith.random_previous_heresy_or_main_faith
+			culture = root.culture
+			save_scope_as = heretic_preacher
+		}
+	}
+
+	option = {
+		name = rse_heresy.0001.a
+		scope:heretic_preacher = { death = { death_reason = death_execution } }
+		scope:preacher_county = {
+			add_county_modifier = {
+				modifier = preacher_martyred_modifier
+				years = 8
+			}
+		}
+		add_piety = medium_piety_gain
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_heresy.0001.b
+		scope:heretic_preacher = { banish = yes }
+		scope:preacher_county = {
+			add_county_modifier = {
+				modifier = quieted_unrest_modifier
+				years = 5
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_heresy.0001.c
+		add_character_modifier = {
+			modifier = curious_of_heresy_modifier
+			years = 3
+		}
+		add_piety = medium_piety_loss
+	}
+}
+
+# Council to debate a new doctrine
+rse_heresy.0002 = {
+	type = character_event
+	title = rse_heresy.0002.t
+	desc = rse_heresy.0002.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:learned_theologian
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		piety_level >= 2
+		exists = cp:councillor_court_chaplain
+	}
+
+	immediate = {
+		cp:councillor_court_chaplain = { save_scope_as = learned_theologian }
+	}
+
+	option = {
+		name = rse_heresy.0002.a
+		add_piety = -100
+		add_character_modifier = {
+			modifier = doctrinal_authority_modifier
+			years = 10
+		}
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_heresy.0002.b
+		add_piety = medium_piety_gain
+		scope:learned_theologian = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 15
+			}
+		}
+	}
+
+	option = {
+		name = rse_heresy.0002.c
+		add_character_modifier = {
+			modifier = neutral_in_doctrine_modifier
+			years = 5
+		}
+	}
+}
+
+# Mystic in the wilderness — a holy man or a heretic?
+rse_heresy.0003 = {
+	type = character_event
+	title = rse_heresy.0003.t
+	desc = rse_heresy.0003.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:mystic
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = mystic_county }
+		create_character = {
+			template_character = root
+			location = scope:mystic_county.title_province
+			faith = root.faith
+			culture = root.culture
+			save_scope_as = mystic
+		}
+	}
+
+	option = {
+		name = rse_heresy.0003.a
+		scope:mystic = {
+			add_trait = lifestyle_mystic
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_heresy.0003.b
+		scope:mystic = {
+			death = { death_reason = death_execution }
+		}
+		scope:mystic_county = {
+			add_county_modifier = {
+				modifier = preacher_martyred_modifier
+				years = 8
+			}
+		}
+		add_piety = minor_piety_loss
+		add_dread = medium_dread_gain
+	}
+
+	option = {
+		name = rse_heresy.0003.c
+		add_character_modifier = {
+			modifier = curious_of_heresy_modifier
+			years = 3
+		}
+	}
+}
+
+# A vassal converts to a heresy
+rse_heresy.0004 = {
+	type = character_event
+	title = rse_heresy.0004.t
+	desc = rse_heresy.0004.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	right_portrait = {
+		character = scope:heretic_vassal
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+		is_independent_ruler = yes
+		any_vassal = { count >= 1 }
+	}
+
+	immediate = {
+		random_vassal = {
+			save_scope_as = heretic_vassal
+			set_faith = root.faith.random_previous_heresy_or_main_faith
+		}
+	}
+
+	option = {
+		name = rse_heresy.0004.a
+		scope:heretic_vassal = {
+			imprison = { target = root }
+		}
+		add_piety = medium_piety_gain
+		add_dread = medium_dread_gain
+	}
+
+	option = {
+		name = rse_heresy.0004.b
+		add_character_modifier = {
+			modifier = patient_ruler_modifier
+			years = 5
+		}
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_heresy.0004.c
+		trigger = { gold >= 75 }
+		add_gold = -75
+		scope:heretic_vassal = {
+			set_faith = root.faith
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 15
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+}

@@ -25,3 +25,59 @@ denounced_opinion = {
 grateful_opinion = {
 	opinion = 30
 }
+
+secret_kept_opinion = {
+	opinion = 50
+}
+
+spurned_by_liege_opinion = {
+	opinion = -35
+}
+
+bought_loyalty_opinion = {
+	opinion = 20
+}
+
+generous_donation_opinion = {
+	opinion = 40
+}
+
+refused_tithe_opinion = {
+	opinion = -40
+}
+
+enslaved_opinion = {
+	opinion = -50
+}
+
+mamluk_loyalty_opinion = {
+	opinion = 60
+}
+
+devshirme_loyalty_opinion = {
+	opinion = 75
+}
+
+groveling_prisoner_opinion = {
+	opinion = -15
+}
+
+troublesome_prisoner_opinion = {
+	opinion = -30
+}
+
+useful_prisoner_opinion = {
+	opinion = 20
+}
+
+wary_prisoner_opinion = {
+	opinion = -10
+}
+
+secret_friend_opinion = {
+	opinion = 40
+}
+
+scorned_opinion = {
+	opinion = -25
+}

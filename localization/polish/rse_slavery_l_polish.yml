@@ -1,0 +1,86 @@
+l_polish:
+ trait_rse_slaver_apprentice:0 "Czeladnik handlarza"
+ trait_rse_slaver_apprentice_desc:0 "Poznał podstawy handlu niewolnikami — targi, pośredników, szlaki."
+ trait_rse_slave_broker:0 "Handlarz niewolników"
+ trait_rse_slave_broker_desc:0 "Zręczny w przewożeniu żywego towaru przez państwo. Gdzie brzęczą kajdany, tam płynie moneta."
+ trait_rse_taskmaster:0 "Nadzorca"
+ trait_rse_taskmaster_desc:0 "Zahartowany latami łamania woli. Niewolnicy słuchają, inni się boją."
+ trait_rse_manumitter:0 "Wyzwoliciel"
+ trait_rse_manumitter_desc:0 "Uwolnił wielu z niewoli. Wierni wychwalają to miłosierdzie."
+ trait_rse_mamluk_lord:0 "Pan mameluków"
+ trait_rse_mamluk_lord_desc:0 "Dowódca korpusu wojowników-niewolników — żołnierzy żelaznej wierności."
+ trait_rse_harem_keeper:0 "Strażnik haremu"
+ trait_rse_harem_keeper_desc:0 "Utrzymuje wielki dom nałożnic. Rozkosz i wpływy splatają się."
+ trait_rse_chainbreaker:0 "Łamacz łańcuchów"
+ trait_rse_chainbreaker_desc:0 "Skruszył łańcuchy niewoli w całym państwie. Dla wielu — święty."
+ trait_rse_grand_slaver:0 "Wielki handlarz niewolników"
+ trait_rse_grand_slaver_desc:0 "Bogactwo płynie rzeką przez twoje ręce — kupione trudem niezliczonych dusz."
+
+ rse_slavery_path_begin_decision:0 "Wejść w handel niewolnikami"
+ rse_slavery_path_begin_decision_desc:0 "Nawiązać kontakty z handlarzami i poznać podstawy rzemiosła. Pierwszy krok długiej drogi."
+ rse_slavery_path_begin_decision_tooltip:0 "Uzyskać cechę «Czeladnik handlarza»."
+
+ rse_slavery_path_broker_decision:0 "Stać się handlarzem"
+ rse_slavery_path_broker_decision_desc:0 "Przekroczyć czeladnictwo — założyć własną sieć handlu niewolnikami w państwie."
+ rse_slavery_path_broker_decision_tooltip:0 "Zamienić «Czeladnika» na «Handlarza niewolników»."
+
+ rse_slavery_path_taskmaster_decision:0 "Stać się nadzorcą"
+ rse_slavery_path_taskmaster_decision_desc:0 "Zdobyć sławę tego, kto łamie niewolników — i wrogów, którzy o nim słyszeli."
+
+ rse_slavery_path_mamluk_decision:0 "Założyć korpus mameluków"
+ rse_slavery_path_mamluk_decision_desc:0 "Stworzyć stały korpus wojowników-niewolników, wychowanych od chłopięctwa na wojowników wiary."
+
+ rse_slavery_path_harem_decision:0 "Założyć wielki harem"
+ rse_slavery_path_harem_decision_desc:0 "Utrzymywać wielki dom nałożnic na modłę największych sułtanów."
+
+ rse_slavery_path_grand_decision:0 "Stać się wielkim handlarzem"
+ rse_slavery_path_grand_decision_desc:0 "Ukoronować karierę w handlu niewolnikami — założyć regulowane targi w każdym hrabstwie państwa."
+
+ rse_slavery_path_manumitter_decision:0 "Wejść na drogę miłosierdzia"
+ rse_slavery_path_manumitter_decision_desc:0 "Porzucić rzemiosło. Uwolnić tych, których trzymasz, i prowadzić miłosierdziem zamiast łańcuchów."
+
+ rse_slavery_path_chainbreaker_decision:0 "Stać się łamaczem łańcuchów"
+ rse_slavery_path_chainbreaker_decision_desc:0 "Zakończyć niewolnictwo w całej domenie. Osiedlić wyzwolonych jako uczciwych dzierżawców."
+
+ rse_find_lowborn_beauty_decision:0 "Znaleźć niskorodną piękność"
+ rse_find_lowborn_beauty_decision_desc:0 "Rozesłać wieść, że dla dworu poszukuje się urodziwej prostaczki. Piękno nie zna urodzenia."
+ rse_organize_slave_market_decision:0 "Otworzyć targ niewolników"
+ rse_organize_slave_market_decision_desc:0 "Otworzyć targ niewolników w jednym z hrabstw. Moneta popłynie — ale i łańcuchy zabrzmią."
+
+ trait_rse_enslaved:0 "Zniewolony"
+ trait_rse_enslaved_desc:0 "Spętany łańcuchami. Wola nie jego."
+ trait_rse_freed_slave:0 "Wyzwoleniec"
+ trait_rse_freed_slave_desc:0 "Niegdyś w łańcuchach, teraz wolny. Ślady niewoli wciąż widoczne."
+ trait_rse_concubine_slave:0 "Nałożnica"
+ trait_rse_concubine_slave_desc:0 "Zobowiązana dzielić łoże pana. Urodziwa, oddana i zależna."
+ trait_rse_eunuch:0 "Eunuch"
+ trait_rse_eunuch_desc:0 "Wykastrowany nożem w młodości. Zaufany w haremie, bystry w radzie."
+ trait_rse_house_slave:0 "Niewolnik domowy"
+ trait_rse_house_slave_desc:0 "Zaufany sługa wychowany w niewoli. Oddany domowi ponad wszystko."
+
+ rse_enslave_prisoner_interaction:0 "Zniewolić jeńca"
+ rse_enslave_prisoner_interaction_desc:0 "Zakuć [recipient.GetTitledFirstName] w łańcuchy. Straci tytuły i będzie służyć w twoim domu jako niewolnik."
+
+ rse_raid_for_slaves_interaction:0 "Najazd po niewolników"
+ rse_raid_for_slaves_interaction_desc:0 "Wysłać najeźdźców w ziemie [recipient.GetTitledFirstName] po jeńców. Raz na trzy lata, podczas wojny jako dowódca."
+
+ rse_free_house_slave_interaction:0 "Uwolnić niewolnika"
+ rse_free_house_slave_interaction_desc:0 "Zdjąć łańcuchy z [recipient.GetTitledFirstName]. Będzie wyzwoleńcem-sługą, nie bydłem."
+
+ rse_designate_concubine_interaction:0 "Wziąć za nałożnicę"
+ rse_designate_concubine_interaction_desc:0 "Dodać [recipient.GetTitledFirstName] do twoich nałożnic. Zgoda nie jest wymagana."
+
+ rse_make_eunuch_interaction:0 "Uczynić eunuchem"
+ rse_make_eunuch_interaction_desc:0 "Wykastrować [recipient.GetTitledFirstName]. Będzie zaufany w haremie i biegły w dworskich intrygach."
+
+ rse_slave.0009.t:0 "Handlarze w naszych ziemiach"
+ rse_slave.0009.desc:0 "Wieść z granicy: wrodzy najeźdźcy uderzyli w nasze wsie, wlokąc chłopów i rzemieślników w łańcuchach. Hrabstwo wypatroszone; lament niesie się milami."
+ rse_slave.0009.a:0 "Zapłacą dziesięciokrotnie."
+ rse_slave.0009.b:0 "Taka wojna. Módlmy się za jeńców."
+
+ rse_slave.0010.t:0 "Niskorodna piękność"
+ rse_slave.0010.desc:0 "[lowborn_beauty.GetTitledFirstName], prostaczka rzadkiej urody, została przyprowadzona przed twoje oblicze. Klęka w samodziale, lecz twarz zawstydziłaby królową. Dwór szepcze."
+ rse_slave.0010.a:0 "Wziąć za nałożnicę."
+ rse_slave.0010.b:0 "Powitać jako wolnego gościa dworu."
+ rse_slave.0010.c:0 "W łańcuchy ją. Piękność w niewoli. (-25 złota)"
+ rse_slave.0010.d:0 "Odesłać do domu. Dwór nie jest miejscem dla chłopek. (+25 złota)"

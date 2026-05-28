@@ -1,0 +1,197 @@
+namespace = rse_pagan
+
+# A sacred grove discovered in the domain
+rse_pagan.0001 = {
+	type = character_event
+	title = rse_pagan.0001.t
+	desc = rse_pagan.0001.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = {
+			OR = {
+				religion_tag = christianity_religion
+				religion_tag = islam_religion
+			}
+		}
+		any_held_county = { count >= 1 }
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = grove_county }
+	}
+
+	option = {
+		name = rse_pagan.0001.a
+		scope:grove_county = {
+			add_county_modifier = {
+				modifier = grove_burned_modifier
+				years = 10
+			}
+		}
+		add_piety = medium_piety_gain
+		stress_impact = { gregarious = minor_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_pagan.0001.b
+		scope:grove_county = {
+			add_county_modifier = {
+				modifier = ancient_grove_protected_modifier
+				years = 20
+			}
+		}
+		add_piety = medium_piety_loss
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_pagan.0001.c
+		trigger = { gold >= 50 }
+		add_gold = -50
+		scope:grove_county = {
+			add_county_modifier = {
+				modifier = new_chapel_modifier
+				years = 15
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+}
+
+# Pagan villagers still cling to old gods
+rse_pagan.0002 = {
+	type = character_event
+	title = rse_pagan.0002.t
+	desc = rse_pagan.0002.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = {
+			OR = {
+				religion_tag = christianity_religion
+				religion_tag = islam_religion
+			}
+		}
+		any_held_county = { count >= 1 }
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = pagan_village }
+	}
+
+	option = {
+		name = rse_pagan.0002.a
+		scope:pagan_village = {
+			add_county_modifier = {
+				modifier = missionary_active_modifier
+				years = 10
+			}
+		}
+		add_piety = minor_piety_loss
+		add_gold = -25
+	}
+
+	option = {
+		name = rse_pagan.0002.b
+		scope:pagan_village = {
+			add_county_modifier = {
+				modifier = brutal_christianization_modifier
+				years = 8
+			}
+			change_development_level = -1
+		}
+		add_piety = medium_piety_gain
+		add_dread = medium_dread_gain
+	}
+
+	option = {
+		name = rse_pagan.0002.c
+		scope:pagan_village = {
+			add_county_modifier = {
+				modifier = double_faith_modifier
+				years = 15
+			}
+		}
+		add_piety = medium_piety_loss
+	}
+}
+
+# A pagan warlord petitions service
+rse_pagan.0003 = {
+	type = character_event
+	title = rse_pagan.0003.t
+	desc = rse_pagan.0003.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:pagan_warrior
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_landed = yes
+		highest_held_title_tier >= tier_duchy
+	}
+
+	immediate = {
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = faith:asatru
+			culture = root.culture
+			gender_female_chance = 0
+			random_traits_list = {
+				count = 2
+				50 = { add_trait = brave }
+				50 = { add_trait = wrathful }
+				50 = { add_trait = ambitious }
+			}
+			save_scope_as = pagan_warrior
+		}
+	}
+
+	option = {
+		name = rse_pagan.0003.a
+		scope:pagan_warrior = {
+			set_employer = root
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = medium_piety_loss
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_pagan.0003.b
+		scope:pagan_warrior = {
+			set_employer = root
+			set_faith = root.faith
+			add_trait = devoted
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_pagan.0003.c
+		scope:pagan_warrior = { banish = yes }
+		add_piety = minor_piety_gain
+		add_prestige = minor_prestige_loss
+	}
+}

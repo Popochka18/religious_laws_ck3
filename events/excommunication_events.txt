@@ -1,0 +1,182 @@
+namespace = rse_anathema
+
+# Threat of excommunication
+rse_anathema.0001 = {
+	type = character_event
+	title = rse_anathema.0001.t
+	desc = rse_anathema.0001.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:pontiff
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { has_religious_head = yes }
+		exists = faith.religious_head
+		NOT = { faith.religious_head = root }
+		piety < 100
+	}
+
+	immediate = {
+		faith.religious_head = { save_scope_as = pontiff }
+	}
+
+	option = {
+		name = rse_anathema.0001.a
+		trigger = { gold >= 100 }
+		add_gold = -100
+		add_piety = medium_piety_gain
+		scope:pontiff = {
+			add_opinion = {
+				modifier = generous_donation_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = rse_anathema.0001.b
+		add_piety = major_piety_gain
+		add_character_modifier = {
+			modifier = penitent_ruler_modifier
+			years = 5
+		}
+		stress_impact = { arrogant = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_anathema.0001.c
+		add_piety = -150
+		add_character_modifier = {
+			modifier = excommunicated_modifier
+			years = 5
+		}
+		add_prestige = medium_prestige_gain
+	}
+}
+
+# A rival is excommunicated — opportunity
+rse_anathema.0002 = {
+	type = character_event
+	title = rse_anathema.0002.t
+	desc = rse_anathema.0002.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:fallen_rival
+		animation = shame
+	}
+
+	trigger = {
+		is_landed = yes
+		any_neighboring_top_liege_realm_owner = {
+			NOT = { this = root }
+			faith = root.faith
+		}
+	}
+
+	immediate = {
+		random_neighboring_top_liege_realm_owner = {
+			limit = {
+				NOT = { this = root }
+				faith = root.faith
+			}
+			save_scope_as = fallen_rival
+		}
+	}
+
+	option = {
+		name = rse_anathema.0002.a
+		scope:fallen_rival = {
+			add_opinion = {
+				modifier = denounced_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_piety = medium_piety_gain
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_anathema.0002.b
+		scope:fallen_rival = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = medium_piety_loss
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_anathema.0002.c
+		add_piety = minor_piety_gain
+	}
+}
+
+# A would-be martyr seeks an audience
+rse_anathema.0003 = {
+	type = character_event
+	title = rse_anathema.0003.t
+	desc = rse_anathema.0003.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:zealot
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = { count >= 1 }
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = { is_adult = yes }
+			save_scope_as = zealot
+			add_trait = zealous
+		}
+	}
+
+	option = {
+		name = rse_anathema.0003.a
+		scope:zealot = {
+			add_trait = devoted
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_gold = -75
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_anathema.0003.b
+		scope:zealot = { death = { death_reason = death_execution } }
+		add_dread = medium_dread_gain
+		add_piety = minor_piety_loss
+		stress_impact = { compassionate = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_anathema.0003.c
+		scope:zealot = { banish = yes }
+		add_piety = minor_piety_loss
+	}
+}

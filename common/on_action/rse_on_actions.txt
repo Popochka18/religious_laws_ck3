@@ -13,6 +13,7 @@ rse_yearly_pulse = {
 on_imprison = {
 	on_actions = {
 		rse_on_imprison_dispatch
+		rse_on_imprison_captive_dispatch
 	}
 }
 
@@ -24,5 +25,152 @@ rse_on_imprison_dispatch = {
 	random_events = {
 		chance_to_happen = 25
 		100 = rse_war.0002
+	}
+}
+
+rse_on_imprison_captive_dispatch = {
+	trigger = {
+		scope:prisoner = {
+			is_ai = no
+			is_landed = yes
+		}
+	}
+	effect = {
+		scope:prisoner = {
+			trigger_event = { id = rse_captive.0001 days = { 5 14 } }
+		}
+	}
+}
+
+quarterly_playable_pulse = {
+	on_actions = {
+		rse_captive_quarterly
+	}
+}
+
+rse_captive_quarterly = {
+	trigger = {
+		is_imprisoned = yes
+		is_ai = no
+	}
+	random_events = {
+		chance_to_happen = 35
+		100 = rse_captive.0002
+		100 = rse_captive.0003
+		100 = rse_captive.0004
+		100 = rse_captive.0005
+		100 = rse_captive.0006
+		100 = rse_captive.0007
+	}
+}
+
+yearly_playable_pulse = {
+	on_actions = {
+		rse_bondage_yearly
+		rse_owner_yearly
+	}
+}
+
+rse_bondage_yearly = {
+	trigger = {
+		has_trait = rse_enslaved
+		is_ai = no
+		exists = employer
+	}
+	effect = {
+		if = {
+			limit = { NOT = { has_character_flag = rse_bondage_intro_fired } }
+			add_character_flag = rse_bondage_intro_fired
+			trigger_event = { id = rse_bondage.0001 days = { 1 5 } }
+		}
+	}
+	random_events = {
+		chance_to_happen = 60
+		100 = rse_bondage.0002
+		100 = rse_bondage.0003
+		100 = rse_bondage.0004
+		100 = rse_bondage.0005
+		100 = rse_bondage.0006
+		100 = rse_bondage.0007
+		100 = rse_bondage.0008
+		100 = rse_bondage.0009
+		100 = rse_bondage.0010
+		100 = rse_bondage.0011
+		100 = rse_bondage.0012
+		100 = rse_bondage.0013
+		100 = rse_bondage.0015
+		100 = rse_bondage.0016
+		100 = rse_bondage.0017
+		100 = rse_bondage.0018
+		100 = rse_bondage.0019
+		100 = rse_bondage.0020
+		100 = rse_bondage.0021
+		100 = rse_bondage.0022
+		100 = rse_bondage.0023
+		100 = rse_bondage.0024
+		100 = rse_bondage.0025
+		100 = rse_bondage.0026
+		100 = rse_bondage.0027
+		100 = rse_bondage.0028
+		100 = rse_bondage.0029
+		100 = rse_bondage.0030
+		100 = rse_bondage.0031
+		100 = rse_bondage.0032
+		100 = rse_bondage.0033
+		100 = rse_bondage.0034
+		100 = rse_bondage.0035
+		100 = rse_bondage.0036
+	}
+}
+
+rse_owner_yearly = {
+	trigger = {
+		is_landed = yes
+		is_ai = no
+		any_courtier = {
+			has_trait = rse_enslaved
+		}
+	}
+	random_events = {
+		chance_to_happen = 35
+		100 = rse_owner.0001
+		100 = rse_owner.0002
+		100 = rse_owner.0003
+		100 = rse_owner.0004
+		100 = rse_owner.0005
+		100 = rse_owner.0006
+		100 = rse_owner.0007
+		100 = rse_owner.0008
+		100 = rse_owner.0009
+		100 = rse_owner.0010
+		100 = rse_owner.0011
+		100 = rse_owner.0012
+		100 = rse_owner.0013
+		100 = rse_owner.0014
+		100 = rse_owner.0015
+	}
+}
+
+on_death = {
+	on_actions = {
+		rse_on_master_death_dispatch
+	}
+}
+
+rse_on_master_death_dispatch = {
+	trigger = {
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_ai = no
+		}
+	}
+	effect = {
+		every_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_ai = no
+			}
+			trigger_event = { id = rse_bondage.0014 days = { 1 5 } }
+		}
 	}
 }

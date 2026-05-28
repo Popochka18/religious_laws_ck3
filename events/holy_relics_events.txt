@@ -1,0 +1,229 @@
+namespace = rse_relic
+
+# A merchant offers a holy relic
+rse_relic.0001 = {
+	type = character_event
+	title = rse_relic.0001.t
+	desc = rse_relic.0001.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:relic_merchant
+		animation = personality_greedy
+	}
+
+	trigger = {
+		is_landed = yes
+		gold >= 200
+	}
+
+	immediate = {
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = root.faith
+			save_scope_as = relic_merchant
+		}
+	}
+
+	option = {
+		name = rse_relic.0001.a
+		add_gold = -200
+		add_piety = major_piety_gain
+		add_character_modifier = {
+			modifier = bearer_of_holy_relic_modifier
+			years = 30
+		}
+	}
+
+	option = {
+		name = rse_relic.0001.b
+		trigger = { learning >= 8 }
+		add_prestige = minor_prestige_gain
+		scope:relic_merchant = { banish = yes }
+	}
+
+	option = {
+		name = rse_relic.0001.c
+		add_piety = minor_piety_loss
+	}
+}
+
+# A pilgrim returns from a holy site
+rse_relic.0002 = {
+	type = character_event
+	title = rse_relic.0002.t
+	desc = rse_relic.0002.desc
+	theme = faith
+
+	left_portrait = {
+		character = scope:pilgrim
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = { count >= 1 }
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = { is_adult = yes }
+			save_scope_as = pilgrim
+		}
+	}
+
+	option = {
+		name = rse_relic.0002.a
+		scope:pilgrim = {
+			add_trait = devoted
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_piety = medium_piety_gain
+		add_character_modifier = {
+			modifier = blessed_by_clergy_modifier
+			years = 5
+		}
+	}
+
+	option = {
+		name = rse_relic.0002.b
+		add_gold = -50
+		scope:pilgrim = {
+			add_opinion = {
+				modifier = bought_loyalty_opinion
+				target = root
+				years = 10
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_relic.0002.c
+		scope:pilgrim = { banish = yes }
+		add_piety = minor_piety_loss
+		add_dread = minor_dread_gain
+	}
+}
+
+# A miracle reported in the domain
+rse_relic.0003 = {
+	type = character_event
+	title = rse_relic.0003.t
+	desc = rse_relic.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_landed = yes
+		any_held_county = { count >= 1 }
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = miracle_county }
+	}
+
+	option = {
+		name = rse_relic.0003.a
+		scope:miracle_county = {
+			add_county_modifier = {
+				modifier = site_of_miracle_modifier
+				years = 30
+			}
+			change_development_level = 1
+		}
+		add_piety = major_piety_gain
+	}
+
+	option = {
+		name = rse_relic.0003.b
+		trigger = { learning >= 6 }
+		scope:miracle_county = {
+			add_county_modifier = {
+				modifier = miracle_dismissed_modifier
+				years = 5
+			}
+		}
+		add_prestige = minor_prestige_gain
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_relic.0003.c
+		add_gold = 75
+		add_piety = medium_piety_loss
+		stress_impact = { honest = medium_stress_impact_gain }
+	}
+}
+
+# The head of faith summons the ruler
+rse_relic.0004 = {
+	type = character_event
+	title = rse_relic.0004.t
+	desc = rse_relic.0004.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { has_religious_head = yes }
+		exists = faith.religious_head
+		NOT = { faith.religious_head = root }
+	}
+
+	immediate = {
+		faith.religious_head = { save_scope_as = pontiff }
+	}
+
+	option = {
+		name = rse_relic.0004.a
+		trigger = { gold >= 150 }
+		add_gold = -150
+		add_piety = medium_piety_gain
+		scope:pontiff = {
+			add_opinion = {
+				modifier = generous_donation_opinion
+				target = root
+				years = 15
+			}
+		}
+	}
+
+	option = {
+		name = rse_relic.0004.b
+		add_piety = medium_piety_loss
+		scope:pontiff = {
+			add_opinion = {
+				modifier = refused_tithe_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_relic.0004.c
+		trigger = {
+			exists = cp:councillor_court_chaplain
+		}
+		add_character_modifier = {
+			modifier = clever_diplomat_modifier
+			years = 5
+		}
+	}
+}

@@ -1,0 +1,511 @@
+namespace = rse_christslav
+
+# Slavic captives offered for sale by a merchant
+rse_christslav.0001 = {
+	type = character_event
+	title = rse_christslav.0001.t
+	desc = rse_christslav.0001.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:slav_merchant
+		animation = personality_greedy
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		rse_slavic_slaver_culture_trigger = yes
+		gold >= 50
+	}
+
+	immediate = {
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = root.faith
+			culture = root.culture
+			save_scope_as = slav_merchant
+		}
+		random_held_county = { save_scope_as = market_county }
+	}
+
+	option = {
+		name = rse_christslav.0001.a
+		add_gold = -75
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = faith:slavic_faith
+			culture = culture:bohemian
+			gender_female_chance = 50
+			save_scope_as = slavic_captive
+			employer = root
+		}
+		scope:slavic_captive = {
+			add_trait = rse_enslaved
+			add_opinion = {
+				modifier = enslaved_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_christslav.0001.b
+		trigger = { gold >= 100 }
+		add_gold = -100
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = root.faith
+			culture = culture:bohemian
+			gender_female_chance = 50
+			save_scope_as = baptized_slav
+			employer = root
+		}
+		scope:baptized_slav = {
+			add_trait = rse_freed_slave
+			add_trait = devoted
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_christslav.0001.c
+		scope:slav_merchant = { banish = yes }
+		add_piety = medium_piety_gain
+		add_prestige = minor_prestige_gain
+	}
+}
+
+# Genoese / Venetian slavers ask permission to operate from a port
+rse_christslav.0002 = {
+	type = character_event
+	title = rse_christslav.0002.t
+	desc = rse_christslav.0002.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:italian_trader
+		animation = personality_greedy
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		any_held_county = { count >= 1 }
+		NOT = { has_character_flag = rse_christslav_port_decided }
+	}
+
+	immediate = {
+		random_held_county = { save_scope_as = port_county }
+		create_character = {
+			template_character = root
+			location = scope:port_county.title_province
+			faith = root.faith
+			culture = culture:italian
+			gender_female_chance = 0
+			save_scope_as = italian_trader
+		}
+	}
+
+	option = {
+		name = rse_christslav.0002.a
+		add_character_flag = rse_christslav_port_decided
+		scope:port_county = {
+			add_county_modifier = {
+				modifier = slave_market_modifier
+				years = 30
+			}
+			change_development_level = 2
+		}
+		add_gold = 200
+		add_piety = medium_piety_loss
+	}
+
+	option = {
+		name = rse_christslav.0002.b
+		add_character_flag = rse_christslav_port_decided
+		scope:port_county = {
+			add_county_modifier = {
+				modifier = regulated_slave_market_modifier
+				years = 25
+			}
+			change_development_level = 1
+		}
+		add_gold = 100
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_christslav.0002.c
+		add_character_flag = rse_christslav_port_decided
+		scope:italian_trader = { banish = yes }
+		add_piety = major_piety_gain
+		add_prestige = minor_prestige_gain
+	}
+}
+
+# Pope / Patriarch denounces the practice
+rse_christslav.0003 = {
+	type = character_event
+	title = rse_christslav.0003.t
+	desc = rse_christslav.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:pontiff
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		exists = faith.religious_head
+		NOT = { faith.religious_head = root }
+		any_held_county = {
+			OR = {
+				has_county_modifier = slave_market_modifier
+				has_county_modifier = regulated_slave_market_modifier
+			}
+		}
+	}
+
+	immediate = {
+		faith.religious_head = { save_scope_as = pontiff }
+		random_held_county = {
+			limit = {
+				OR = {
+					has_county_modifier = slave_market_modifier
+					has_county_modifier = regulated_slave_market_modifier
+				}
+			}
+			save_scope_as = denounced_county
+		}
+	}
+
+	option = {
+		name = rse_christslav.0003.a
+		scope:denounced_county = {
+			remove_county_modifier = slave_market_modifier
+			remove_county_modifier = regulated_slave_market_modifier
+			add_county_modifier = {
+				modifier = no_slave_trade_modifier
+				years = 20
+			}
+		}
+		scope:pontiff = {
+			add_opinion = {
+				modifier = generous_donation_opinion
+				target = root
+				years = 25
+			}
+		}
+		add_piety = major_piety_gain
+		add_gold = -100
+	}
+
+	option = {
+		name = rse_christslav.0003.b
+		add_gold = 100
+		add_piety = -200
+		add_character_modifier = {
+			modifier = excommunicated_modifier
+			years = 5
+		}
+		add_prestige = medium_prestige_gain
+		scope:pontiff = {
+			add_opinion = {
+				modifier = refused_tithe_opinion
+				target = root
+				years = 30
+			}
+		}
+	}
+
+	option = {
+		name = rse_christslav.0003.c
+		add_character_modifier = {
+			modifier = patron_of_debate_modifier
+			years = 5
+		}
+		add_piety = minor_piety_loss
+	}
+}
+
+# Baptize slaves to free them — the theological dilemma
+rse_christslav.0004 = {
+	type = character_event
+	title = rse_christslav.0004.t
+	desc = rse_christslav.0004.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:court_chaplain
+		animation = preach
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		exists = cp:councillor_court_chaplain
+		any_courtier = {
+			has_trait = rse_enslaved
+			NOT = { faith = root.faith }
+		}
+	}
+
+	immediate = {
+		cp:councillor_court_chaplain = { save_scope_as = court_chaplain }
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				NOT = { faith = root.faith }
+			}
+			save_scope_as = pagan_slave
+		}
+	}
+
+	option = {
+		name = rse_christslav.0004.a
+		scope:pagan_slave = {
+			set_faith = root.faith
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			add_trait = devoted
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_piety = major_piety_gain
+	}
+
+	option = {
+		name = rse_christslav.0004.b
+		scope:pagan_slave = {
+			set_faith = root.faith
+			add_trait = devoted
+		}
+		add_piety = minor_piety_gain
+		add_gold = 25
+	}
+
+	option = {
+		name = rse_christslav.0004.c
+		add_piety = medium_piety_loss
+		stress_impact = { zealous = major_stress_impact_gain }
+	}
+}
+
+# A Saxon-style raid across the Wendish frontier
+rse_christslav.0005 = {
+	type = character_event
+	title = rse_christslav.0005.t
+	desc = rse_christslav.0005.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		rse_slavic_slaver_culture_trigger = yes
+		any_neighboring_top_liege_realm_owner = {
+			OR = {
+				culture = { has_cultural_pillar = heritage_west_slavic }
+				culture = { has_cultural_pillar = heritage_east_slavic }
+				culture = { has_cultural_pillar = heritage_baltic }
+				faith = { religion_tag = slavic_religion }
+				faith = { religion_tag = baltic_religion }
+				faith = { religion_tag = finno_ugric_religion }
+			}
+		}
+	}
+
+	immediate = {
+		random_neighboring_top_liege_realm_owner = {
+			limit = {
+				OR = {
+					culture = { has_cultural_pillar = heritage_west_slavic }
+					culture = { has_cultural_pillar = heritage_east_slavic }
+					culture = { has_cultural_pillar = heritage_baltic }
+					faith = { religion_tag = slavic_religion }
+					faith = { religion_tag = baltic_religion }
+				}
+			}
+			save_scope_as = slavic_neighbor
+		}
+	}
+
+	option = {
+		name = rse_christslav.0005.a
+		add_gold = 200
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = scope:slavic_neighbor.faith
+			culture = scope:slavic_neighbor.culture
+			gender_female_chance = 50
+			save_scope_as = wendish_captive_1
+			employer = root
+		}
+		scope:wendish_captive_1 = { add_trait = rse_enslaved }
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = scope:slavic_neighbor.faith
+			culture = scope:slavic_neighbor.culture
+			gender_female_chance = 50
+			save_scope_as = wendish_captive_2
+			employer = root
+		}
+		scope:wendish_captive_2 = { add_trait = rse_enslaved }
+		scope:slavic_neighbor = {
+			add_opinion = {
+				modifier = denounced_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_christslav.0005.b
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = root.faith
+			culture = scope:slavic_neighbor.culture
+			gender_female_chance = 50
+			save_scope_as = converted_wend
+			employer = root
+		}
+		scope:converted_wend = {
+			add_trait = devoted
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_piety = major_piety_gain
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_christslav.0005.c
+		add_piety = minor_piety_gain
+		add_prestige = minor_prestige_loss
+	}
+}
+
+# A Slavic prince offered as ransom-slave
+rse_christslav.0006 = {
+	type = character_event
+	title = rse_christslav.0006.t
+	desc = rse_christslav.0006.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:slavic_prince
+		animation = shame
+	}
+
+	trigger = {
+		is_landed = yes
+		faith = { religion_tag = christianity_religion }
+		any_prisoner = {
+			OR = {
+				culture = { has_cultural_pillar = heritage_west_slavic }
+				culture = { has_cultural_pillar = heritage_east_slavic }
+				culture = { has_cultural_pillar = heritage_baltic }
+			}
+			NOT = { faith = root.faith }
+		}
+	}
+
+	immediate = {
+		random_prisoner = {
+			limit = {
+				OR = {
+					culture = { has_cultural_pillar = heritage_west_slavic }
+					culture = { has_cultural_pillar = heritage_east_slavic }
+					culture = { has_cultural_pillar = heritage_baltic }
+				}
+				NOT = { faith = root.faith }
+			}
+			save_scope_as = slavic_prince
+		}
+	}
+
+	option = {
+		name = rse_christslav.0006.a
+		scope:slavic_prince = {
+			add_gold = -150
+			release_from_prison = yes
+		}
+		add_gold = 150
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_christslav.0006.b
+		scope:slavic_prince = {
+			release_from_prison = yes
+			move_to_pool = yes
+			set_employer = root
+			add_trait = rse_enslaved
+			every_held_title = { destroy_title = yes }
+			add_opinion = {
+				modifier = enslaved_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_gold = 75
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_christslav.0006.c
+		scope:slavic_prince = {
+			set_faith = root.faith
+			release_from_prison = yes
+			set_employer = root
+			add_trait = devoted
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 80
+			}
+		}
+		add_piety = major_piety_gain
+		add_prestige = medium_prestige_gain
+	}
+}
