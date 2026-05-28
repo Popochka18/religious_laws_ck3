@@ -283,6 +283,67 @@ rse_sched.0001 = {
 				trigger_event = { id = rse_anathema.0002 days = { 5 30 } }
 			}
 			8 = { trigger_event = { id = rse_anathema.0003 days = { 5 30 } } }
+
+			# Slavery chain
+			10 = {
+				trigger = {
+					NOT = { has_character_flag = rse_slave_market_decided }
+				}
+				trigger_event = { id = rse_slave.0001 days = { 5 30 } }
+			}
+			10 = {
+				trigger = { gold >= 75 }
+				trigger_event = { id = rse_slave.0002 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = islam_religion }
+					highest_held_title_tier >= tier_duchy
+					gold >= 200
+				}
+				trigger_event = { id = rse_slave.0003 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					any_held_county = {
+						OR = {
+							has_county_modifier = slave_market_modifier
+							has_county_modifier = regulated_slave_market_modifier
+							has_county_modifier = zanj_plantation_modifier
+						}
+					}
+				}
+				trigger_event = { id = rse_slave.0004 days = { 5 30 } }
+			}
+			8 = {
+				trigger = { piety_level >= 2 }
+				trigger_event = { id = rse_slave.0005 days = { 5 30 } }
+			}
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					gold >= 50
+				}
+				trigger_event = { id = rse_slave.0006 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = {
+						NOR = {
+							religion_tag = christianity_religion
+							religion_tag = islam_religion
+						}
+					}
+				}
+				trigger_event = { id = rse_slave.0007 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					is_adult = yes
+					faith = { religion_tag = islam_religion }
+				}
+				trigger_event = { id = rse_slave.0008 days = { 5 30 } }
+			}
 		}
 	}
 }

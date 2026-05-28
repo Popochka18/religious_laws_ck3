@@ -45,3 +45,11 @@ generous_donation_opinion = {
 refused_tithe_opinion = {
 	opinion = -40
 }
+
+enslaved_opinion = {
+	opinion = -50
+}
+
+mamluk_loyalty_opinion = {
+	opinion = 60
+}
