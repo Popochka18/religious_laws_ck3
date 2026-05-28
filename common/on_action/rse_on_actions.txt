@@ -105,6 +105,13 @@ rse_bondage_yearly = {
 		100 = rse_bondage.0020
 		100 = rse_bondage.0021
 		100 = rse_bondage.0022
+		100 = rse_bondage.0023
+		100 = rse_bondage.0024
+		100 = rse_bondage.0025
+		100 = rse_bondage.0026
+		100 = rse_bondage.0027
+		100 = rse_bondage.0028
+		100 = rse_bondage.0029
 	}
 }
 
