@@ -1,0 +1,665 @@
+namespace = rse_owner
+
+# A slave bears a child — fate decided by the owner
+rse_owner.0001 = {
+	type = character_event
+	title = rse_owner.0001.t
+	desc = rse_owner.0001.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:slave_mother
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		is_adult = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_female = yes
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_female = yes
+				is_adult = yes
+			}
+			save_scope_as = slave_mother
+		}
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = scope:slave_mother.faith
+			culture = scope:slave_mother.culture
+			gender_female_chance = 50
+			age = 0
+			save_scope_as = slave_child
+			employer = root
+			mother = scope:slave_mother
+		}
+		scope:slave_child = { add_trait = rse_enslaved }
+	}
+
+	option = {
+		name = rse_owner.0001.a
+		scope:slave_mother = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_piety = minor_piety_loss
+	}
+
+	option = {
+		name = rse_owner.0001.b
+		scope:slave_mother = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		scope:slave_child = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+		}
+		add_piety = medium_piety_gain
+		add_gold = -50
+	}
+
+	option = {
+		name = rse_owner.0001.c
+		scope:slave_child = { death = { death_reason = death_disappearance } }
+		add_dread = medium_dread_gain
+		scope:slave_mother = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 100
+			}
+		}
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			just = major_stress_impact_gain
+		}
+	}
+}
+
+# Two slaves are in love
+rse_owner.0002 = {
+	type = character_event
+	title = rse_owner.0002.t
+	desc = rse_owner.0002.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:slave_lover_a
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+			is_female = yes
+		}
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+			is_male = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+				is_female = yes
+			}
+			save_scope_as = slave_lover_a
+		}
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+				is_male = yes
+			}
+			save_scope_as = slave_lover_b
+		}
+	}
+
+	option = {
+		name = rse_owner.0002.a
+		scope:slave_lover_a = { marry = scope:slave_lover_b }
+		scope:slave_lover_a = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+		scope:slave_lover_b = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_owner.0002.b
+		scope:slave_lover_b = {
+			set_employer = liege
+			banish = yes
+		}
+		scope:slave_lover_a = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_gold = 50
+	}
+
+	option = {
+		name = rse_owner.0002.c
+		scope:slave_lover_a = {
+			death = { death_reason = death_execution killer = root }
+		}
+		scope:slave_lover_b = {
+			death = { death_reason = death_execution killer = root }
+		}
+		add_dread = major_dread_gain
+		add_piety = minor_piety_gain
+		stress_impact = { compassionate = major_stress_impact_gain }
+	}
+}
+
+# A slave caught attempting escape
+rse_owner.0003 = {
+	type = character_event
+	title = rse_owner.0003.t
+	desc = rse_owner.0003.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:runaway_slave
+		animation = fear
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			save_scope_as = runaway_slave
+		}
+	}
+
+	option = {
+		name = rse_owner.0003.a
+		scope:runaway_slave = {
+			death = { death_reason = death_execution killer = root }
+		}
+		add_dread = major_dread_gain
+		every_courtier = {
+			limit = { has_trait = rse_enslaved }
+			add_opinion = {
+				modifier = wary_prisoner_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = rse_owner.0003.b
+		scope:runaway_slave = {
+			add_character_modifier = {
+				modifier = broken_back_modifier
+				years = 5
+			}
+		}
+		add_dread = medium_dread_gain
+		stress_impact = { compassionate = minor_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_owner.0003.c
+		scope:runaway_slave = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_piety = medium_piety_gain
+		add_prestige = minor_prestige_loss
+	}
+}
+
+# A loyal slave saves your life
+rse_owner.0004 = {
+	type = character_event
+	title = rse_owner.0004.t
+	desc = rse_owner.0004.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:loyal_slave
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		is_adult = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			save_scope_as = loyal_slave
+		}
+	}
+
+	option = {
+		name = rse_owner.0004.a
+		scope:loyal_slave = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_piety = medium_piety_gain
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_owner.0004.b
+		scope:loyal_slave = {
+			add_trait = rse_house_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_gold = -25
+	}
+
+	option = {
+		name = rse_owner.0004.c
+		add_gold = 0
+		scope:loyal_slave = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = medium_piety_loss
+		stress_impact = { just = medium_stress_impact_gain }
+	}
+}
+
+# Religious head visits and disapproves
+rse_owner.0005 = {
+	type = character_event
+	title = rse_owner.0005.t
+	desc = rse_owner.0005.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:visiting_cleric
+		animation = anger
+	}
+
+	trigger = {
+		is_landed = yes
+		exists = cp:councillor_court_chaplain
+		any_courtier = {
+			has_trait = rse_enslaved
+			count >= 3
+		}
+	}
+
+	immediate = {
+		cp:councillor_court_chaplain = { save_scope_as = visiting_cleric }
+	}
+
+	option = {
+		name = rse_owner.0005.a
+		every_courtier = {
+			limit = { has_trait = rse_enslaved }
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_piety = 200
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_owner.0005.b
+		random_courtier = {
+			limit = { has_trait = rse_enslaved }
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_owner.0005.c
+		add_piety = -150
+		add_character_modifier = {
+			modifier = defiant_in_chains_modifier
+			years = 5
+		}
+		scope:visiting_cleric = {
+			add_opinion = {
+				modifier = refused_tithe_opinion
+				target = root
+				years = 20
+			}
+		}
+	}
+}
+
+# A guest covets your slave
+rse_owner.0006 = {
+	type = character_event
+	title = rse_owner.0006.t
+	desc = rse_owner.0006.desc
+	theme = faith
+
+	left_portrait = scope:covetous_guest
+	right_portrait = scope:coveted_slave
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			save_scope_as = coveted_slave
+		}
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = root.faith
+			culture = root.culture
+			save_scope_as = covetous_guest
+		}
+	}
+
+	option = {
+		name = rse_owner.0006.a
+		add_gold = 200
+		scope:coveted_slave = {
+			set_employer = scope:covetous_guest
+		}
+		scope:covetous_guest = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = rse_owner.0006.b
+		scope:coveted_slave = {
+			set_employer = scope:covetous_guest
+		}
+		scope:covetous_guest = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_owner.0006.c
+		scope:covetous_guest = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 15
+			}
+		}
+		scope:coveted_slave = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+	}
+}
+
+# The annual reckoning of the household
+rse_owner.0007 = {
+	type = character_event
+	title = rse_owner.0007.t
+	desc = rse_owner.0007.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:steward
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			count >= 5
+		}
+		exists = cp:councillor_steward
+	}
+
+	immediate = {
+		cp:councillor_steward = { save_scope_as = steward }
+	}
+
+	option = {
+		name = rse_owner.0007.a
+		add_gold = 150
+		random_courtier = {
+			limit = { has_trait = rse_enslaved }
+			banish = yes
+		}
+		random_courtier = {
+			limit = { has_trait = rse_enslaved }
+			banish = yes
+		}
+		every_courtier = {
+			limit = { has_trait = rse_enslaved }
+			add_opinion = {
+				modifier = wary_prisoner_opinion
+				target = root
+				years = 5
+			}
+		}
+	}
+
+	option = {
+		name = rse_owner.0007.b
+		add_gold = -50
+		every_courtier = {
+			limit = { has_trait = rse_enslaved }
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 10
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_owner.0007.c
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			add_trait = rse_house_slave
+			set_employer = root
+			scope:steward = {
+				add_opinion = {
+					modifier = scorned_opinion
+					target = root
+					years = 10
+				}
+			}
+		}
+		add_prestige = minor_prestige_gain
+	}
+}
+
+# A slave teaches the children well
+rse_owner.0008 = {
+	type = character_event
+	title = rse_owner.0008.t
+	desc = rse_owner.0008.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:teacher_slave
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			learning >= 8
+		}
+		any_child = {
+			is_alive = yes
+			NOT = { is_adult = yes }
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				learning >= 8
+			}
+			save_scope_as = teacher_slave
+		}
+		random_child = {
+			limit = {
+				is_alive = yes
+				NOT = { is_adult = yes }
+			}
+			save_scope_as = bright_child
+		}
+	}
+
+	option = {
+		name = rse_owner.0008.a
+		scope:teacher_slave = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_piety = medium_piety_gain
+		scope:bright_child = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = scope:teacher_slave
+				years = 100
+			}
+		}
+	}
+
+	option = {
+		name = rse_owner.0008.b
+		scope:teacher_slave = {
+			add_trait = rse_house_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_gold = -25
+	}
+
+	option = {
+		name = rse_owner.0008.c
+		scope:teacher_slave = {
+			set_employer = liege
+		}
+		add_gold = 150
+		scope:bright_child = {
+			stress_impact = { compassionate = medium_stress_impact_gain }
+		}
+	}
+}

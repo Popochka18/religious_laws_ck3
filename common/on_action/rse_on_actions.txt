@@ -67,6 +67,7 @@ rse_captive_quarterly = {
 yearly_playable_pulse = {
 	on_actions = {
 		rse_bondage_yearly
+		rse_owner_yearly
 	}
 }
 
@@ -119,6 +120,27 @@ rse_bondage_yearly = {
 		100 = rse_bondage.0034
 		100 = rse_bondage.0035
 		100 = rse_bondage.0036
+	}
+}
+
+rse_owner_yearly = {
+	trigger = {
+		is_landed = yes
+		is_ai = no
+		any_courtier = {
+			has_trait = rse_enslaved
+		}
+	}
+	random_events = {
+		chance_to_happen = 35
+		100 = rse_owner.0001
+		100 = rse_owner.0002
+		100 = rse_owner.0003
+		100 = rse_owner.0004
+		100 = rse_owner.0005
+		100 = rse_owner.0006
+		100 = rse_owner.0007
+		100 = rse_owner.0008
 	}
 }
 
