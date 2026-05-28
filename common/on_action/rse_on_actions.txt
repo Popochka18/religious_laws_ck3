@@ -63,3 +63,30 @@ rse_captive_quarterly = {
 		100 = rse_captive.0007
 	}
 }
+
+yearly_playable_pulse = {
+	on_actions = {
+		rse_bondage_yearly
+	}
+}
+
+rse_bondage_yearly = {
+	trigger = {
+		has_trait = rse_enslaved
+		is_ai = no
+		exists = employer
+	}
+	effect = {
+		trigger_event = { id = rse_bondage.0001 days = { 5 14 } }
+	}
+	random_events = {
+		chance_to_happen = 50
+		100 = rse_bondage.0002
+		100 = rse_bondage.0003
+		100 = rse_bondage.0004
+		100 = rse_bondage.0005
+		100 = rse_bondage.0006
+		100 = rse_bondage.0007
+		100 = rse_bondage.0008
+	}
+}

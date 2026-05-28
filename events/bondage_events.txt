@@ -1,0 +1,648 @@
+namespace = rse_bondage
+
+# First days as a slave
+rse_bondage.0001 = {
+	type = character_event
+	title = rse_bondage.0001.t
+	desc = rse_bondage.0001.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	right_portrait = {
+		character = scope:master
+		animation = personality_bold
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0001.a
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 5
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0001.b
+		add_trait = rse_house_slave
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 30
+			}
+		}
+		stress_impact = { arrogant = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_bondage.0001.c
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 5
+		}
+		stress_impact = { brave = miniscule_stress_impact_loss }
+	}
+}
+
+# Master's nightly summons
+rse_bondage.0002 = {
+	type = character_event
+	title = rse_bondage.0002.t
+	desc = rse_bondage.0002.desc
+	theme = faith
+
+	left_portrait = {
+		character = scope:master
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = root
+		animation = shame
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_adult = yes
+		exists = employer
+		employer = {
+			NOT = { this = root }
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0002.a
+		add_trait = rse_concubine_slave
+		scope:master = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_character_modifier = {
+			modifier = favoured_concubine_modifier
+			years = 5
+		}
+		stress_impact = { chaste = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_bondage.0002.b
+		scope:master = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 15
+			}
+		}
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+		add_piety = medium_piety_gain
+		stress_impact = { brave = miniscule_stress_impact_loss }
+	}
+
+	option = {
+		name = rse_bondage.0002.c
+		trigger = { has_trait = deceitful }
+		add_trait = rse_concubine_slave
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 10
+		}
+	}
+}
+
+# A jealous spouse of the master
+rse_bondage.0003 = {
+	type = character_event
+	title = rse_bondage.0003.t
+	desc = rse_bondage.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+	right_portrait = {
+		character = scope:jealous_spouse
+		animation = anger
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		has_trait = rse_concubine_slave
+		exists = employer
+		employer = { any_spouse = { NOT = { this = root } } }
+	}
+
+	immediate = {
+		employer = {
+			save_scope_as = master
+			random_spouse = {
+				limit = { NOT = { this = root } }
+				save_scope_as = jealous_spouse
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0003.a
+		scope:jealous_spouse = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_character_modifier = {
+			modifier = favoured_concubine_modifier
+			years = 5
+		}
+	}
+
+	option = {
+		name = rse_bondage.0003.b
+		scope:jealous_spouse = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 20
+			}
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 10
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0003.c
+		trigger = { intrigue >= 8 }
+		scope:jealous_spouse = {
+			add_opinion = {
+				modifier = wary_prisoner_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 5
+		}
+	}
+}
+
+# A fellow slave proposes escape
+rse_bondage.0004 = {
+	type = character_event
+	title = rse_bondage.0004.t
+	desc = rse_bondage.0004.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:fellow_slave
+		animation = personality_bold
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		scope:master = {
+			random_courtier = {
+				limit = {
+					has_trait = rse_enslaved
+					is_adult = yes
+					NOT = { this = root }
+				}
+				save_scope_as = fellow_slave
+			}
+		}
+		if = {
+			limit = { NOT = { exists = scope:fellow_slave } }
+			create_character = {
+				template_character = root
+				location = scope:master.capital_province
+				faith = root.faith
+				culture = root.culture
+				save_scope_as = fellow_slave
+				employer = scope:master
+			}
+			scope:fellow_slave = { add_trait = rse_enslaved }
+		}
+	}
+
+	option = {
+		name = rse_bondage.0004.a
+		random = {
+			chance = 40
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			move_to_pool = yes
+			scope:fellow_slave = {
+				remove_trait = rse_enslaved
+				add_trait = rse_freed_slave
+				move_to_pool = yes
+			}
+			add_prestige = medium_prestige_gain
+			add_character_modifier = {
+				modifier = daring_escape_modifier
+				years = 10
+			}
+		}
+		random = {
+			chance = 60
+			add_character_modifier = {
+				modifier = failed_escape_modifier
+				years = 5
+			}
+			scope:master = {
+				add_opinion = {
+					modifier = troublesome_prisoner_opinion
+					target = root
+					years = 20
+				}
+			}
+			scope:fellow_slave = {
+				death = { death_reason = death_execution killer = scope:master }
+			}
+			stress_impact = { compassionate = major_stress_impact_gain }
+		}
+	}
+
+	option = {
+		name = rse_bondage.0004.b
+		scope:fellow_slave = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+	}
+
+	option = {
+		name = rse_bondage.0004.c
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 25
+			}
+		}
+		scope:fellow_slave = {
+			death = { death_reason = death_execution killer = scope:master }
+		}
+		add_dread = minor_dread_gain
+		stress_impact = { just = major_stress_impact_gain compassionate = major_stress_impact_gain }
+	}
+}
+
+# Plead for manumission
+rse_bondage.0005 = {
+	type = character_event
+	title = rse_bondage.0005.t
+	desc = rse_bondage.0005.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	right_portrait = scope:master
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0005.a
+		random = {
+			chance = 25
+			modifier = {
+				add = 30
+				scope:master = { has_trait = compassionate }
+			}
+			modifier = {
+				add = 30
+				scope:master = { has_trait = rse_manumitter }
+			}
+			modifier = {
+				add = -20
+				scope:master = { has_trait = rse_taskmaster }
+			}
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			scope:master = {
+				add_opinion = {
+					modifier = grateful_opinion
+					target = root
+					years = 100
+				}
+			}
+			add_piety = medium_piety_gain
+		}
+		random = {
+			chance = 75
+			modifier = {
+				add = -30
+				scope:master = { has_trait = compassionate }
+			}
+			scope:master = {
+				add_opinion = {
+					modifier = groveling_prisoner_opinion
+					target = root
+					years = 15
+				}
+			}
+			stress_impact = { arrogant = medium_stress_impact_gain }
+		}
+	}
+
+	option = {
+		name = rse_bondage.0005.b
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+		add_prestige = minor_prestige_gain
+	}
+}
+
+# Bearing the master's child
+rse_bondage.0006 = {
+	type = character_event
+	title = rse_bondage.0006.t
+	desc = rse_bondage.0006.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+	right_portrait = scope:master
+
+	trigger = {
+		has_trait = rse_enslaved
+		has_trait = rse_concubine_slave
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = scope:master.faith
+			culture = scope:master.culture
+			gender_female_chance = 50
+			age = 0
+			save_scope_as = bastard_child
+			father = scope:master
+			mother = root
+		}
+	}
+
+	option = {
+		name = rse_bondage.0006.a
+		scope:bastard_child = {
+			set_relation_parent = root
+			set_relation_parent = scope:master
+		}
+		remove_trait = rse_enslaved
+		add_trait = rse_freed_slave
+		add_character_modifier = {
+			modifier = favoured_concubine_modifier
+			years = 15
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 30
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0006.b
+		scope:bastard_child = {
+			set_relation_parent = root
+			set_relation_parent = scope:master
+		}
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 10
+		}
+	}
+
+	option = {
+		name = rse_bondage.0006.c
+		scope:bastard_child = { death = { death_reason = death_natural } }
+		add_piety = minor_piety_loss
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			just = major_stress_impact_gain
+		}
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 5
+		}
+	}
+}
+
+# Sold to another master
+rse_bondage.0007 = {
+	type = character_event
+	title = rse_bondage.0007.t
+	desc = rse_bondage.0007.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	right_portrait = scope:new_master
+
+	trigger = {
+		has_trait = rse_enslaved
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = old_master }
+		random_player = {
+			limit = {
+				NOT = { this = scope:old_master }
+				NOT = { this = root }
+				is_landed = yes
+				OR = {
+					has_trait = rse_slaver_apprentice
+					has_trait = rse_slave_broker
+					has_trait = rse_taskmaster
+					has_trait = rse_grand_slaver
+					has_trait = greedy
+				}
+			}
+			save_scope_as = new_master
+		}
+		if = {
+			limit = { NOT = { exists = scope:new_master } }
+			every_living_character = {
+				limit = {
+					is_landed = yes
+					NOT = { this = scope:old_master }
+					NOT = { this = root }
+					highest_held_title_tier >= tier_county
+				}
+				save_scope_as = new_master
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0007.a
+		set_employer = scope:new_master
+		scope:new_master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0007.b
+		add_character_modifier = {
+			modifier = failed_escape_modifier
+			years = 3
+		}
+		set_employer = scope:new_master
+		scope:new_master = {
+			add_opinion = {
+				modifier = troublesome_prisoner_opinion
+				target = root
+				years = 15
+			}
+		}
+	}
+}
+
+# The master falls ill
+rse_bondage.0008 = {
+	type = character_event
+	title = rse_bondage.0008.t
+	desc = rse_bondage.0008.desc
+	theme = faith
+
+	left_portrait = {
+		character = scope:master
+		animation = ill
+	}
+	right_portrait = root
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0008.a
+		add_trait = rse_house_slave
+		scope:master = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0008.b
+		random = {
+			chance = 40
+			modifier = {
+				add = 30
+				intrigue >= 12
+			}
+			scope:master = {
+				death = { death_reason = death_poison killer = root }
+			}
+			remove_trait = rse_enslaved
+			move_to_pool = yes
+			add_dread = major_dread_gain
+		}
+		random = {
+			chance = 60
+			modifier = {
+				add = -30
+				intrigue >= 12
+			}
+			imprison = { target = scope:master }
+			scope:master = {
+				add_opinion = {
+					modifier = troublesome_prisoner_opinion
+					target = root
+					years = 50
+				}
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0008.c
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+	}
+}
