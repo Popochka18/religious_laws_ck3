@@ -174,3 +174,74 @@ rse_on_master_death_dispatch = {
 		}
 	}
 }
+
+# Prevent slaves from leaving the court — they are property, not free courtiers
+on_courtier_decided_to_move_to_pool = {
+	on_actions = {
+		rse_block_slave_departure
+	}
+}
+
+rse_block_slave_departure = {
+	trigger = {
+		exists = this
+		has_trait = rse_enslaved
+		exists = host
+	}
+	effect = {
+		# Forcibly re-bind to current host — chains do not loose easily
+		set_employer = host
+	}
+}
+
+# If a slave somehow ends up unemployed, re-bind them to the nearest landed lord
+on_unemployed = {
+	on_actions = {
+		rse_rebind_unemployed_slave
+	}
+}
+
+rse_rebind_unemployed_slave = {
+	trigger = {
+		exists = this
+		has_trait = rse_enslaved
+	}
+	effect = {
+		random_living_character = {
+			limit = {
+				is_landed = yes
+				is_adult = yes
+				NOT = { has_trait = rse_chainbreaker }
+				NOT = { has_trait = rse_manumitter }
+				NOT = { this = root }
+			}
+			set_employer = prev
+		}
+	}
+}
+
+# Catch the case where slaves end up in pool — re-bind them
+three_yearly_pulse = {
+	on_actions = {
+		rse_check_pool_slaves
+	}
+}
+
+rse_check_pool_slaves = {
+	trigger = {
+		exists = this
+		has_trait = rse_enslaved
+		NOT = { exists = employer }
+	}
+	effect = {
+		random_living_character = {
+			limit = {
+				is_landed = yes
+				is_adult = yes
+				NOT = { has_trait = rse_chainbreaker }
+				NOT = { has_trait = rse_manumitter }
+			}
+			set_employer = prev
+		}
+	}
+}

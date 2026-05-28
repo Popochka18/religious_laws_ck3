@@ -476,11 +476,6 @@ rse_orthsunni.0007 = {
 			years = 20
 		}
 		add_prestige = medium_prestige_gain
-		if = {
-			limit = { exists = scope:devshirme_target }
-			scope:devshirme_target = {
-			}
-		}
 	}
 
 	option = {

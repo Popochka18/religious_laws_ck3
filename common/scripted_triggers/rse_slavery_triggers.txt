@@ -125,7 +125,7 @@ rse_is_sunni_trigger = {
 		OR = {
 			this = faith:ashari
 			this = faith:maturidi
-			this = faith:athari
+			this = faith:ashari
 			this = faith:mutazila
 		}
 	}
