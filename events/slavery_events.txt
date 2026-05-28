@@ -591,13 +591,12 @@ rse_slave.0010 = {
 			save_scope_as = lowborn_beauty
 			employer = root
 			random_traits_list = {
-				count = 2
-				50 = { add_trait = beauty_good_3 }
+				count = 1
 				50 = { add_trait = gregarious }
 				50 = { add_trait = compassionate }
 				50 = { add_trait = patient }
 			}
-			add_trait = rse_low_born_beauty
+			add_trait = beauty_good_3
 		}
 	}
 
