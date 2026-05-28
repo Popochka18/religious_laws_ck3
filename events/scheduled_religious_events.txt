@@ -345,6 +345,65 @@ rse_sched.0001 = {
 				trigger_event = { id = rse_slave.0008 days = { 5 30 } }
 			}
 
+			# Christian slavery / Slavic captives chain
+			10 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					rse_slavic_slaver_culture_trigger = yes
+					gold >= 50
+				}
+				trigger_event = { id = rse_christslav.0001 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_held_county = { count >= 1 }
+					NOT = { has_character_flag = rse_christslav_port_decided }
+				}
+				trigger_event = { id = rse_christslav.0002 days = { 5 30 } }
+			}
+			6 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					exists = faith.religious_head
+					NOT = { faith.religious_head = root }
+					any_held_county = {
+						OR = {
+							has_county_modifier = slave_market_modifier
+							has_county_modifier = regulated_slave_market_modifier
+						}
+					}
+				}
+				trigger_event = { id = rse_christslav.0003 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					exists = cp:councillor_court_chaplain
+					any_courtier = {
+						has_trait = rse_enslaved
+						NOT = { faith = root.faith }
+					}
+				}
+				trigger_event = { id = rse_christslav.0004 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					rse_slavic_slaver_culture_trigger = yes
+				}
+				trigger_event = { id = rse_christslav.0005 days = { 5 30 } }
+			}
+			8 = {
+				trigger = {
+					faith = { religion_tag = christianity_religion }
+					any_prisoner = {
+						NOT = { faith = root.faith }
+					}
+				}
+				trigger_event = { id = rse_christslav.0006 days = { 5 30 } }
+			}
+
 			# Reconquest extended chain (Muslim over Christian)
 			10 = {
 				trigger = {

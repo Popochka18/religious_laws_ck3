@@ -19,7 +19,7 @@ rse_concubines_permitted_trigger = {
 	}
 }
 
-# Broad permission for slavery — any of: Islamic, pagan, nomadic, raider-culture
+# Broad permission for slavery — any of: Islamic, pagan, nomadic, raider-culture, Christian non-co-religionists
 rse_thralldom_permitted_trigger = {
 	OR = {
 		faith = { religion_tag = islam_religion }
@@ -47,6 +47,50 @@ rse_thralldom_permitted_trigger = {
 		has_trait = rse_grand_slaver
 		has_trait = rse_mamluk_lord
 		has_trait = rse_harem_keeper
+		# Christian rulers — only against non-Christians (the historical sklavoi / saqaliba trade)
+		AND = {
+			faith = { religion_tag = christianity_religion }
+			rse_christian_slavery_target_exists_trigger = yes
+		}
+	}
+}
+
+# Christian rulers can practice slavery if there are pagan/non-Christian targets nearby
+rse_christian_slavery_target_exists_trigger = {
+	OR = {
+		# Pagans / Muslims among courtiers
+		any_courtier = {
+			NOT = { faith = { religion_tag = christianity_religion } }
+		}
+		# Held counties of other faith
+		any_held_county = {
+			NOT = { faith = { religion_tag = christianity_religion } }
+		}
+		# Neighboring pagan/Muslim realm
+		any_neighboring_top_liege_realm_owner = {
+			NOT = { faith = { religion_tag = christianity_religion } }
+		}
+		# Slavic cultures (the historical sklavinoi)
+		any_neighboring_top_liege_realm_owner = {
+			culture = { has_cultural_pillar = heritage_west_slavic }
+		}
+		any_neighboring_top_liege_realm_owner = {
+			culture = { has_cultural_pillar = heritage_east_slavic }
+		}
+	}
+}
+
+# Culture that historically practiced Slavic slave-trading (German marcher lords, Italian merchants, Iberian, Norse)
+rse_slavic_slaver_culture_trigger = {
+	OR = {
+		culture = { has_cultural_pillar = heritage_north_germanic }
+		culture = { has_cultural_pillar = heritage_central_germanic }
+		culture = { has_cultural_pillar = heritage_west_germanic }
+		culture = { has_cultural_pillar = heritage_iberian }
+		culture = { has_cultural_pillar = heritage_latin }
+		culture = { has_cultural_pillar = heritage_byzantine }
+		culture = { has_cultural_tradition = tradition_seafaring }
+		culture = { has_cultural_tradition = tradition_warrior_culture }
 	}
 }
 
