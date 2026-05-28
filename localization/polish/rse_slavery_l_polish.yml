@@ -95,3 +95,8 @@
  rse_slavery_path_chainbreaker_decision_confirm:0 "Skruszyć łańcuchy"
  rse_find_lowborn_beauty_decision_confirm:0 "Rozesłać wieść"
  rse_organize_slave_market_decision_confirm:0 "Otworzyć targ"
+
+ rse_household_slave_position:0 "Niewolnik domowy"
+ rse_household_slave_position_desc:0 "Niewolnik związany z domem. Własność, a nie sługa — z własnej woli nie odejdzie."
+ rse_household_slave_position_search:0 "Znaleźć niewolnika domowego"
+ rse_household_slave_position_breakdown:0 "Dochód z pracy domowej"

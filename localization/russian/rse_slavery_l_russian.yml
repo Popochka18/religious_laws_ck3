@@ -95,3 +95,8 @@
  rse_slavery_path_chainbreaker_decision_confirm:0 "Сокрушить цепи"
  rse_find_lowborn_beauty_decision_confirm:0 "Разослать весть"
  rse_organize_slave_market_decision_confirm:0 "Открыть рынок"
+
+ rse_household_slave_position:0 "Домашний раб"
+ rse_household_slave_position_desc:0 "Раб, привязанный к дому. Собственность, а не вассал — по своей воле уйти не может."
+ rse_household_slave_position_search:0 "Найти домашнего раба"
+ rse_household_slave_position_breakdown:0 "Доход от домашнего труда"

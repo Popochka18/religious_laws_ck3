@@ -1,0 +1,89 @@
+﻿rse_household_slave_position = {
+	max_available_positions = 6
+	is_court_position = yes
+	sort_order = 1
+
+	court_position_category = ROLE_PERSONAL_COURT_POSITION
+
+	valid_position = {
+		scope:liege = {
+			is_landed = yes
+		}
+	}
+
+	is_shown = {
+		scope:liege = {
+			is_landed = yes
+			OR = {
+				any_courtier = { has_trait = rse_enslaved }
+				rse_thralldom_permitted_trigger = yes
+			}
+		}
+	}
+
+	is_shown_to_employee = {
+		has_trait = rse_enslaved
+	}
+
+	candidate_score = {
+		base = 10
+		modifier = {
+			add = 50
+			has_trait = rse_enslaved
+		}
+		modifier = {
+			add = 20
+			has_trait = rse_house_slave
+		}
+		modifier = {
+			add = 15
+			has_trait = rse_concubine_slave
+		}
+	}
+
+	is_valid_to_show_in_UI = {
+		scope:employee = { has_trait = rse_enslaved }
+	}
+
+	employer_modifier = {
+		monthly_income_mult = 0.02
+		stress_loss_mult = 0.05
+	}
+
+	scaling_employer_modifiers = {
+		terrible = {
+			monthly_income_mult = 0
+		}
+		poor = {
+			monthly_income_mult = 0.01
+		}
+		average = {
+			monthly_income_mult = 0.02
+		}
+		good = {
+			monthly_income_mult = 0.03
+		}
+		excellent = {
+			monthly_income_mult = 0.05
+		}
+	}
+
+	revoke_cost = {
+		prestige = 0
+	}
+
+	salary = {
+		round = no
+		value = 0
+	}
+
+	on_invalidated = {
+		scope:employee = {
+			# Re-bind as regular slave if invalidated
+			if = {
+				limit = { has_trait = rse_enslaved }
+				set_employer = scope:liege
+			}
+		}
+	}
+}
