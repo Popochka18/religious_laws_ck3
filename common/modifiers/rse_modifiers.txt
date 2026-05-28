@@ -711,3 +711,48 @@ patient_schemer_modifier = {
 	hostile_scheme_power_add = 10
 	hostile_scheme_resistance_add = 10
 }
+
+# --- Male slave-player modifiers ---
+
+arena_victor_modifier = {
+	icon = prestige_positive
+	prowess = 3
+	monthly_prestige = 0.3
+	dread_baseline_add = 5
+}
+
+broken_in_the_arena_modifier = {
+	icon = stress_negative
+	prowess = -2
+	health = -0.5
+	stress_gain_mult = 0.1
+}
+
+broken_back_modifier = {
+	icon = stress_negative
+	health = -1
+	prowess = -1
+	stress_gain_mult = 0.1
+}
+
+mamluk_recruit_modifier = {
+	icon = prestige_positive
+	martial = 1
+	prowess = 2
+	knight_effectiveness_mult = 0.1
+}
+
+overseer_modifier = {
+	icon = intrigue_positive
+	intrigue = 1
+	dread_baseline_add = 10
+	intimidated_opinion = 5
+}
+
+revolt_leader_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 1
+	prowess = 3
+	dread_baseline_add = 15
+	same_faith_opinion = 15
+}
