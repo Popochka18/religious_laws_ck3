@@ -663,3 +663,491 @@ rse_owner.0008 = {
 		}
 	}
 }
+
+# A slave caught stealing
+rse_owner.0009 = {
+	type = character_event
+	title = rse_owner.0009.t
+	desc = rse_owner.0009.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:thief_slave
+		animation = fear
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			save_scope_as = thief_slave
+		}
+	}
+
+	option = {
+		name = rse_owner.0009.a
+		scope:thief_slave = {
+			add_character_modifier = {
+				modifier = broken_back_modifier
+				years = 3
+			}
+		}
+		add_dread = medium_dread_gain
+		add_gold = 10
+	}
+
+	option = {
+		name = rse_owner.0009.b
+		scope:thief_slave = {
+			death = { death_reason = death_execution killer = root }
+		}
+		add_dread = major_dread_gain
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_owner.0009.c
+		scope:thief_slave = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = minor_piety_gain
+		add_prestige = minor_prestige_gain
+	}
+}
+
+# Plague in the slave quarters
+rse_owner.0010 = {
+	type = character_event
+	title = rse_owner.0010.t
+	desc = rse_owner.0010.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			count >= 3
+		}
+	}
+
+	option = {
+		name = rse_owner.0010.a
+		trigger = { gold >= 75 }
+		add_gold = -75
+		every_courtier = {
+			limit = { has_trait = rse_enslaved }
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 25
+			}
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_owner.0010.b
+		random_courtier = {
+			limit = { has_trait = rse_enslaved }
+			death = { death_reason = death_natural }
+		}
+		random_courtier = {
+			limit = { has_trait = rse_enslaved }
+			death = { death_reason = death_natural }
+		}
+		add_dread = minor_dread_gain
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_owner.0010.c
+		every_courtier = {
+			limit = { has_trait = rse_enslaved }
+			move_to_pool = yes
+		}
+		add_piety = minor_piety_gain
+	}
+}
+
+# A slave with noble blood
+rse_owner.0011 = {
+	type = character_event
+	title = rse_owner.0011.t
+	desc = rse_owner.0011.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:hidden_noble
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			save_scope_as = hidden_noble
+		}
+	}
+
+	option = {
+		name = rse_owner.0011.a
+		scope:hidden_noble = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_owner.0011.b
+		add_gold = 200
+		scope:hidden_noble = { banish = yes }
+	}
+
+	option = {
+		name = rse_owner.0011.c
+		scope:hidden_noble = {
+			death = { death_reason = death_execution killer = root }
+		}
+		add_dread = major_dread_gain
+		stress_impact = { just = major_stress_impact_gain }
+	}
+}
+
+# A slave begs to convert to your faith
+rse_owner.0012 = {
+	type = character_event
+	title = rse_owner.0012.t
+	desc = rse_owner.0012.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:converting_slave
+		animation = beg
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+			NOT = { faith = root.faith }
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+				NOT = { faith = root.faith }
+			}
+			save_scope_as = converting_slave
+		}
+	}
+
+	option = {
+		name = rse_owner.0012.a
+		scope:converting_slave = {
+			set_faith = root.faith
+			add_trait = devoted
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_piety = major_piety_gain
+	}
+
+	option = {
+		name = rse_owner.0012.b
+		scope:converting_slave = {
+			set_faith = root.faith
+			add_trait = devoted
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_owner.0012.c
+		scope:converting_slave = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = medium_piety_loss
+		stress_impact = { zealous = major_stress_impact_gain }
+	}
+}
+
+# A relative offers to ransom your slave
+rse_owner.0013 = {
+	type = character_event
+	title = rse_owner.0013.t
+	desc = rse_owner.0013.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:ransoming_kin
+		animation = beg
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			save_scope_as = ransomed_slave
+		}
+		create_character = {
+			template_character = root
+			location = root.capital_province
+			faith = scope:ransomed_slave.faith
+			culture = scope:ransomed_slave.culture
+			save_scope_as = ransoming_kin
+		}
+	}
+
+	option = {
+		name = rse_owner.0013.a
+		add_gold = 150
+		scope:ransomed_slave = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			move_to_pool = yes
+		}
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = rse_owner.0013.b
+		add_gold = 300
+		scope:ransomed_slave = {
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			move_to_pool = yes
+		}
+		scope:ransoming_kin = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 50
+			}
+		}
+	}
+
+	option = {
+		name = rse_owner.0013.c
+		scope:ransoming_kin = { banish = yes }
+		add_piety = minor_piety_loss
+		scope:ransomed_slave = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 50
+			}
+		}
+	}
+}
+
+# A slave with rare artistic talent
+rse_owner.0014 = {
+	type = character_event
+	title = rse_owner.0014.t
+	desc = rse_owner.0014.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:artist_slave
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			save_scope_as = artist_slave
+		}
+	}
+
+	option = {
+		name = rse_owner.0014.a
+		add_gold = -50
+		add_character_modifier = {
+			modifier = patron_of_debate_modifier
+			years = 10
+		}
+		scope:artist_slave = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_prestige = medium_prestige_gain
+	}
+
+	option = {
+		name = rse_owner.0014.b
+		add_gold = 200
+		scope:artist_slave = { banish = yes }
+	}
+
+	option = {
+		name = rse_owner.0014.c
+		scope:artist_slave = {
+			add_trait = rse_house_slave
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_prestige = minor_prestige_gain
+	}
+}
+
+# A slave's plot uncovered
+rse_owner.0015 = {
+	type = character_event
+	title = rse_owner.0015.t
+	desc = rse_owner.0015.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	right_portrait = {
+		character = scope:plotting_slave
+		animation = fear
+	}
+
+	trigger = {
+		is_landed = yes
+		any_courtier = {
+			has_trait = rse_enslaved
+			is_adult = yes
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				has_trait = rse_enslaved
+				is_adult = yes
+			}
+			save_scope_as = plotting_slave
+		}
+	}
+
+	option = {
+		name = rse_owner.0015.a
+		scope:plotting_slave = {
+			death = { death_reason = death_execution killer = root }
+		}
+		every_courtier = {
+			limit = { has_trait = rse_enslaved }
+			add_opinion = {
+				modifier = wary_prisoner_opinion
+				target = root
+				years = 10
+			}
+		}
+		add_dread = major_dread_gain
+	}
+
+	option = {
+		name = rse_owner.0015.b
+		scope:plotting_slave = {
+			add_trait = rse_eunuch
+			add_character_modifier = {
+				modifier = broken_back_modifier
+				years = 8
+			}
+		}
+		add_dread = medium_dread_gain
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_owner.0015.c
+		trigger = { intrigue >= 8 }
+		scope:plotting_slave = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 25
+			}
+		}
+		add_intrigue = 1
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 10
+		}
+	}
+}

@@ -141,6 +141,13 @@ rse_owner_yearly = {
 		100 = rse_owner.0006
 		100 = rse_owner.0007
 		100 = rse_owner.0008
+		100 = rse_owner.0009
+		100 = rse_owner.0010
+		100 = rse_owner.0011
+		100 = rse_owner.0012
+		100 = rse_owner.0013
+		100 = rse_owner.0014
+		100 = rse_owner.0015
 	}
 }
 
