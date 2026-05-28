@@ -2456,3 +2456,647 @@ rse_bondage.0029 = {
 		}
 	}
 }
+
+# Asked to tutor the master's daughter
+rse_bondage.0030 = {
+	type = character_event
+	title = rse_bondage.0030.t
+	desc = rse_bondage.0030.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:young_lady
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+		learning >= 6
+		employer = {
+			any_child = {
+				is_alive = yes
+				is_female = yes
+				NOT = { is_adult = yes }
+				age >= 7
+			}
+		}
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		scope:master = {
+			random_child = {
+				limit = {
+					is_alive = yes
+					is_female = yes
+					NOT = { is_adult = yes }
+					age >= 7
+				}
+				save_scope_as = young_lady
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0030.a
+		scope:young_lady = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_learning = 1
+		add_diplomacy = 1
+		add_trait = rse_house_slave
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 10
+		}
+	}
+
+	option = {
+		name = rse_bondage.0030.b
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 25
+			}
+		}
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+	}
+
+	option = {
+		name = rse_bondage.0030.c
+		scope:master = {
+			add_opinion = {
+				modifier = troublesome_prisoner_opinion
+				target = root
+				years = 15
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+}
+
+# A relative comes looking for you
+rse_bondage.0031 = {
+	type = character_event
+	title = rse_bondage.0031.t
+	desc = rse_bondage.0031.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:relative
+		animation = beg
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = root.faith
+			culture = root.culture
+			save_scope_as = relative
+		}
+	}
+
+	option = {
+		name = rse_bondage.0031.a
+		random = {
+			chance = 40
+			modifier = {
+				add = 30
+				scope:master = { has_trait = greedy }
+			}
+			modifier = {
+				add = -20
+				scope:master = { has_trait = rse_taskmaster }
+			}
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			move_to_pool = yes
+			scope:relative = {
+				add_opinion = {
+					modifier = grateful_opinion
+					target = root
+					years = 100
+				}
+			}
+		}
+		random = {
+			chance = 60
+			scope:relative = {
+				death = { death_reason = death_disappearance }
+			}
+			stress_impact = {
+				compassionate = major_stress_impact_gain
+				just = major_stress_impact_gain
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0031.b
+		scope:relative = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 50
+			}
+		}
+		add_character_modifier = {
+			modifier = bribed_jailers_modifier
+			years = 3
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0031.c
+		scope:relative = { banish = yes }
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 5
+		}
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+}
+
+# Sent to spy on a visiting noble
+rse_bondage.0032 = {
+	type = character_event
+	title = rse_bondage.0032.t
+	desc = rse_bondage.0032.desc
+	theme = faith
+
+	left_portrait = scope:master
+	right_portrait = root
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = scope:master.faith
+			culture = scope:master.culture
+			gender_female_chance = 0
+			save_scope_as = visiting_target
+		}
+	}
+
+	option = {
+		name = rse_bondage.0032.a
+		add_intrigue = 1
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 5
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 20
+			}
+		}
+		add_gold = 25
+	}
+
+	option = {
+		name = rse_bondage.0032.b
+		scope:visiting_target = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = wary_prisoner_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0032.c
+		trigger = { intrigue >= 8 }
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 15
+		}
+		add_intrigue = 2
+		scope:visiting_target = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 20
+			}
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 15
+			}
+		}
+	}
+}
+
+# Suspected of poisoning the master
+rse_bondage.0033 = {
+	type = character_event
+	title = rse_bondage.0033.t
+	desc = rse_bondage.0033.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+	right_portrait = {
+		character = scope:master
+		animation = anger
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0033.a
+		random = {
+			chance = 50
+			modifier = {
+				add = 25
+				diplomacy >= 10
+			}
+			scope:master = {
+				add_opinion = {
+					modifier = grateful_opinion
+					target = root
+					years = 30
+				}
+			}
+			add_character_modifier = {
+				modifier = bribed_jailers_modifier
+				years = 5
+			}
+		}
+		random = {
+			chance = 50
+			modifier = {
+				add = -25
+				diplomacy >= 10
+			}
+			imprison = { target = scope:master }
+		}
+	}
+
+	option = {
+		name = rse_bondage.0033.b
+		random_courtier = {
+			limit = {
+				NOT = { this = root }
+				NOT = { this = scope:master }
+			}
+			save_scope_as = scapegoat
+		}
+		scope:scapegoat = {
+			imprison = { target = scope:master }
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_dread = minor_dread_gain
+		stress_impact = { just = major_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_bondage.0033.c
+		trigger = { intrigue >= 10 }
+		random = {
+			chance = 60
+			scope:master = {
+				death = { death_reason = death_poison killer = root }
+			}
+			remove_trait = rse_enslaved
+			move_to_pool = yes
+		}
+		random = {
+			chance = 40
+			scope:master = {
+				death = { death_reason = death_execution killer = scope:master }
+			}
+		}
+	}
+}
+
+# Your daughter is taken as a wedding gift
+rse_bondage.0034 = {
+	type = character_event
+	title = rse_bondage.0034.t
+	desc = rse_bondage.0034.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:my_daughter
+		animation = shame
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+		any_child = {
+			is_female = yes
+			is_alive = yes
+			age >= 14
+			NOT = { has_trait = rse_enslaved }
+		}
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		random_child = {
+			limit = {
+				is_female = yes
+				is_alive = yes
+				age >= 14
+			}
+			save_scope_as = my_daughter
+			add_trait = rse_enslaved
+		}
+	}
+
+	option = {
+		name = rse_bondage.0034.a
+		scope:my_daughter = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 8
+		}
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+
+	option = {
+		name = rse_bondage.0034.b
+		scope:my_daughter = {
+			death = { death_reason = death_disappearance killer = scope:master }
+		}
+		add_character_modifier = {
+			modifier = broken_back_modifier
+			years = 5
+		}
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			just = major_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = rse_bondage.0034.c
+		trigger = { intrigue >= 8 }
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 20
+		}
+		scope:my_daughter = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 100
+			}
+		}
+	}
+}
+
+# An old slave dies and you tend the body
+rse_bondage.0035 = {
+	type = character_event
+	title = rse_bondage.0035.t
+	desc = rse_bondage.0035.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = root.faith
+			culture = root.culture
+			save_scope_as = dead_slave
+		}
+		scope:dead_slave = { add_trait = rse_enslaved }
+	}
+
+	option = {
+		name = rse_bondage.0035.a
+		scope:dead_slave = {
+			death = { death_reason = death_natural }
+		}
+		add_piety = medium_piety_gain
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 5
+		}
+		stress_impact = { compassionate = minor_stress_impact_loss }
+	}
+
+	option = {
+		name = rse_bondage.0035.b
+		scope:dead_slave = {
+			death = { death_reason = death_natural }
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0035.c
+		trigger = { gold >= 0 }
+		scope:dead_slave = {
+			death = { death_reason = death_natural }
+		}
+		add_gold = 15
+		add_piety = medium_piety_loss
+		stress_impact = { compassionate = medium_stress_impact_gain }
+	}
+}
+
+# A former slave now free arrives at court
+rse_bondage.0036 = {
+	type = character_event
+	title = rse_bondage.0036.t
+	desc = rse_bondage.0036.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:former_slave
+		animation = personality_bold
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = root.faith
+			culture = root.culture
+			gender_female_chance = 100
+			save_scope_as = former_slave
+		}
+		scope:former_slave = { add_trait = rse_freed_slave }
+	}
+
+	option = {
+		name = rse_bondage.0036.a
+		scope:former_slave = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 100
+			}
+		}
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 5
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0036.b
+		random = {
+			chance = 35
+			modifier = {
+				add = 20
+				intrigue >= 10
+			}
+			modifier = {
+				add = 20
+				has_character_modifier = bribed_jailers_modifier
+			}
+			remove_trait = rse_enslaved
+			add_trait = rse_freed_slave
+			move_to_pool = yes
+			add_character_modifier = {
+				modifier = daring_escape_modifier
+				years = 10
+			}
+			scope:former_slave = {
+				add_opinion = {
+					modifier = grateful_opinion
+					target = root
+					years = 100
+				}
+			}
+		}
+		random = {
+			chance = 65
+			add_character_modifier = {
+				modifier = failed_escape_modifier
+				years = 5
+			}
+			scope:master = {
+				add_opinion = {
+					modifier = troublesome_prisoner_opinion
+					target = root
+					years = 15
+				}
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0036.c
+		scope:former_slave = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+	}
+}
