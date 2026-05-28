@@ -645,3 +645,47 @@ slaves_seized_modifier = {
 	county_opinion_add = -25
 	monthly_county_control_change_factor = -0.1
 }
+
+# --- Captive modifiers ---
+
+bribed_jailers_modifier = {
+	icon = gold_negative
+	intrigue = 1
+	hostile_scheme_resistance_add = 5
+}
+
+stoic_in_chains_modifier = {
+	icon = faith_positive
+	monthly_piety = 0.5
+	stress_loss_mult = 0.1
+}
+
+martyred_in_spirit_modifier = {
+	icon = faith_positive
+	monthly_piety = 1
+	same_faith_opinion = 20
+}
+
+false_convert_modifier = {
+	icon = stress_negative
+	monthly_piety = -0.3
+	intrigue = 2
+}
+
+daring_escape_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+	prowess = 2
+}
+
+failed_escape_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.1
+	prowess = -1
+}
+
+defiant_in_chains_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+	dread_baseline_add = 5
+}

@@ -57,3 +57,27 @@ mamluk_loyalty_opinion = {
 devshirme_loyalty_opinion = {
 	opinion = 75
 }
+
+groveling_prisoner_opinion = {
+	opinion = -15
+}
+
+troublesome_prisoner_opinion = {
+	opinion = -30
+}
+
+useful_prisoner_opinion = {
+	opinion = 20
+}
+
+wary_prisoner_opinion = {
+	opinion = -10
+}
+
+secret_friend_opinion = {
+	opinion = 40
+}
+
+scorned_opinion = {
+	opinion = -25
+}

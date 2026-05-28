@@ -378,3 +378,43 @@ l_english:
  rse_reconquest.0020.a:0 "There is no debate. Take his head."
  rse_reconquest.0020.b:0 "Let him speak. A wise ruler listens to all."
  rse_reconquest.0020.c:0 "He has been bested. Let him take the shahada — or die."
+
+ rse_captive.0001.t:0 "Iron and Straw"
+ rse_captive.0001.desc:0 "The cell is cold, the straw foul, and [captor.GetTitledFirstName]'s guards regard you with open contempt. The first days in chains will set the tone for the rest."
+ rse_captive.0001.a:0 "Slip silver to the jailers. (-50 gold)"
+ rse_captive.0001.b:0 "Endure with dignity. They shall see no weakness."
+ rse_captive.0001.c:0 "Plead for mercy. I am no warrior."
+
+ rse_captive.0002.t:0 "Convert or Rot"
+ rse_captive.0002.desc:0 "[captor.GetTitledFirstName] visits your cell with an offer: renounce your faith, embrace theirs, and walk free this very hour. Refuse, and rot."
+ rse_captive.0002.a:0 "Convert. Survival comes first."
+ rse_captive.0002.b:0 "Never. I die in my faith."
+ rse_captive.0002.c:0 "Pretend to convert — I shall recant the moment I am free."
+
+ rse_captive.0003.t:0 "An Open Door"
+ rse_captive.0003.desc:0 "A guard's careless hand, a bribed servant, an unlocked grate — circumstances align. An escape attempt could be made, if you have the nerve."
+ rse_captive.0003.a:0 "Run for it!"
+ rse_captive.0003.b:0 "Wait. The moment is not yet right."
+
+ rse_captive.0004.t:0 "A Visitor by Candlelight"
+ rse_captive.0004.desc:0 "[visitor.GetTitledFirstName], one of [captor.GetTitledFirstName]'s own household, slips into your cell by candlelight. They speak softly — they pity you, they say. They might help, for a price... or for nothing at all."
+ rse_captive.0004.a:0 "Accept their friendship gratefully."
+ rse_captive.0004.b:0 "Refuse. I will owe nothing to my captor's kin."
+ rse_captive.0004.c:0 "Report them to the captor."
+
+ rse_captive.0005.t:0 "Sign Away Your Lands"
+ rse_captive.0005.desc:0 "[captor.GetTitledFirstName] enters the cell with a scroll. The terms are written: surrender a county, and walk free. Refuse, and rot until your bones bleach."
+ rse_captive.0005.a:0 "Sign. A title is no use to a corpse."
+ rse_captive.0005.b:0 "Never. They shall pry the seal from my dead hand."
+
+ rse_captive.0006.t:0 "A Cellmate's Whisper"
+ rse_captive.0006.desc:0 "[cellmate.GetTitledFirstName], who shares your cell, has been here longer. They know the rhythms of the guards, the weak walls, the bribable cook. They propose a joint escape."
+ rse_captive.0006.a:0 "Try the escape together."
+ rse_captive.0006.b:0 "Use what they know to bribe the jailers myself."
+ rse_captive.0006.c:0 "Betray them to the captor. The information has value."
+
+ rse_captive.0007.t:0 "A Slaver's Bargain"
+ rse_captive.0007.desc:0 "[captor.GetTitledFirstName] no longer wishes the trouble of holding you. The choice they offer is plain: pay a steep ransom, become a slave, or remain forever in this cell."
+ rse_captive.0007.a:0 "Pay the ransom. (-150 gold)"
+ rse_captive.0007.b:0 "Take the chains. Better a slave than dead."
+ rse_captive.0007.c:0 "Defy them both. I am no chattel."

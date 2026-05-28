@@ -378,3 +378,43 @@ l_polish:
  rse_reconquest.0020.a:0 "Nie ma dysputy. Wziąć mu głowę."
  rse_reconquest.0020.b:0 "Niech mówi. Mądry władca słucha wszystkich."
  rse_reconquest.0020.c:0 "Został pokonany. Niech przyjmie szahadę — lub umrze."
+
+ rse_captive.0001.t:0 "Żelazo i słoma"
+ rse_captive.0001.desc:0 "Cela jest zimna, słoma śmierdzi, a straż [captor.GetTitledFirstName] patrzy na ciebie z otwartą pogardą. Pierwsze dni w łańcuchach nadadzą ton wszystkiemu, co dalej."
+ rse_captive.0001.a:0 "Wsunąć strażnikom srebro. (-50 złota)"
+ rse_captive.0001.b:0 "Znosić z godnością. Słabości nie ujrzą."
+ rse_captive.0001.c:0 "Błagać o łaskę. Nie jestem wojownikiem."
+
+ rse_captive.0002.t:0 "Nawróć się albo zgnij"
+ rse_captive.0002.desc:0 "[captor.GetTitledFirstName] odwiedza twoją celę z ofertą: wyrzeknij się wiary, przyjmij jego, a tego dnia wyjdziesz na wolność. Odmów — zgnijesz."
+ rse_captive.0002.a:0 "Nawrócić się. Przeżycie najpierw."
+ rse_captive.0002.b:0 "Nigdy. Umrę w mej wierze."
+ rse_captive.0002.c:0 "Udać nawrócenie — odwołam, gdy tylko wyjdę."
+
+ rse_captive.0003.t:0 "Otwarte drzwi"
+ rse_captive.0003.desc:0 "Niedbała ręka strażnika, przekupiony sługa, niezamknięta krata — okoliczności się zbiegły. Próba ucieczki jest możliwa, jeśli starczy odwagi."
+ rse_captive.0003.a:0 "Uciekać!"
+ rse_captive.0003.b:0 "Czekać. Chwila jeszcze nie nadeszła."
+
+ rse_captive.0004.t:0 "Gość przy świecy"
+ rse_captive.0004.desc:0 "[visitor.GetTitledFirstName], jedna z domowników [captor.GetTitledFirstName], wślizguje się do twojej celi przy świecy. Mówi cicho — żałuje ciebie. Pomoże za zapłatę... a może i za darmo."
+ rse_captive.0004.a:0 "Z wdzięcznością przyjąć przyjaźń."
+ rse_captive.0004.b:0 "Odmówić. Nie będę dłużny krewnemu tyrana."
+ rse_captive.0004.c:0 "Donieść na nią porywaczowi."
+
+ rse_captive.0005.t:0 "Podpisz wyrzeczenie się ziem"
+ rse_captive.0005.desc:0 "[captor.GetTitledFirstName] wchodzi do celi ze zwojem. Warunki spisane: oddaj hrabstwo — bądź wolny. Odmów — będziesz gnił, aż kości się wybielą."
+ rse_captive.0005.a:0 "Podpisać. Tytuł zbędny trupowi."
+ rse_captive.0005.b:0 "Nigdy. Pieczęć wyrwą z mej martwej dłoni."
+
+ rse_captive.0006.t:0 "Szept współwięźnia"
+ rse_captive.0006.desc:0 "[cellmate.GetTitledFirstName], dzielący z tobą celę, siedzi tu dłużej. Zna rytmy straży, słabe ściany, przekupnego kucharza. Proponuje wspólną ucieczkę."
+ rse_captive.0006.a:0 "Uciekać razem."
+ rse_captive.0006.b:0 "Wykorzystać jego wiedzę, by samemu przekupić strażników."
+ rse_captive.0006.c:0 "Wydać go porywaczowi. Wiedza jest cenna."
+
+ rse_captive.0007.t:0 "Targ handlarza"
+ rse_captive.0007.desc:0 "[captor.GetTitledFirstName] nie chce się już z tobą wodzić. Wybór prosty: zapłacić wysoki okup, stać się niewolnikiem, lub zgnić tu na wieki."
+ rse_captive.0007.a:0 "Zapłacić okup. (-150 złota)"
+ rse_captive.0007.b:0 "Przyjąć łańcuchy. Lepiej niewolnik niż trup."
+ rse_captive.0007.c:0 "Sprzeciwić się obu. Nie jestem bydłem."
