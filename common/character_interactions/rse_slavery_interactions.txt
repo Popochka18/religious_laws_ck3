@@ -44,30 +44,15 @@
 
 	auto_accept = { always = yes }
 
-	ai_frequency = 100
+	ai_frequency = 0
 
 	ai_potential = {
 		exists = this
 		is_ai = yes
-		OR = {
-			has_trait = rse_slaver_apprentice
-			has_trait = rse_slave_broker
-			has_trait = rse_taskmaster
-			has_trait = rse_grand_slaver
-			has_trait = greedy
-		}
 	}
 
 	ai_will_do = {
-		base = 50
-		modifier = {
-			add = 30
-			scope:actor = { has_trait = rse_grand_slaver }
-		}
-		modifier = {
-			add = -50
-			scope:actor = { has_trait = compassionate }
-		}
+		base = 0
 	}
 }
 
@@ -94,9 +79,6 @@ rse_raid_for_slaves_interaction = {
 	is_valid_showing_failures_only = {
 		scope:actor = {
 			is_at_war_with = scope:recipient
-			any_character_war = {
-				is_war_leader = scope:actor
-			}
 		}
 	}
 
@@ -117,8 +99,6 @@ rse_raid_for_slaves_interaction = {
 			add_gold = 150
 			add_prestige = -25
 			add_piety = minor_piety_loss
-
-			# Create slave courtiers
 			create_character = {
 				template_character = scope:actor
 				location = scope:actor.capital_province
@@ -153,38 +133,7 @@ rse_raid_for_slaves_interaction = {
 					years = 100
 				}
 			}
-
-			# Bigger payoff for established slavers
-			if = {
-				limit = {
-					OR = {
-						has_trait = rse_slave_broker
-						has_trait = rse_taskmaster
-						has_trait = rse_grand_slaver
-					}
-				}
-				add_gold = 100
-				create_character = {
-					template_character = scope:actor
-					location = scope:actor.capital_province
-					faith = scope:raided_county.faith
-					culture = scope:raided_county.culture
-					gender_female_chance = 50
-					save_scope_as = slave_captive_3
-					employer = scope:actor
-				}
-				scope:slave_captive_3 = {
-					add_trait = rse_enslaved
-					add_opinion = {
-						modifier = enslaved_opinion
-						target = scope:actor
-						years = 100
-					}
-				}
-			}
 		}
-
-		# Send notice to victim
 		scope:recipient = {
 			trigger_event = { id = rse_slave.0009 days = { 1 5 } }
 		}
@@ -192,22 +141,15 @@ rse_raid_for_slaves_interaction = {
 
 	auto_accept = { always = yes }
 
-	ai_frequency = 100
+	ai_frequency = 0
 
 	ai_potential = {
 		exists = this
 		is_ai = yes
-		is_at_war = yes
-		OR = {
-			has_trait = rse_slaver_apprentice
-			has_trait = rse_slave_broker
-			has_trait = rse_taskmaster
-			has_trait = rse_grand_slaver
-		}
 	}
 
 	ai_will_do = {
-		base = 40
+		base = 0
 	}
 }
 
@@ -234,10 +176,6 @@ rse_free_house_slave_interaction = {
 		scope:recipient = {
 			remove_trait = rse_enslaved
 			add_trait = rse_freed_slave
-			remove_opinion = {
-				modifier = enslaved_opinion
-				target = scope:actor
-			}
 			add_opinion = {
 				modifier = grateful_opinion
 				target = scope:actor
@@ -252,24 +190,15 @@ rse_free_house_slave_interaction = {
 
 	auto_accept = { always = yes }
 
-	ai_frequency = 100
+	ai_frequency = 0
 
 	ai_potential = {
 		exists = this
 		is_ai = yes
-		OR = {
-			has_trait = compassionate
-			has_trait = rse_manumitter
-			has_trait = rse_chainbreaker
-		}
 	}
 
 	ai_will_do = {
-		base = 30
-		modifier = {
-			add = 50
-			scope:actor = { has_trait = compassionate }
-		}
+		base = 0
 	}
 }
 
@@ -304,20 +233,15 @@ rse_designate_concubine_interaction = {
 
 	auto_accept = { always = yes }
 
-	ai_frequency = 100
+	ai_frequency = 0
 
 	ai_potential = {
 		exists = this
 		is_ai = yes
-		is_male = yes
-		OR = {
-			has_trait = lustful
-			has_trait = rse_harem_keeper
-		}
 	}
 
 	ai_will_do = {
-		base = 30
+		base = 0
 	}
 }
 
@@ -355,9 +279,14 @@ rse_make_eunuch_interaction = {
 
 	auto_accept = { always = yes }
 
-	ai_frequency = 100
+	ai_frequency = 0
 
 	ai_potential = {
 		exists = this
 		is_ai = yes
-		OR = {
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
