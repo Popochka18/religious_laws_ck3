@@ -13,7 +13,7 @@
 		}
 		scope:recipient = {
 			is_imprisoned_by = scope:actor
-			NOT = { has_trait = rse_enslaved }
+			rse_can_be_enslaved_trigger = yes
 		}
 	}
 
@@ -361,12 +361,3 @@ rse_make_eunuch_interaction = {
 		exists = this
 		is_ai = yes
 		OR = {
-			has_trait = cruel
-			has_trait = rse_taskmaster
-		}
-	}
-
-	ai_will_do = {
-		base = 20
-	}
-}
