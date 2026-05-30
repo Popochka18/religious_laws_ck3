@@ -115,7 +115,18 @@ rse_is_sunni_trigger = {
 
 # A character may be enslaved only if they are NOT a member of a noble dynasty.
 # Lowborn folk, freshly-created captives and commoners can be taken; nobles cannot.
+# A character may be enslaved if they are lowborn OR a member of an
+# obscure (low-prestige) dynasty. Members of renowned dynasties — those
+# whose dynasty has risen to splendour — are protected from enslavement.
 rse_can_be_enslaved_trigger = {
-	is_lowborn = yes
 	NOT = { has_trait = rse_enslaved }
+	OR = {
+		is_lowborn = yes
+		AND = {
+			exists = dynasty
+			dynasty = {
+				dynasty_prestige_level <= 1
+			}
+		}
+	}
 }
