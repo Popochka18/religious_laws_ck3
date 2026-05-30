@@ -4181,3 +4181,438 @@ rse_bondage.0050 = {
 		add_piety = minor_piety_gain
 	}
 }
+
+# A merchant's wife offers an apprenticeship
+rse_bondage.0051 = {
+	type = character_event
+	title = rse_bondage.0051.t
+	desc = rse_bondage.0051.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:merchant_wife
+		animation = personality_content
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = root.faith
+			culture = root.culture
+			gender_female_chance = 100
+			save_scope_as = merchant_wife
+		}
+	}
+
+	option = {
+		name = rse_bondage.0051.a
+		add_stewardship = 1
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 10
+		}
+		scope:merchant_wife = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 30
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0051.b
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 5
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0051.c
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 15
+			}
+		}
+	}
+}
+
+# The harem intrigue deepens
+rse_bondage.0052 = {
+	type = character_event
+	title = rse_bondage.0052.t
+	desc = rse_bondage.0052.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:head_wife
+		animation = scheme
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		has_trait = rse_concubine_slave
+		is_female = yes
+		is_adult = yes
+		exists = employer
+		employer = { any_spouse = { count >= 1 } }
+	}
+
+	immediate = {
+		employer = {
+			save_scope_as = master
+			random_spouse = { save_scope_as = head_wife }
+		}
+	}
+
+	option = {
+		name = rse_bondage.0052.a
+		trigger = { intrigue >= 8 }
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 15
+		}
+		scope:head_wife = {
+			add_opinion = {
+				modifier = scorned_opinion
+				target = root
+				years = 30
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0052.b
+		scope:head_wife = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 30
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0052.c
+		add_character_modifier = {
+			modifier = favoured_concubine_modifier
+			years = 5
+		}
+		stress_impact = { craven = minor_stress_impact_gain }
+	}
+}
+
+# A famine strikes the household
+rse_bondage.0053 = {
+	type = character_event
+	title = rse_bondage.0053.t
+	desc = rse_bondage.0053.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0053.a
+		add_character_modifier = {
+			modifier = broken_back_modifier
+			years = 3
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0053.b
+		trigger = { intrigue >= 6 }
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 5
+		}
+		add_gold = 10
+	}
+
+	option = {
+		name = rse_bondage.0053.c
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 3
+		}
+	}
+}
+
+# The master proposes freedom for a price
+rse_bondage.0054 = {
+	type = character_event
+	title = rse_bondage.0054.t
+	desc = rse_bondage.0054.desc
+	theme = faith
+
+	left_portrait = scope:master
+	right_portrait = root
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0054.a
+		add_character_modifier = {
+			modifier = favoured_concubine_modifier
+			years = 8
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 20
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0054.b
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 5
+		}
+		add_piety = medium_piety_gain
+	}
+
+	option = {
+		name = rse_bondage.0054.c
+		trigger = { intrigue >= 10 }
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 10
+		}
+	}
+}
+
+# A kindly old freedman gives counsel
+rse_bondage.0055 = {
+	type = character_event
+	title = rse_bondage.0055.t
+	desc = rse_bondage.0055.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:old_freedman
+		animation = personality_content
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			faith = root.faith
+			culture = root.culture
+			gender_female_chance = 0
+			age = { 55 70 }
+			save_scope_as = old_freedman
+		}
+		scope:old_freedman = { add_trait = rse_freed_slave }
+	}
+
+	option = {
+		name = rse_bondage.0055.a
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 8
+		}
+		add_learning = 1
+	}
+
+	option = {
+		name = rse_bondage.0055.b
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 8
+		}
+		scope:old_freedman = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 30
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0055.c
+		add_piety = medium_piety_gain
+		add_character_modifier = {
+			modifier = martyred_in_spirit_modifier
+			years = 5
+		}
+	}
+}
+
+# The master's gambling debt
+rse_bondage.0056 = {
+	type = character_event
+	title = rse_bondage.0056.t
+	desc = rse_bondage.0056.desc
+	theme = faith
+
+	left_portrait = root
+	right_portrait = {
+		character = scope:creditor
+		animation = personality_greedy
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+		create_character = {
+			template_character = root
+			location = scope:master.capital_province
+			gender_female_chance = 0
+			save_scope_as = creditor
+		}
+	}
+
+	option = {
+		name = rse_bondage.0056.a
+		set_employer = scope:creditor
+		add_character_modifier = {
+			modifier = silent_defiance_modifier
+			years = 3
+		}
+	}
+
+	option = {
+		name = rse_bondage.0056.b
+		trigger = { intrigue >= 8 }
+		add_character_modifier = {
+			modifier = patient_schemer_modifier
+			years = 10
+		}
+		scope:creditor = {
+			add_opinion = {
+				modifier = secret_friend_opinion
+				target = root
+				years = 20
+			}
+		}
+	}
+
+	option = {
+		name = rse_bondage.0056.c
+		scope:master = {
+			add_opinion = {
+				modifier = useful_prisoner_opinion
+				target = root
+				years = 15
+			}
+		}
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 3
+		}
+	}
+}
+
+# Freedom at last — manumitted in the master's will
+rse_bondage.0057 = {
+	type = character_event
+	title = rse_bondage.0057.t
+	desc = rse_bondage.0057.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	trigger = {
+		has_trait = rse_enslaved
+		is_female = yes
+		is_adult = yes
+		exists = employer
+		age >= 40
+	}
+
+	immediate = {
+		employer = { save_scope_as = master }
+	}
+
+	option = {
+		name = rse_bondage.0057.a
+		remove_trait = rse_enslaved
+		add_trait = rse_freed_slave
+		move_to_pool = yes
+		add_piety = medium_piety_gain
+		add_character_modifier = {
+			modifier = stoic_in_chains_modifier
+			years = 5
+		}
+	}
+
+	option = {
+		name = rse_bondage.0057.b
+		remove_trait = rse_enslaved
+		add_trait = rse_freed_slave
+		add_character_modifier = {
+			modifier = favoured_concubine_modifier
+			years = 10
+		}
+		scope:master = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				years = 50
+			}
+		}
+	}
+}

@@ -3,23 +3,16 @@ rse_concubines_permitted_trigger = {
 	OR = {
 		faith = { religion_tag = islam_religion }
 		faith = { has_doctrine_parameter = unrestricted_concubines }
-		faith = { has_doctrine = doctrine_concubines_allowed }
 		culture = { has_cultural_tradition = tradition_concubines }
-		# pagan and nomadic faiths commonly accepted concubinage
 		faith = { religion_tag = germanic_religion }
 		faith = { religion_tag = tengri_religion }
 		faith = { religion_tag = west_african_religion }
 		faith = { religion_tag = african_religion }
 		faith = { religion_tag = magyar_religion }
-		# pre-Christianization era window
-		AND = {
-			has_global_variable = rse_early_era
-			NOT = { faith = { religion_tag = christianity_religion } }
-		}
 	}
 }
 
-# Broad permission for slavery — any of: Islamic, pagan, nomadic, raider-culture, Christian non-co-religionists
+# Broad permission for slavery — Islamic, pagan, raider-culture, or Christian against non-Christians
 rse_thralldom_permitted_trigger = {
 	OR = {
 		faith = { religion_tag = islam_religion }
@@ -34,20 +27,17 @@ rse_thralldom_permitted_trigger = {
 		faith = { religion_tag = sami_religion }
 		faith = { religion_tag = north_eurasian_religion }
 		faith = { religion_tag = zun_religion }
-		# Cultural pillars/traditions that fit slavery
 		culture = { has_cultural_tradition = tradition_chosen_warriors }
 		culture = { has_cultural_tradition = tradition_warrior_culture }
 		culture = { has_cultural_tradition = tradition_horse_lords }
 		culture = { has_cultural_tradition = tradition_seafaring }
 		culture = { has_cultural_tradition = tradition_steppe_tolerance }
-		# Existing slavers
 		has_trait = rse_slaver_apprentice
 		has_trait = rse_slave_broker
 		has_trait = rse_taskmaster
 		has_trait = rse_grand_slaver
 		has_trait = rse_mamluk_lord
 		has_trait = rse_harem_keeper
-		# Christian rulers — only against non-Christians (the historical sklavoi / saqaliba trade)
 		AND = {
 			faith = { religion_tag = christianity_religion }
 			rse_christian_slavery_target_exists_trigger = yes
@@ -55,22 +45,18 @@ rse_thralldom_permitted_trigger = {
 	}
 }
 
-# Christian rulers can practice slavery if there are pagan/non-Christian targets nearby
+# Christian rulers may practice slavery only if non-Christian targets exist
 rse_christian_slavery_target_exists_trigger = {
 	OR = {
-		# Pagans / Muslims among courtiers
 		any_courtier = {
 			NOT = { faith = { religion_tag = christianity_religion } }
 		}
-		# Held counties of other faith
 		any_held_county = {
 			NOT = { faith = { religion_tag = christianity_religion } }
 		}
-		# Neighboring pagan/Muslim realm
 		any_neighboring_top_liege_realm_owner = {
 			NOT = { faith = { religion_tag = christianity_religion } }
 		}
-		# Slavic cultures (the historical sklavinoi)
 		any_neighboring_top_liege_realm_owner = {
 			culture = { has_cultural_pillar = heritage_west_slavic }
 		}
@@ -80,7 +66,7 @@ rse_christian_slavery_target_exists_trigger = {
 	}
 }
 
-# Culture that historically practiced Slavic slave-trading (German marcher lords, Italian merchants, Iberian, Norse)
+# Cultures that historically participated in the Slavic slave trade
 rse_slavic_slaver_culture_trigger = {
 	OR = {
 		culture = { has_cultural_pillar = heritage_north_germanic }
@@ -98,7 +84,6 @@ rse_slavic_slaver_culture_trigger = {
 rse_warrior_slaves_permitted_trigger = {
 	OR = {
 		faith = { religion_tag = islam_religion }
-		# Varangian / druzhina equivalents
 		faith = { religion_tag = germanic_religion }
 		faith = { religion_tag = tengri_religion }
 		culture = { has_cultural_tradition = tradition_chosen_warriors }
@@ -108,14 +93,11 @@ rse_warrior_slaves_permitted_trigger = {
 	}
 }
 
-# --- Orthodox / Sunni triggers ---
-
 rse_is_orthodox_trigger = {
 	faith = {
 		OR = {
 			this = faith:orthodox
 			has_doctrine = tenet_iconography
-			has_doctrine_parameter = ecumenical_patriarch_active
 		}
 	}
 }
@@ -125,8 +107,26 @@ rse_is_sunni_trigger = {
 		OR = {
 			this = faith:ashari
 			this = faith:maturidi
-			this = faith:ashari
+			this = faith:hanbali
 			this = faith:mutazila
+		}
+	}
+}
+
+# A character may be enslaved only if they are NOT a member of a noble dynasty.
+# Lowborn folk, freshly-created captives and commoners can be taken; nobles cannot.
+# A character may be enslaved if they are lowborn OR a member of an
+# obscure (low-prestige) dynasty. Members of renowned dynasties — those
+# whose dynasty has risen to splendour — are protected from enslavement.
+rse_can_be_enslaved_trigger = {
+	NOT = { has_trait = rse_enslaved }
+	OR = {
+		is_lowborn = yes
+		AND = {
+			exists = dynasty
+			dynasty = {
+				dynasty_prestige_level <= 1
+			}
 		}
 	}
 }

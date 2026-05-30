@@ -477,14 +477,26 @@ rse_christslav.0006 = {
 	option = {
 		name = rse_christslav.0006.b
 		scope:slavic_prince = {
-			release_from_prison = yes
-			move_to_pool = yes
-			set_employer = root
-			add_trait = rse_enslaved
-			add_opinion = {
-				modifier = enslaved_opinion
-				target = root
-				years = 100
+			if = {
+				limit = { rse_can_be_enslaved_trigger = yes }
+				release_from_prison = yes
+				move_to_pool = yes
+				set_employer = root
+				add_trait = rse_enslaved
+				add_opinion = {
+					modifier = enslaved_opinion
+					target = root
+					years = 100
+				}
+			}
+			else = {
+				# A noble of a dynasty is not enslaved — sold off to a distant buyer instead
+				add_opinion = {
+					modifier = enslaved_opinion
+					target = root
+					years = 100
+				}
+				banish = yes
 			}
 		}
 		add_gold = 75
